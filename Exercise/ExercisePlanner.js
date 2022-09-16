@@ -7,18 +7,12 @@ import {
   TextInput,
   ImageBackground,
 } from "react-native";
-import {
-  Header,
-  WeightInputs,
-  CalculateButton,
-  PlatesPerSide,
-} from "./homeScreenComponents";
+
 import { colors } from "../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
 const { MILKY_WHITE, BACKGROUND } = colors;
 
-const HomeScreen = ({ navigation }) => {
-  // const navigation = useNavigation();
+const ExerciseScreen = ({ navigation }) => {
   const [barWeight, setBarWeight] = useState(0);
   const [desiredWeight, setDesiredWeight] = useState(0);
   const [perSide, setPerSide] = useState(0);
@@ -66,9 +60,6 @@ const HomeScreen = ({ navigation }) => {
     }
     return x;
   }
-  const handleNav = () => {
-    navigation.navigate("Exercise");
-  };
   return (
     <>
       <LinearGradient
@@ -78,26 +69,7 @@ const HomeScreen = ({ navigation }) => {
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
-        <Header />
-        <WeightInputs
-          onChangeBarWeight={onChangeBarWeight}
-          onChangeDesiredWeight={onChangeDesiredWeight}
-        />
-        <TouchableOpacity style={styles.test} onPress={handleNav} />
-        <CalculateButton
-          onPress={calc}
-          barWeight={barWeight}
-          desiredWeight={desiredWeight}
-          perSide={perSide}
-        />
-        <PlatesPerSide
-          perSide={perSide}
-          fortyFives={fortyFives}
-          twentyFives={twentyFives}
-          tens={tens}
-          fives={fives}
-          twoAndAHalves={twoAndAHalves}
-        />
+        <Text>I'm Exercises screen</Text>
       </LinearGradient>
     </>
   );
@@ -110,11 +82,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // backgroundColor: MILKY_WHITE,
   },
-  test: {
-    width: 100,
-    height: 100,
-    backgroundColor: "red",
-  },
 });
 
-export default HomeScreen;
+export default ExerciseScreen;

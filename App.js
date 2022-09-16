@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -8,6 +9,7 @@ import {
 } from "react-native";
 import HomeScreen from "./home/HomeScreen";
 import { Lobster_400Regular } from "@expo-google-fonts/lobster";
+import Navigator from "./routes/homeStack";
 import {
   Oswald_200ExtraLight,
   Oswald_300Light,
@@ -36,7 +38,7 @@ export default function App() {
   return (
     <DismissKeyboard>
       <View style={styles.container}>
-        <HomeScreen />
+        <Navigator />
         <StatusBar style="auto" />
       </View>
     </DismissKeyboard>
@@ -46,8 +48,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
