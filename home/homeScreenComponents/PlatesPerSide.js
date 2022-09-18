@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
   },
   output: {
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: "black",
+    // borderWidth: 1,
+    // borderColor: "black",
     justifyContent: "center",
     marginTop: 20,
     width: "100%",

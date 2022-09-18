@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   ImageBackground,
+  Keyboard,
 } from "react-native";
 import {
   Header,
@@ -36,6 +37,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const calc = (barWeight, desiredWeight) => {
+    Keyboard.dismiss();
     const initialWeight = (desiredWeight -= barWeight);
     const perSide = initialWeight / 2;
     let totalWeightPerSide = initialWeight / 2;
@@ -66,15 +68,12 @@ const HomeScreen = ({ navigation }) => {
     }
     return x;
   }
-  const handleNav = () => {
-    navigation.navigate("Exercise");
-  };
+
   return (
     <>
       <LinearGradient
         style={styles.container}
         colors={BACKGROUND}
-        // colors={["#63666A", "#63666A"]}
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
@@ -83,7 +82,6 @@ const HomeScreen = ({ navigation }) => {
           onChangeBarWeight={onChangeBarWeight}
           onChangeDesiredWeight={onChangeDesiredWeight}
         />
-        <TouchableOpacity style={styles.test} onPress={handleNav} />
         <CalculateButton
           onPress={calc}
           barWeight={barWeight}

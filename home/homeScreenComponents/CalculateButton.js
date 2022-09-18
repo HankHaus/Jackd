@@ -25,9 +25,10 @@ const CalculateButton = ({
       >
         <LinearGradient
           style={styles.buttonFill}
-          colors={["#FF7518", "#FF7518"]}
-          start={[1, 0.8]}
-          end={[1, 0.2]}
+          colors={["#FF7518", "#FF9A55"]}
+          start={[0.2, 0.5]}
+          locations={[0.8, 0.8]}
+          end={[0.3, 0.1]}
         >
           <Text style={styles.buttonText}>Calculate</Text>
         </LinearGradient>
@@ -44,10 +45,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: 50,
     borderColor: WHITE,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderRadius: 10,
+
     shadowColor: SHADOW,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.5,
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     weight: "100%",
     height: "100%",
-    borderRadius: 30,
+    borderRadius: 10,
   },
 });
 
