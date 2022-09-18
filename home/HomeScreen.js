@@ -13,6 +13,7 @@ import {
   WeightInputs,
   CalculateButton,
   PlatesPerSide,
+  WorkoutButton,
 } from "./homeScreenComponents";
 import { colors } from "../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
@@ -77,11 +78,15 @@ const HomeScreen = ({ navigation }) => {
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
-        <Header />
-        <WeightInputs
-          onChangeBarWeight={onChangeBarWeight}
-          onChangeDesiredWeight={onChangeDesiredWeight}
-        />
+        <View style={styles.headerContainer}>
+          <Header />
+        </View>
+        <View style={styles.weightInputsContainer}>
+          <WeightInputs
+            onChangeBarWeight={onChangeBarWeight}
+            onChangeDesiredWeight={onChangeDesiredWeight}
+          />
+        </View>
         <CalculateButton
           onPress={calc}
           barWeight={barWeight}
@@ -96,6 +101,9 @@ const HomeScreen = ({ navigation }) => {
           fives={fives}
           twoAndAHalves={twoAndAHalves}
         />
+        <View style={styles.workoutButtonContainer}>
+          <WorkoutButton navigation={navigation} />
+        </View>
       </LinearGradient>
     </>
   );
@@ -106,12 +114,22 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     justifyContent: "center",
-    // backgroundColor: MILKY_WHITE,
   },
-  test: {
-    width: 100,
-    height: 100,
-    backgroundColor: "red",
+  headerContainer: {
+    position: "absolute",
+    top: "15%",
+    width: "100%",
+    alignItems: "center",
+  },
+  weightInputsContainer: {
+    width: "100%",
+    marginTop: "-10%",
+  },
+  workoutButtonContainer: {
+    position: "absolute",
+    bottom: 50,
+    width: "100%",
+    alignItems: "center",
   },
 });
 

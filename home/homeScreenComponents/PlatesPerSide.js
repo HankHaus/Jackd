@@ -52,8 +52,6 @@ const PlatesPerSide = ({
 
 const styles = StyleSheet.create({
   perSide: {
-    // backgroundColor: "red",
-    // marginBottom: -20,
     width: "100%",
     justifyContent: "center",
     alignSelf: "center",
@@ -61,18 +59,14 @@ const styles = StyleSheet.create({
   },
   perSideText: {
     fontSize: 30,
-    // paddingTop: 50,
     alignSelf: "center",
   },
   output: {
     alignSelf: "center",
-    // borderWidth: 1,
-    // borderColor: "black",
     justifyContent: "center",
     marginTop: 20,
     width: "100%",
     height: 200,
-    // backgroundColor: "black",
   },
   outputText: {
     fontFamily: "Oswald_400Regular",
