@@ -30,8 +30,9 @@ const Header = ({ navigation, onPress }) => {
             <LinearGradient
               style={styles.getStartedButton}
               colors={["#0100FF", "#0100FF"]}
-              start={[0.8, 0.9]}
-              end={[1, 0.1]}
+              start={[1, 0.1]}
+              end={[1, 0.4]}
+              // locations={[0.4, 0.8]}
             ></LinearGradient>
           </LinearGradient>
         </TouchableOpacity>
