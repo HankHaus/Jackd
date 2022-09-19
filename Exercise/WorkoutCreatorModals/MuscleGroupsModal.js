@@ -27,6 +27,7 @@ const MuscleGroupsModal = ({
   arms,
   back,
   legs,
+  onPressNext,
 }) => {
   return (
     <View style={styles.modalStyle}>
@@ -166,7 +167,10 @@ const MuscleGroupsModal = ({
         </View>
         <View style={styles.spacer}>
           {chest || back || arms || legs ? (
-            <TouchableOpacity style={styles.nextButtonContainer}>
+            <TouchableOpacity
+              style={styles.nextButtonContainer}
+              onPress={onPressNext}
+            >
               <Text style={styles.nextButtonText}>Next</Text>
             </TouchableOpacity>
           ) : (
