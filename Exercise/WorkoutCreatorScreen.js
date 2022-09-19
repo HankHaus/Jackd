@@ -15,6 +15,10 @@ const { MILKY_WHITE, BACKGROUND } = colors;
 
 const WorkoutCreatorScreen = ({ navigation }) => {
   const [muscleGroupsModal, setMuscleGroupsModal] = useState(false);
+  const [chest, setChest] = useState(false);
+  const [arms, setArms] = useState(false);
+  const [back, setBack] = useState(false);
+  const [legs, setLegs] = useState(false);
   const toggleMuscleGroupsModal = () => {
     setMuscleGroupsModal(!muscleGroupsModal);
     console.log("toggleMuscleGroupsModal");
@@ -32,7 +36,18 @@ const WorkoutCreatorScreen = ({ navigation }) => {
           <Header onPress={toggleMuscleGroupsModal} />
         </View>
         {/* <Text>I'm Exercises screen</Text> */}
-        {muscleGroupsModal && <MuscleGroupsModal />}
+        {muscleGroupsModal && (
+          <MuscleGroupsModal
+            onPressChest={() => setChest(!chest)}
+            onPressArms={() => setArms(!arms)}
+            onPressBack={() => setBack(!back)}
+            onPressLegs={() => setLegs(!legs)}
+            chest={chest}
+            arms={arms}
+            back={back}
+            legs={legs}
+          />
+        )}
       </LinearGradient>
     </>
   );
