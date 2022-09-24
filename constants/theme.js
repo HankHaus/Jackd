@@ -5,7 +5,7 @@ const colors = {
   MILKY_WHITE: "#EBEBF5",
   SHADOW: "#000",
   WHITE: "#fff",
-  BACKGROUND: ["#f9dadd", "#e55982"],
+  BACKGROUND: ["#B891A9", "#9E768F"],
 };
 
 export { colors };

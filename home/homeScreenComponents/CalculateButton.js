@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { colors } from "../../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
+import { GlossyButton } from "../../components/common";
 const { PRIMARY, SECONDARY, SHADOW, WHITE } = colors;
 
 const CalculateButton = ({
@@ -20,49 +21,28 @@ const CalculateButton = ({
   return (
     <>
       <TouchableOpacity
-        style={styles.calculate}
+        style={styles.buttonContainer}
         onPress={() => onPress(barWeight, desiredWeight, perSide)}
       >
-        <LinearGradient
-          style={styles.buttonFill}
-          colors={["#FF7518", "#FF9A55"]}
-          start={[0.2, 0.5]}
-          locations={[0.8, 0.8]}
-          end={[0.3, 0.1]}
-        >
-          <Text style={styles.buttonText}>Calculate</Text>
-        </LinearGradient>
+        <GlossyButton
+          height={50}
+          width={"100%"}
+          text="Calculate"
+          colorOne={"#9FA4C4"}
+          colorTwo={"#D7DBF3"}
+        />
       </TouchableOpacity>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  calculate: {
+  buttonContainer: {
     width: "50%",
     marginTop: 50,
     alignSelf: "center",
-    borderWidth: 1,
-    height: 50,
-    borderColor: WHITE,
     borderRadius: 10,
-
-    shadowColor: SHADOW,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
-  },
-  buttonText: {
-    fontSize: 30,
-    alignSelf: "center",
-    color: WHITE,
-    fontFamily: "Lobster_400Regular",
-  },
-  buttonFill: {
-    justifyContent: "center",
-    weight: "100%",
-    height: "100%",
-    borderRadius: 10,
+    backgroundColor: "red",
   },
 });
 

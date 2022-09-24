@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
+import { GlossyButton } from "../../components/common";
 import { colors } from "../../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
 const { PRIMARY, SECONDARY, SHADOW, BLACK, WHITE } = colors;
@@ -19,15 +20,13 @@ const WorkoutButton = ({ navigation }) => {
           navigation.navigate("WorkoutCreator");
         }}
       >
-        <LinearGradient
-          style={styles.buttonFill}
-          colors={["#00FF02", "#7BFF7D"]}
-          start={[0.2, 0.5]}
-          locations={[0.8, 0.8]}
-          end={[0.3, 0.1]}
-        >
-          <Text style={styles.buttonText}>I want to workout</Text>
-        </LinearGradient>
+        <GlossyButton
+          width={"100%"}
+          height={50}
+          text="Workout Creator"
+          colorOne={"#9FA4C4"}
+          colorTwo={"#D7DBF3"}
+        />
       </TouchableOpacity>
     </>
   );
@@ -37,25 +36,6 @@ const styles = StyleSheet.create({
   buttonShape: {
     width: "75%",
     alignSelf: "center",
-    borderWidth: 1,
-    height: 60,
-    borderColor: WHITE,
-    borderRadius: 10,
-
-    shadowColor: SHADOW,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
-  },
-  buttonText: {
-    fontSize: 30,
-    alignSelf: "center",
-    color: BLACK,
-  },
-  buttonFill: {
-    justifyContent: "center",
-    weight: "100%",
-    height: "100%",
     borderRadius: 10,
   },
 });
