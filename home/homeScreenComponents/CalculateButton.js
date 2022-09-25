@@ -1,23 +1,10 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../../constants/theme";
-import { LinearGradient } from "expo-linear-gradient";
 import { GlossyButton } from "../../components/common";
-const { PRIMARY, SECONDARY, SHADOW, WHITE } = colors;
+const { LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
 
-const CalculateButton = ({
-  navigation,
-  onPress,
-  barWeight,
-  desiredWeight,
-  perSide,
-}) => {
+const CalculateButton = ({ onPress, barWeight, desiredWeight, perSide }) => {
   return (
     <>
       <TouchableOpacity
@@ -28,8 +15,8 @@ const CalculateButton = ({
           height={50}
           width={"100%"}
           text="Calculate"
-          colorOne={"#9FA4C4"}
-          colorTwo={"#D7DBF3"}
+          colorOne={LIGHT_SILVER_BLUE}
+          colorTwo={SILVER_BLUE}
         />
       </TouchableOpacity>
     </>
@@ -42,7 +29,6 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignSelf: "center",
     borderRadius: 10,
-    backgroundColor: "red",
   },
 });
 

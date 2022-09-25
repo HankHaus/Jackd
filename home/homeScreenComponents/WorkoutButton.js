@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { GlossyButton } from "../../components/common";
 import { colors } from "../../constants/theme";
-import { LinearGradient } from "expo-linear-gradient";
-const { PRIMARY, SECONDARY, SHADOW, BLACK, WHITE } = colors;
+const { LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
 
 const WorkoutButton = ({ navigation }) => {
   return (
@@ -24,8 +17,8 @@ const WorkoutButton = ({ navigation }) => {
           width={"100%"}
           height={50}
           text="Workout Creator"
-          colorOne={"#9FA4C4"}
-          colorTwo={"#D7DBF3"}
+          colorOne={LIGHT_SILVER_BLUE}
+          colorTwo={SILVER_BLUE}
         />
       </TouchableOpacity>
     </>

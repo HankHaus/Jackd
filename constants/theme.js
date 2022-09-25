@@ -6,6 +6,8 @@ const colors = {
   SHADOW: "#000",
   WHITE: "#fff",
   BACKGROUND: ["#B891A9", "#9E768F"],
+  LIGHT_SILVER_BLUE: "#9FA4C4",
+  SILVER_BLUE: "#D7DBF3",
 };
 
 export { colors };

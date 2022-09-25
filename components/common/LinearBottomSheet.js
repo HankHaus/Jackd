@@ -18,13 +18,10 @@ const LinearBottomSheet = ({
   viewPosition,
   onPressClose,
   disabled,
-  containerBackgroundColor,
   contentContainerStyle,
   children,
   sheetStyle,
   linearStyle,
-  linearColors,
-  opacity = 0.9,
   borderRadius,
 }) => {
   const sliderInView = useRef(new Animated.Value(viewPosition)).current;
@@ -37,23 +34,14 @@ const LinearBottomSheet = ({
     }).start();
   }, []);
 
-  const backgroundColor = containerBackgroundColor || "rgba(0, 0, 0, 0.5)";
   const borderTopRightRadius = borderRadius || 50;
   const borderTopLeftRadius = borderRadius || 50;
-  const LINEAR_COLORS = linearColors || [
-    `rgba(239, 34, 72, ${opacity.toString()})`,
-    `rgba(84, 2, 210, ${opacity.toString()})`,
-  ];
 
   return (
-    // <View
-    //   style={[{ backgroundColor }, contentContainerStyle, styles.container]}
-    // >
     <LinearGradient
       colors={[BLACK, "transparent"]}
       start={[0, 0.7]}
       end={[0, 0.0]}
-      //   opacity={0.9}
       style={[contentContainerStyle, styles.container]}
     >
       <TouchableWithoutFeedback onPress={onPressClose} disabled={disabled}>
@@ -67,7 +55,7 @@ const LinearBottomSheet = ({
         ]}
       >
         <LinearGradient
-          colors={["#FFE000", "#FBFFC5"]}
+          colors={["#6C464F", "#B891A9"]}
           start={[1, 1.4]}
           end={[1, 0]}
           style={[
@@ -80,7 +68,6 @@ const LinearBottomSheet = ({
         </LinearGradient>
       </Animated.View>
     </LinearGradient>
-    // </View>
   );
 };
 

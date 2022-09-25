@@ -205,6 +205,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     textAlign: "center",
+    color: WHITE,
   },
   optionStack: {
     width: "80%",
@@ -227,10 +228,12 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 25,
     fontWeight: "bold",
+    color: WHITE,
   },
   optionTextInactive: {
     fontSize: 25,
     opacity: 0.4,
+    color: WHITE,
   },
   optionDotInactiveBorder: {
     width: 30,
@@ -280,6 +283,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "center",
     textDecorationLine: "underline",
+    color: "#271519",
   },
 });
 

@@ -1,11 +1,5 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 const PlatesPerSide = ({
   perSide,
@@ -17,9 +11,6 @@ const PlatesPerSide = ({
 }) => {
   return (
     <>
-      {/* <View style={styles.perSide}>
-        <Text style={styles.perSideText}>Plates Per Side:</Text>
-      </View> */}
       <View style={styles.output}>
         {fortyFives !== 0 ? (
           <Text style={styles.plateText}>45s: {fortyFives}</Text>

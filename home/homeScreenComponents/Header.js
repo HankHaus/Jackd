@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { colors } from "../../constants/theme";
 const { WHITE } = colors;
-const Header = ({ navigation }) => {
+const Header = () => {
   return (
     <>
       <View style={styles.titleContainer}>

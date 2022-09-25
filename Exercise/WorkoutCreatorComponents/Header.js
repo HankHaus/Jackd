@@ -23,16 +23,15 @@ const Header = ({ navigation, onPress }) => {
         <TouchableOpacity style={styles.circleContainer} onPress={onPress}>
           <LinearGradient
             style={styles.getStartedButtonBorder}
-            colors={["#00CCFF", "#00FFF6"]}
+            colors={["#31CF0A", "#C7F0BD"]}
             start={[0.7, 0.9]}
             end={[1.2, 0.3]}
           >
             <LinearGradient
               style={styles.getStartedButton}
-              colors={["#0100FF", "#0100FF"]}
+              colors={["#24AB03", "#197502"]}
               start={[1, 0.1]}
-              end={[1, 0.4]}
-              // locations={[0.4, 0.8]}
+              end={[1, 0.9]}
             ></LinearGradient>
           </LinearGradient>
         </TouchableOpacity>
@@ -50,7 +49,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    // fontFamily: "Lobster_400Regular",
     alignSelf: "center",
     fontSize: 50,
     color: WHITE,
@@ -62,7 +60,6 @@ const styles = StyleSheet.create({
   },
   subtitleContainer: {
     width: "100%",
-    // backgroundColor: "red",
     marginTop: 15,
   },
   getStartedButtonBorder: {
@@ -74,8 +71,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   getStartedButton: {
-    width: 190,
-    height: 190,
+    width: 195,
+    height: 195,
     borderRadius: 200,
     backgroundColor: WHITE,
     justifyContent: "center",
@@ -87,7 +84,6 @@ const styles = StyleSheet.create({
     borderRadius: 210,
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "red",
     marginTop: "35%",
   },
 });

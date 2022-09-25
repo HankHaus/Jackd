@@ -116,10 +116,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headerContainer: {
-    position: "absolute",
-    top: "15%",
+    marginTop: -60,
+    marginBottom: 60,
     width: "100%",
-    alignItems: "center",
   },
   weightInputsContainer: {
     width: "100%",

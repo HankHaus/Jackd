@@ -1,11 +1,5 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 import { colors } from "../../constants/theme";
 const { WHITE } = colors;
 const WeightInputs = ({ onChangeBarWeight, onChangeDesiredWeight }) => {
@@ -18,9 +12,7 @@ const WeightInputs = ({ onChangeBarWeight, onChangeDesiredWeight }) => {
             keyboardType="numeric"
             style={styles.weightInputField}
             onChangeText={onChangeBarWeight}
-          >
-            {/* {check(barWeight)} */}
-          </TextInput>
+          ></TextInput>
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>Desired Weight:</Text>
@@ -28,9 +20,7 @@ const WeightInputs = ({ onChangeBarWeight, onChangeDesiredWeight }) => {
             keyboardType="numeric"
             style={styles.weightInputField}
             onChangeText={onChangeDesiredWeight}
-          >
-            {/* {check(desiredWeight)} */}
-          </TextInput>
+          ></TextInput>
         </View>
       </View>
     </>
@@ -43,7 +33,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 20,
     justifyContent: "center",
-    // backgroundColor: "#000",
   },
   label: {
     fontFamily: "Oswald_400Regular",
