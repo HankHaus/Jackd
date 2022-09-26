@@ -45,7 +45,9 @@ const MuscleGroupsModal = ({
         <View style={styles.optionStack}>
           {chest && (
             <View style={styles.option}>
-              <Text style={styles.optionText}>Chest</Text>
+              <TouchableOpacity onPress={() => onPressChest()}>
+                <Text style={styles.optionText}>Chest</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {
@@ -60,7 +62,9 @@ const MuscleGroupsModal = ({
           )}
           {!chest && (
             <View style={styles.option}>
-              <Text style={styles.optionTextInactive}>Chest</Text>
+              <TouchableOpacity onPress={() => onPressChest()}>
+                <Text style={styles.optionTextInactive}>Chest</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {
@@ -75,7 +79,9 @@ const MuscleGroupsModal = ({
           )}
           {back && (
             <View style={styles.option}>
-              <Text style={styles.optionText}>Back</Text>
+              <TouchableOpacity onPress={() => onPressBack()}>
+                <Text style={styles.optionText}>Back</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {
@@ -90,7 +96,9 @@ const MuscleGroupsModal = ({
           )}
           {!back && (
             <View style={styles.option}>
-              <Text style={styles.optionTextInactive}>Back</Text>
+              <TouchableOpacity onPress={() => onPressBack()}>
+                <Text style={styles.optionTextInactive}>Back</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {
@@ -106,7 +114,9 @@ const MuscleGroupsModal = ({
 
           {arms && (
             <View style={styles.option}>
-              <Text style={styles.optionText}>Arms</Text>
+              <TouchableOpacity onPress={() => onPressArms()}>
+                <Text style={styles.optionText}>Arms</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {
@@ -121,7 +131,9 @@ const MuscleGroupsModal = ({
           )}
           {!arms && (
             <View style={styles.option}>
-              <Text style={styles.optionTextInactive}>Arms</Text>
+              <TouchableOpacity onPress={() => onPressArms()}>
+                <Text style={styles.optionTextInactive}>Arms</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {
@@ -136,7 +148,9 @@ const MuscleGroupsModal = ({
           )}
           {legs && (
             <View style={styles.option}>
-              <Text style={styles.optionText}>Legs</Text>
+              <TouchableOpacity onPress={() => onPressLegs()}>
+                <Text style={styles.optionText}>Legs</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {
@@ -151,7 +165,9 @@ const MuscleGroupsModal = ({
           )}
           {!legs && (
             <View style={styles.option}>
-              <Text style={styles.optionTextInactive}>Legs</Text>
+              <TouchableOpacity onPress={() => onPressLegs()}>
+                <Text style={styles.optionTextInactive}>Legs</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
                 onPress={() => {

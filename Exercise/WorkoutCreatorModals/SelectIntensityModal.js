@@ -294,29 +294,33 @@ const SelectINtensityModal = ({
             </View>
           </View>
         )}
-        {arms1 ||
-        arms5 ||
-        arms10 ||
-        legs1 ||
-        legs5 ||
-        legs10 ||
-        back1 ||
-        back5 ||
-        back10 ||
-        chest1 ||
-        chest5 ||
-        chest10 ? (
-          <TouchableOpacity style={styles.button} onPress={onPressStartWorkout}>
-            <GlossyButton
-              height={50}
-              width={"100%"}
-              text="Start Workout"
-              colorOne={LIGHT_SILVER_BLUE}
-              colorTwo={SILVER_BLUE}
-            />
-          </TouchableOpacity>
-        ) : null}
-
+        <View style={styles.bottomButtonContainer}>
+          {arms1 ||
+          arms5 ||
+          arms10 ||
+          legs1 ||
+          legs5 ||
+          legs10 ||
+          back1 ||
+          back5 ||
+          back10 ||
+          chest1 ||
+          chest5 ||
+          chest10 ? (
+            <TouchableOpacity
+              style={styles.button}
+              onPress={onPressStartWorkout}
+            >
+              <GlossyButton
+                height={50}
+                width={"100%"}
+                text="Start Workout"
+                colorOne={LIGHT_SILVER_BLUE}
+                colorTwo={SILVER_BLUE}
+              />
+            </TouchableOpacity>
+          ) : null}
+        </View>
         <View style={styles.spacer} />
       </LinearBottomSheet>
     </View>
@@ -392,8 +396,6 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
     borderRadius: 50,
-    // borderWidth: 1,
-    // borderColor: "black",
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
@@ -409,10 +411,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   number: {
-    // backgroundColor: "red",
     width: 35,
     height: 35,
     justifyContent: "center",
+  },
+  bottomButtonContainer: {
+    width: "100%",
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
