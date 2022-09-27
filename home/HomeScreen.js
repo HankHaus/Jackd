@@ -14,6 +14,7 @@ import {
   CalculateButton,
   PlatesPerSide,
   WorkoutButton,
+  BarbellAnimation,
 } from "./homeScreenComponents";
 import { colors } from "../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
@@ -93,14 +94,17 @@ const HomeScreen = ({ navigation }) => {
           desiredWeight={desiredWeight}
           perSide={perSide}
         />
-        <PlatesPerSide
+        {/* <PlatesPerSide
           perSide={perSide}
           fortyFives={fortyFives}
           twentyFives={twentyFives}
           tens={tens}
           fives={fives}
           twoAndAHalves={twoAndAHalves}
-        />
+        /> */}
+        <View style={styles.barbellContainer}>
+          <BarbellAnimation />
+        </View>
         <View style={styles.workoutButtonContainer}>
           <WorkoutButton navigation={navigation} />
         </View>
@@ -111,7 +115,6 @@ const HomeScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
     flex: 1,
     justifyContent: "center",
   },
@@ -129,6 +132,10 @@ const styles = StyleSheet.create({
     bottom: 50,
     width: "100%",
     alignItems: "center",
+  },
+  barbellContainer: {
+    position: "relative",
+    top: 20,
   },
 });
 

@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { colors } from "../../constants/theme";
+import logo3 from "../../assets/logo3.png";
 const { TEXT_BURGUNDY } = colors;
 const Header = () => {
   return (
     <>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Weight_Adder</Text>
+        <Image source={logo3} style={styles.logo} />
       </View>
     </>
   );
@@ -25,6 +26,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 50,
     color: TEXT_BURGUNDY,
+  },
+  logo: {
+    width: "100%",
+    height: 150,
   },
 });
 

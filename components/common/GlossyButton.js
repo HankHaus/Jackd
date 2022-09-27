@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
     borderColor: TEXT_BURGUNDY,
     borderRadius: 10,
     shadowColor: SHADOW,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.6,
-    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
   },
   buttonText: {
     fontSize: 30,
