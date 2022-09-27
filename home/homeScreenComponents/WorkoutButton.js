@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { GlossyButton } from "../../components/common";
 import { colors } from "../../constants/theme";
-const { LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
+const { DARK_ORANGE, LIGHT_ORANGE } = colors;
 
 const WorkoutButton = ({ navigation }) => {
   return (
@@ -17,8 +17,8 @@ const WorkoutButton = ({ navigation }) => {
           width={"100%"}
           height={50}
           text="Workout Creator"
-          colorOne={LIGHT_SILVER_BLUE}
-          colorTwo={SILVER_BLUE}
+          colorOne={DARK_ORANGE}
+          colorTwo={LIGHT_ORANGE}
         />
       </TouchableOpacity>
     </>

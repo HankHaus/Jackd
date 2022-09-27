@@ -17,7 +17,7 @@ import {
 } from "./homeScreenComponents";
 import { colors } from "../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
-const { MILKY_WHITE, BACKGROUND } = colors;
+const { BACKGROUND } = colors;
 
 const HomeScreen = ({ navigation }) => {
   // const navigation = useNavigation();

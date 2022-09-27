@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { colors } from "../../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
-const { PRIMARY, SECONDARY, SHADOW, WHITE } = colors;
+const { SHADOW, TEXT_BURGUNDY } = colors;
 
 const GlossyButton = ({ colorOne, colorTwo, width, height, text }) => {
   return (
@@ -33,11 +33,11 @@ const styles = StyleSheet.create({
   buttonShape: {
     alignSelf: "center",
     borderWidth: 1,
-    borderColor: WHITE,
+    borderColor: TEXT_BURGUNDY,
     borderRadius: 10,
     shadowColor: SHADOW,
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.4,
+    shadowOpacity: 0.6,
     shadowRadius: 3,
   },
   buttonText: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     position: "absolute",
     justifyContent: "center",
-    color: WHITE,
+    color: TEXT_BURGUNDY,
     fontFamily: "Lobster_400Regular",
   },
   buttonFill: {

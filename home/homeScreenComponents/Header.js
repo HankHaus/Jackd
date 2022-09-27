@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { colors } from "../../constants/theme";
-const { WHITE } = colors;
+const { TEXT_BURGUNDY } = colors;
 const Header = () => {
   return (
     <>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontFamily: "Lobster_400Regular",
     alignSelf: "center",
     fontSize: 50,
-    color: WHITE,
+    color: TEXT_BURGUNDY,
   },
 });
 

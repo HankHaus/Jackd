@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { colors } from "../../constants/theme";
-const { WHITE } = colors;
+const { TEXT_BURGUNDY, BLACK } = colors;
 const WeightInputs = ({ onChangeBarWeight, onChangeDesiredWeight }) => {
   return (
     <>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: "Oswald_400Regular",
-    color: WHITE,
+    color: BLACK,
     fontSize: 25,
     fontWeight: "bold",
     alignSelf: "center",
@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   weightInputField: {
-    color: WHITE,
+    color: BLACK,
     fontSize: 25,
     borderWidth: 1,
     textAlign: "center",
-    borderBottomColor: WHITE,
+    borderBottomColor: BLACK,
     borderLeftColor: "transparent",
     borderTopColor: "transparent",
     borderRightColor: "transparent",

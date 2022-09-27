@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../../constants/theme";
 import { GlossyButton } from "../../components/common";
-const { LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
+const { DARK_ORANGE, LIGHT_ORANGE } = colors;
 
 const CalculateButton = ({ onPress, barWeight, desiredWeight, perSide }) => {
   return (
@@ -15,8 +15,8 @@ const CalculateButton = ({ onPress, barWeight, desiredWeight, perSide }) => {
           height={50}
           width={"100%"}
           text="Calculate"
-          colorOne={LIGHT_SILVER_BLUE}
-          colorTwo={SILVER_BLUE}
+          colorOne={DARK_ORANGE}
+          colorTwo={LIGHT_ORANGE}
         />
       </TouchableOpacity>
     </>
