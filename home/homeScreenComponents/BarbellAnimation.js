@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const BarbellAnimation = ({
@@ -27,6 +27,43 @@ const BarbellAnimation = ({
           locations={[0.0, 0.3, 0.4, 0.6, 0.9]}
           style={styles.barbellStopper}
         ></LinearGradient>
+        {/* <View style={styles.output}> */}
+        {fortyFives !== 0 ? (
+          // <Text style={styles.plateText}>45s: {fortyFives}</Text>
+          <View style={styles.fortyFivesBlock}></View>
+        ) : (
+          ""
+        )}
+        {twentyFives !== 0 ? (
+          // <Text style={styles.plateText}>25s: {twentyFives}</Text>
+          <View style={styles.twentyFivesBlock}></View>
+        ) : (
+          ""
+        )}
+        {tens !== 0 ? (
+          // <Text style={styles.plateText}>10s: {tens}</Text>
+          <View style={styles.tensBlock}></View>
+        ) : (
+          ""
+        )}
+        {fives !== 0 ? (
+          // <Text style={styles.plateText}>5s: {fives}</Text>
+          <View style={styles.fivesBlock}></View>
+        ) : (
+          ""
+        )}
+        {twoAndAHalves !== 0 ? (
+          // <Text style={styles.plateText}>2.5s: {twoAndAHalves}</Text>
+          <View style={styles.twoAndAHalvesBlock}></View>
+        ) : (
+          ""
+        )}
+        {/* {perSide !== 0 ? (
+        <Text style={styles.outputText}>total weight per side: {perSide}</Text>
+        ) : (
+          ""
+        )} */}
+        {/* </View> */}
       </View>
     </>
   );
@@ -39,23 +76,62 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: "100%",
     height: 200,
+    flexDirection: "row",
+    paddingTop: 100,
   },
   barbell: {
     width: "75%",
-    position: "absolute",
-    left: 0,
     height: 25,
+    marginLeft: -70,
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2,
   },
   barbellStopper: {
     width: 10,
     height: 40,
-    marginLeft: "10%",
     borderTopLeftRadius: 3,
+    position: "absolute",
+    left: 40,
+    top: 93,
     borderBottomLeftRadius: 3,
     borderBottomRightRadius: 3,
     borderTopRightRadius: 3,
+  },
+  fortyFivesBlock: {
+    width: 50,
+    height: 180,
+    backgroundColor: "red",
+    marginTop: -80,
+    borderRadius: 10,
+    marginLeft: -100,
+  },
+  twentyFivesBlock: {
+    width: 45,
+    height: 150,
+    backgroundColor: "blue",
+    marginTop: -65,
+    borderRadius: 10,
+  },
+  tensBlock: {
+    width: 35,
+    height: 120,
+    backgroundColor: "yellow",
+    marginTop: -50,
+    borderRadius: 10,
+  },
+  fivesBlock: {
+    width: 35,
+    height: 100,
+    backgroundColor: "green",
+    marginTop: -40,
+    borderRadius: 10,
+  },
+  twoAndAHalvesBlock: {
+    width: 35,
+    height: 80,
+    backgroundColor: "pink",
+    marginTop: -30,
+    borderRadius: 10,
   },
 });
 

@@ -103,7 +103,14 @@ const HomeScreen = ({ navigation }) => {
           twoAndAHalves={twoAndAHalves}
         /> */}
         <View style={styles.barbellContainer}>
-          <BarbellAnimation />
+          <BarbellAnimation
+            perSide={perSide}
+            fortyFives={fortyFives}
+            twentyFives={twentyFives}
+            tens={tens}
+            fives={fives}
+            twoAndAHalves={twoAndAHalves}
+          />
         </View>
         <View style={styles.workoutButtonContainer}>
           <WorkoutButton navigation={navigation} />
