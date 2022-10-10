@@ -27,43 +27,46 @@ const BarbellAnimation = ({
           locations={[0.0, 0.3, 0.4, 0.6, 0.9]}
           style={styles.barbellStopper}
         ></LinearGradient>
-        {/* <View style={styles.output}> */}
         {fortyFives !== 0 ? (
-          // <Text style={styles.plateText}>45s: {fortyFives}</Text>
-          <View style={styles.fortyFivesBlock}></View>
+          <View style={styles.fortyFivesBlock}>
+            <Text style={styles.plateText}>45lb</Text>
+            <Text style={styles.numberOfPlates}>{fortyFives}</Text>
+          </View>
         ) : (
           ""
         )}
         {twentyFives !== 0 ? (
-          // <Text style={styles.plateText}>25s: {twentyFives}</Text>
-          <View style={styles.twentyFivesBlock}></View>
+          <View style={styles.twentyFivesBlock}>
+            <Text style={styles.plateText}>25lb</Text>
+            <Text style={styles.numberOfPlates}>{twentyFives}</Text>
+          </View>
         ) : (
           ""
         )}
         {tens !== 0 ? (
-          // <Text style={styles.plateText}>10s: {tens}</Text>
-          <View style={styles.tensBlock}></View>
+          <View style={styles.tensBlock}>
+            <Text style={styles.plateText}>10lb</Text>
+            <Text style={styles.numberOfPlates}>{tens}</Text>
+          </View>
         ) : (
           ""
         )}
         {fives !== 0 ? (
-          // <Text style={styles.plateText}>5s: {fives}</Text>
-          <View style={styles.fivesBlock}></View>
+          <View style={styles.fivesBlock}>
+            <Text style={styles.plateText}>5lb</Text>
+            <Text style={styles.numberOfPlates}>{fives}</Text>
+          </View>
         ) : (
           ""
         )}
         {twoAndAHalves !== 0 ? (
-          // <Text style={styles.plateText}>2.5s: {twoAndAHalves}</Text>
-          <View style={styles.twoAndAHalvesBlock}></View>
+          <View style={styles.twoAndAHalvesBlock}>
+            <Text style={styles.plateText}>2.5lb</Text>
+            <Text style={styles.numberOfPlates}>{twoAndAHalves}</Text>
+          </View>
         ) : (
           ""
         )}
-        {/* {perSide !== 0 ? (
-        <Text style={styles.outputText}>total weight per side: {perSide}</Text>
-        ) : (
-          ""
-        )} */}
-        {/* </View> */}
       </View>
     </>
   );
@@ -101,40 +104,67 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 3,
   },
   fortyFivesBlock: {
-    width: 50,
-    height: 180,
+    paddingHorizontal: 10,
+    height: 170,
     backgroundColor: "red",
     marginTop: -80,
     borderRadius: 10,
     marginLeft: -100,
+    justifyContent: "space-between",
+    paddingVertical: "4%",
+    alignItems: "center",
   },
   twentyFivesBlock: {
-    width: 45,
+    paddingHorizontal: 5,
     height: 150,
     backgroundColor: "blue",
     marginTop: -65,
+    justifyContent: "space-between",
+    paddingVertical: "5%",
     borderRadius: 10,
   },
   tensBlock: {
-    width: 35,
+    paddingHorizontal: 5,
     height: 120,
     backgroundColor: "yellow",
     marginTop: -50,
+    justifyContent: "space-between",
+    paddingVertical: "4%",
     borderRadius: 10,
   },
   fivesBlock: {
-    width: 35,
+    paddingHorizontal: 5,
     height: 100,
     backgroundColor: "green",
     marginTop: -40,
+    justifyContent: "space-between",
+    paddingVertical: "3%",
     borderRadius: 10,
   },
   twoAndAHalvesBlock: {
-    width: 35,
+    paddingHorizontal: 5,
     height: 80,
     backgroundColor: "pink",
     marginTop: -30,
+    justifyContent: "space-between",
+    paddingVertical: "2%",
     borderRadius: 10,
+  },
+  fortyFiveWrapper: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  numberOfPlates: {
+    color: "white",
+    fontSize: 20,
+    fontFamily: "Oswald_400Regular",
+    alignSelf: "center",
+  },
+  plateText: {
+    fontSize: 20,
+    fontFamily: "Oswald_400Regular",
+    alignSelf: "center",
   },
 });
 
