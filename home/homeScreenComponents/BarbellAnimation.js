@@ -1,5 +1,12 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Animated,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const BarbellAnimation = ({
@@ -10,6 +17,25 @@ const BarbellAnimation = ({
   fives,
   twoAndAHalves,
 }) => {
+  const SCREEN_WIDTH = Dimensions.get("window").width;
+  const progress = useRef(new Animated.Value(0)).current;
+  const slide = useRef(new Animated.Value(0)).current;
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    Animated.timing(progress, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver: false,
+    }).start();
+  }, []);
+  useEffect(() => {
+    Animated.timing(slide, {
+      toValue: -120,
+      duration: 1000,
+      useNativeDriver: false,
+    }).start();
+  }, []);
+
   return (
     <>
       <View style={styles.output}>
@@ -28,12 +54,30 @@ const BarbellAnimation = ({
           style={styles.barbellStopper}
         ></LinearGradient>
         {fortyFives !== 0 ? (
-          <View style={styles.fortyFivesBlock}>
+          <Animated.View
+            style={[
+              styles.fortyFivesBlock,
+              { opacity: progress },
+              { transform: [{ translateX: slide }] },
+            ]}
+          >
             <Text style={styles.plateText}>45lb</Text>
             <Text style={styles.numberOfPlates}>{fortyFives}</Text>
-          </View>
+          </Animated.View>
         ) : (
+          //TOGGLE THE ABOVE VS THE BELOW BEING COMMENTED TO SEE THE ANIMATION, IT'S A BIT BUGGY
+          //RELOAD BETWEEN EACH TOGGLE
           ""
+          //   <Animated.View
+          //   style={[
+          //     styles.fortyFivesBlock,
+          //     { opacity: progress },
+          //     { transform: [{ translateX: slide }] },
+          //   ]}
+          // >
+          //   <Text style={styles.plateText}>45lb</Text>
+          //   <Text style={styles.numberOfPlates}>{fortyFives}</Text>
+          // </Animated.View>
         )}
         {twentyFives !== 0 ? (
           <View style={styles.twentyFivesBlock}>
@@ -73,6 +117,13 @@ const BarbellAnimation = ({
 };
 
 const styles = StyleSheet.create({
+  test: {
+    width: 50,
+    height: 50,
+    marginTop: 50,
+    backgroundColor: "red",
+    borderRadius: 50,
+  },
   output: {
     alignSelf: "center",
     justifyContent: "center",
@@ -97,7 +148,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderTopLeftRadius: 3,
     position: "absolute",
-    left: 30,
+    left: "6%",
     top: 95,
     borderBottomLeftRadius: 3,
     borderBottomRightRadius: 3,
@@ -109,7 +160,7 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     marginTop: -80,
     borderRadius: 10,
-    marginLeft: -100,
+    // marginLeft: -100,
     justifyContent: "space-between",
     paddingVertical: "4%",
     alignItems: "center",
