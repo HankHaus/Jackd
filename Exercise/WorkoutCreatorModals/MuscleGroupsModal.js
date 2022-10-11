@@ -8,27 +8,46 @@ import {
   ScrollView,
 } from "react-native";
 
-// import { colors } from '../../constants/theme';
 import { colors } from "../../constants/theme";
-// import { SORT_MODAL_TYPE } from '../../constants/arrays';
+import { connect } from "react-redux";
+import { selectIntensityData, getSelectIntensity } from "../../src/actions";
 import LinearBottomSheet from "../../components/common/LinearBottomSheet";
 import { LinearGradient } from "expo-linear-gradient";
 const viewPosition = -500;
 const { WHITE } = colors;
 
 const MuscleGroupsModal = ({
+  selectIntensityData,
+  getSelectIntensity,
   onPressClose,
   opacity,
-  onPressChest,
-  onPressArms,
-  onPressBack,
-  onPressLegs,
-  chest,
-  arms,
-  back,
-  legs,
   onPressNext,
 }) => {
+  const handleSelectChest = () => {
+    getSelectIntensity({
+      ...selectIntensityData,
+      chest: !selectIntensityData.chest,
+    });
+  };
+  const handleSelectArms = () => {
+    getSelectIntensity({
+      ...selectIntensityData,
+      arms: !selectIntensityData.arms,
+    });
+  };
+  const handleSelectBack = () => {
+    getSelectIntensity({
+      ...selectIntensityData,
+      back: !selectIntensityData.back,
+    });
+  };
+  const handleSelectLegs = () => {
+    getSelectIntensity({
+      ...selectIntensityData,
+      legs: !selectIntensityData.legs,
+    });
+  };
+
   return (
     <View style={styles.modalStyle}>
       <LinearBottomSheet
@@ -43,16 +62,14 @@ const MuscleGroupsModal = ({
         </View>
 
         <View style={styles.optionStack}>
-          {chest && (
+          {selectIntensityData.chest && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressChest()}>
+              <TouchableOpacity onPress={handleSelectChest}>
                 <Text style={styles.optionText}>Chest</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressChest();
-                }}
+                onPress={handleSelectChest}
               >
                 <View style={styles.optionDotBorder}>
                   <View style={styles.optionDot} />
@@ -60,16 +77,14 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!chest && (
+          {!selectIntensityData.chest && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressChest()}>
+              <TouchableOpacity onPress={handleSelectChest}>
                 <Text style={styles.optionTextInactive}>Chest</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressChest();
-                }}
+                onPress={handleSelectChest}
               >
                 <View style={styles.optionDotInactiveBorder}>
                   <View style={styles.optionDotInactive} />
@@ -77,16 +92,14 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {back && (
+          {selectIntensityData.back && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressBack()}>
+              <TouchableOpacity onPress={handleSelectBack}>
                 <Text style={styles.optionText}>Back</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressBack();
-                }}
+                onPress={handleSelectBack}
               >
                 <View style={styles.optionDotBorder}>
                   <View style={styles.optionDot} />
@@ -94,16 +107,14 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!back && (
+          {!selectIntensityData.back && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressBack()}>
+              <TouchableOpacity onPress={handleSelectBack}>
                 <Text style={styles.optionTextInactive}>Back</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressBack();
-                }}
+                onPress={handleSelectBack}
               >
                 <View style={styles.optionDotInactiveBorder}>
                   <View style={styles.optionDotInactive} />
@@ -112,16 +123,14 @@ const MuscleGroupsModal = ({
             </View>
           )}
 
-          {arms && (
+          {selectIntensityData.arms && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressArms()}>
+              <TouchableOpacity onPress={handleSelectArms}>
                 <Text style={styles.optionText}>Arms</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressArms();
-                }}
+                onPress={handleSelectArms}
               >
                 <View style={styles.optionDotBorder}>
                   <View style={styles.optionDot} />
@@ -129,16 +138,14 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!arms && (
+          {!selectIntensityData.arms && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressArms()}>
+              <TouchableOpacity onPress={handleSelectArms}>
                 <Text style={styles.optionTextInactive}>Arms</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressArms();
-                }}
+                onPress={handleSelectArms}
               >
                 <View style={styles.optionDotInactiveBorder}>
                   <View style={styles.optionDotInactive} />
@@ -146,16 +153,14 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {legs && (
+          {selectIntensityData.legs && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressLegs()}>
+              <TouchableOpacity onPress={handleSelectLegs}>
                 <Text style={styles.optionText}>Legs</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressLegs();
-                }}
+                onPress={handleSelectLegs}
               >
                 <View style={styles.optionDotBorder}>
                   <View style={styles.optionDot} />
@@ -163,16 +168,14 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!legs && (
+          {!selectIntensityData.legs && (
             <View style={styles.option}>
-              <TouchableOpacity onPress={() => onPressLegs()}>
+              <TouchableOpacity onPress={handleSelectLegs}>
                 <Text style={styles.optionTextInactive}>Legs</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.dotWrapper}
-                onPress={() => {
-                  onPressLegs();
-                }}
+                onPress={handleSelectLegs}
               >
                 <View style={styles.optionDotInactiveBorder}>
                   <View style={styles.optionDotInactive} />
@@ -182,7 +185,10 @@ const MuscleGroupsModal = ({
           )}
         </View>
         <View style={styles.spacer}>
-          {chest || back || arms || legs ? (
+          {selectIntensityData.chest ||
+          selectIntensityData.back ||
+          selectIntensityData.arms ||
+          selectIntensityData.legs ? (
             <TouchableOpacity
               style={styles.nextButtonContainer}
               onPress={onPressNext}
@@ -303,4 +309,18 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MuscleGroupsModal;
+const mapStateToProps = (state) => ({
+  // userDetails: state.profile.userDetails,
+  // coverPhoto: state.profile.coverPhoto,
+  // profileScreenTabIndex: state.profile.profileScreenTabIndex,
+  selectIntensityData: state.workoutCreator.selectIntensityData,
+});
+
+export default connect(mapStateToProps, {
+  // getUserDetails,
+  // getCoverPhoto,
+  // getProfileScreenTabIndex,
+  getSelectIntensity,
+})(MuscleGroupsModal);
+
+// export default MuscleGroupsModal;

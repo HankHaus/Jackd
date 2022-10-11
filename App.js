@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import { Provider } from "react-redux";
+import store from "./src/store";
 import {
   StyleSheet,
   Text,
@@ -36,12 +38,14 @@ export default function App() {
     return <AppLoading />;
   }
   return (
-    <DismissKeyboard>
-      <View style={styles.container}>
-        <Navigator />
-        <StatusBar style="auto" />
-      </View>
-    </DismissKeyboard>
+    <Provider store={store}>
+      <DismissKeyboard>
+        <View style={styles.container}>
+          <Navigator />
+          <StatusBar style="auto" />
+        </View>
+      </DismissKeyboard>
+    </Provider>
   );
 }
 

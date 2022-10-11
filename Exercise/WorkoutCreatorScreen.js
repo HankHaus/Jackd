@@ -19,10 +19,6 @@ const { MILKY_WHITE, BACKGROUND } = colors;
 const WorkoutCreatorScreen = ({ navigation }) => {
   const [muscleGroupsModal, setMuscleGroupsModal] = useState(false);
   const [selectIntensityModal, setSelectIntensityModal] = useState(false);
-  const [chest, setChest] = useState(false);
-  const [arms, setArms] = useState(false);
-  const [back, setBack] = useState(false);
-  const [legs, setLegs] = useState(false);
   const [chest1, setChest1] = useState(false);
   const [arms1, setArms1] = useState(false);
   const [back1, setBack1] = useState(false);
@@ -58,17 +54,7 @@ const WorkoutCreatorScreen = ({ navigation }) => {
           <Header onPress={toggleMuscleGroupsModal} />
         </View>
         {muscleGroupsModal && (
-          <MuscleGroupsModal
-            onPressChest={() => setChest(!chest)}
-            onPressArms={() => setArms(!arms)}
-            onPressBack={() => setBack(!back)}
-            onPressLegs={() => setLegs(!legs)}
-            chest={chest}
-            arms={arms}
-            back={back}
-            legs={legs}
-            onPressNext={onPressNextMuscleGroupsModal}
-          />
+          <MuscleGroupsModal onPressNext={onPressNextMuscleGroupsModal} />
         )}
         {selectIntensityModal && (
           <SelectIntensityModal
