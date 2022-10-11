@@ -8,16 +8,18 @@ import {
   ScrollView,
 } from "react-native";
 
-// import { colors } from '../../constants/theme';
 import { colors } from "../../constants/theme";
-// import { SORT_MODAL_TYPE } from '../../constants/arrays';
+import { connect } from "react-redux";
+import { muscleGroupsData, getMuscleGroups } from "../../src/actions";
 import LinearBottomSheet from "../../components/common/LinearBottomSheet";
 import { LinearGradient } from "expo-linear-gradient";
 import { GlossyButton } from "../../components/common";
 const viewPosition = -500;
 const { WHITE, LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
 
-const SelectINtensityModal = ({
+const SelectIntensityModal = ({
+  muscleGroupsData,
+  getMuscleGroups,
   onPressClose,
   opacity,
   chest,
@@ -62,11 +64,11 @@ const SelectINtensityModal = ({
             Select your intensity level for each muscle group
           </Text>
         </View>
-        {chest && (
+        {muscleGroupsData.chest && (
           <View style={styles.option}>
             <Text style={styles.optionLabel}>Chest:</Text>
             <View style={styles.intensityOptionStack}>
-              {chest1 && (
+              {muscleGroupsData.chest1 && (
                 <TouchableOpacity onPress={setChest1}>
                   <LinearGradient
                     colors={["#FE96FF", "#FF0083"]}
@@ -78,12 +80,12 @@ const SelectINtensityModal = ({
                   </LinearGradient>
                 </TouchableOpacity>
               )}
-              {!chest1 && (
+              {!muscleGroupsData.chest1 && (
                 <TouchableOpacity style={styles.number} onPress={setChest1}>
                   <Text style={styles.optionTextInactive}>1</Text>
                 </TouchableOpacity>
               )}
-              {chest5 && (
+              {muscleGroupsData.chest5 && (
                 <TouchableOpacity onPress={setChest5}>
                   <LinearGradient
                     colors={["#FE96FF", "#FF0083"]}
@@ -95,12 +97,12 @@ const SelectINtensityModal = ({
                   </LinearGradient>
                 </TouchableOpacity>
               )}
-              {!chest5 && (
+              {!muscleGroupsData.chest5 && (
                 <TouchableOpacity style={styles.number} onPress={setChest5}>
                   <Text style={styles.optionTextInactive}>5</Text>
                 </TouchableOpacity>
               )}
-              {chest10 && (
+              {muscleGroupsData.chest10 && (
                 <TouchableOpacity onPress={setChest10}>
                   <LinearGradient
                     colors={["#FE96FF", "#FF0083"]}
@@ -112,7 +114,7 @@ const SelectINtensityModal = ({
                   </LinearGradient>
                 </TouchableOpacity>
               )}
-              {!chest10 && (
+              {!muscleGroupsData.chest10 && (
                 <TouchableOpacity style={styles.number} onPress={setChest10}>
                   <Text style={styles.optionTextInactive}>10</Text>
                 </TouchableOpacity>
@@ -120,7 +122,7 @@ const SelectINtensityModal = ({
             </View>
           </View>
         )}
-        {back && (
+        {/* {back && (
           <View style={styles.option}>
             <Text style={styles.optionLabel}>Back:</Text>
             <View style={styles.intensityOptionStack}>
@@ -293,8 +295,8 @@ const SelectINtensityModal = ({
               )}
             </View>
           </View>
-        )}
-        <View style={styles.bottomButtonContainer}>
+        )} */}
+        {/* <View style={styles.bottomButtonContainer}>
           {arms1 ||
           arms5 ||
           arms10 ||
@@ -320,7 +322,7 @@ const SelectINtensityModal = ({
               />
             </TouchableOpacity>
           ) : null}
-        </View>
+        </View> */}
         <View style={styles.spacer} />
       </LinearBottomSheet>
     </View>
@@ -423,4 +425,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SelectINtensityModal;
+const mapStateToProps = (state) => ({
+  muscleGroupsData: state.workoutCreator.muscleGroupsData,
+});
+
+export default connect(mapStateToProps, {
+  getMuscleGroups,
+})(SelectIntensityModal);

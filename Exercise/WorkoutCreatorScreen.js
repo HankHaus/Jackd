@@ -58,82 +58,83 @@ const WorkoutCreatorScreen = ({ navigation }) => {
         )}
         {selectIntensityModal && (
           <SelectIntensityModal
-            chest={chest}
-            chest1={chest1}
-            chest5={chest5}
-            chest10={chest10}
-            arms={arms}
-            arms1={arms1}
-            arms5={arms5}
-            arms10={arms10}
-            back={back}
-            back1={back1}
-            back5={back5}
-            back10={back10}
-            legs={legs}
-            legs1={legs1}
-            legs5={legs5}
-            legs10={legs10}
-            setArms1={() => {
-              setArms1(!arms1);
-              setArms5(false);
-              setArms10(false);
-            }}
-            setArms5={() => {
-              setArms1(false);
-              setArms5(!arms5);
-              setArms10(false);
-            }}
-            setArms10={() => {
-              setArms1(false);
-              setArms5(false);
-              setArms10(!arms10);
-            }}
-            setChest1={() => {
-              setChest1(!chest1);
-              setChest5(false);
-              setChest10(false);
-            }}
-            setChest5={() => {
-              setChest1(false);
-              setChest5(!chest5);
-              setChest10(false);
-            }}
-            setChest10={() => {
-              setChest1(false);
-              setChest5(false);
-              setChest10(!chest10);
-            }}
-            setBack1={() => {
-              setBack1(!back1);
-              setBack5(false);
-              setBack10(false);
-            }}
-            setBack5={() => {
-              setBack1(false);
-              setBack5(!back5);
-              setBack10(false);
-            }}
-            setBack10={() => {
-              setBack1(false);
-              setBack5(false);
-              setBack10(!back10);
-            }}
-            setLegs1={() => {
-              setLegs1(!legs1);
-              setLegs5(false);
-              setLegs10(false);
-            }}
-            setLegs5={() => {
-              setLegs1(false);
-              setLegs5(!legs5);
-              setLegs10(false);
-            }}
-            setLegs10={() => {
-              setLegs1(false);
-              setLegs5(false);
-              setLegs10(!legs10);
-            }}
+            // chest={chest}
+            // chest1={chest1}
+            // chest5={chest5}
+            // chest10={chest10}
+            // arms={arms}
+            // arms1={arms1}
+            // arms5={arms5}
+            // arms10={arms10}
+            // back={back}
+            // back1={back1}
+            // back5={back5}
+            // back10={back10}
+            // legs={legs}
+            // legs1={legs1}
+            // legs5={legs5}
+            // legs10={legs10}
+            // setArms1={() => {
+            //   setArms1(!arms1);
+            //   setArms5(false);
+            //   setArms10(false);
+            // }}
+            // setArms5={() => {
+            //   setArms1(false);
+            //   setArms5(!arms5);
+            //   setArms10(false);
+            // }}
+            // setArms10={() => {
+            //   setArms1(false);
+            //   setArms5(false);
+            //   setArms10(!arms10);
+            // }}
+            // setChest1={() => {
+            //   setChest1(!chest1);
+            //   setChest5(false);
+            //   setChest10(false);
+            // }}
+            // setChest5={() => {
+            //   setChest1(false);
+            //   setChest5(!chest5);
+            //   setChest10(false);
+            // }}
+            // setChest10={() => {
+            //   setChest1(false);
+            //   setChest5(false);
+            //   setChest10(!chest10);
+            // }}
+            // setBack1={() => {
+            //   setBack1(!back1);
+            //   setBack5(false);
+            //   setBack10(false);
+            // }}
+            // setBack5={() => {
+            //   setBack1(false);
+            //   setBack5(!back5);
+            //   setBack10(false);
+            // }}
+            // setBack10={() => {
+            //   setBack1(false);
+            //   setBack5(false);
+            //   setBack10(!back10);
+            // }}
+            // setLegs1={() => {
+            //   setLegs1(!legs1);
+            //   setLegs5(false);
+            //   setLegs10(false);
+            // }}
+            // setLegs5={() => {
+            //   setLegs1(false);
+            //   setLegs5(!legs5);
+            //   setLegs10(false);
+            // }}
+            // setLegs10={() => {
+            //   setLegs1(false);
+            //   setLegs5(false);
+            //   setLegs10(!legs10);
+            // }
+            // }
             onPressStartWorkouut={() => SetModalsCompleted(!modalsCompleted)}
           />
         )}
