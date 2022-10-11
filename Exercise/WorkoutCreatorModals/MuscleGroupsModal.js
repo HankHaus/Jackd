@@ -10,41 +10,41 @@ import {
 
 import { colors } from "../../constants/theme";
 import { connect } from "react-redux";
-import { selectIntensityData, getSelectIntensity } from "../../src/actions";
+import { muscleGroupsData, getMuscleGroups } from "../../src/actions";
 import LinearBottomSheet from "../../components/common/LinearBottomSheet";
 import { LinearGradient } from "expo-linear-gradient";
 const viewPosition = -500;
 const { WHITE } = colors;
 
 const MuscleGroupsModal = ({
-  selectIntensityData,
-  getSelectIntensity,
+  muscleGroupsData,
+  getMuscleGroups,
   onPressClose,
   opacity,
   onPressNext,
 }) => {
   const handleSelectChest = () => {
-    getSelectIntensity({
-      ...selectIntensityData,
-      chest: !selectIntensityData.chest,
+    getMuscleGroups({
+      ...muscleGroupsData,
+      chest: !muscleGroupsData.chest,
     });
   };
   const handleSelectArms = () => {
-    getSelectIntensity({
-      ...selectIntensityData,
-      arms: !selectIntensityData.arms,
+    getMuscleGroups({
+      ...muscleGroupsData,
+      arms: !muscleGroupsData.arms,
     });
   };
   const handleSelectBack = () => {
-    getSelectIntensity({
-      ...selectIntensityData,
-      back: !selectIntensityData.back,
+    getMuscleGroups({
+      ...muscleGroupsData,
+      back: !muscleGroupsData.back,
     });
   };
   const handleSelectLegs = () => {
-    getSelectIntensity({
-      ...selectIntensityData,
-      legs: !selectIntensityData.legs,
+    getMuscleGroups({
+      ...muscleGroupsData,
+      legs: !muscleGroupsData.legs,
     });
   };
 
@@ -62,7 +62,7 @@ const MuscleGroupsModal = ({
         </View>
 
         <View style={styles.optionStack}>
-          {selectIntensityData.chest && (
+          {muscleGroupsData.chest && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectChest}>
                 <Text style={styles.optionText}>Chest</Text>
@@ -77,7 +77,7 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!selectIntensityData.chest && (
+          {!muscleGroupsData.chest && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectChest}>
                 <Text style={styles.optionTextInactive}>Chest</Text>
@@ -92,7 +92,7 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {selectIntensityData.back && (
+          {muscleGroupsData.back && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectBack}>
                 <Text style={styles.optionText}>Back</Text>
@@ -107,7 +107,7 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!selectIntensityData.back && (
+          {!muscleGroupsData.back && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectBack}>
                 <Text style={styles.optionTextInactive}>Back</Text>
@@ -123,7 +123,7 @@ const MuscleGroupsModal = ({
             </View>
           )}
 
-          {selectIntensityData.arms && (
+          {muscleGroupsData.arms && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectArms}>
                 <Text style={styles.optionText}>Arms</Text>
@@ -138,7 +138,7 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!selectIntensityData.arms && (
+          {!muscleGroupsData.arms && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectArms}>
                 <Text style={styles.optionTextInactive}>Arms</Text>
@@ -153,7 +153,7 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {selectIntensityData.legs && (
+          {muscleGroupsData.legs && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectLegs}>
                 <Text style={styles.optionText}>Legs</Text>
@@ -168,7 +168,7 @@ const MuscleGroupsModal = ({
               </TouchableOpacity>
             </View>
           )}
-          {!selectIntensityData.legs && (
+          {!muscleGroupsData.legs && (
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectLegs}>
                 <Text style={styles.optionTextInactive}>Legs</Text>
@@ -185,10 +185,10 @@ const MuscleGroupsModal = ({
           )}
         </View>
         <View style={styles.spacer}>
-          {selectIntensityData.chest ||
-          selectIntensityData.back ||
-          selectIntensityData.arms ||
-          selectIntensityData.legs ? (
+          {muscleGroupsData.chest ||
+          muscleGroupsData.back ||
+          muscleGroupsData.arms ||
+          muscleGroupsData.legs ? (
             <TouchableOpacity
               style={styles.nextButtonContainer}
               onPress={onPressNext}
@@ -310,17 +310,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  // userDetails: state.profile.userDetails,
-  // coverPhoto: state.profile.coverPhoto,
-  // profileScreenTabIndex: state.profile.profileScreenTabIndex,
-  selectIntensityData: state.workoutCreator.selectIntensityData,
+  muscleGroupsData: state.workoutCreator.muscleGroupsData,
 });
 
 export default connect(mapStateToProps, {
-  // getUserDetails,
-  // getCoverPhoto,
-  // getProfileScreenTabIndex,
-  getSelectIntensity,
+  getMuscleGroups,
 })(MuscleGroupsModal);
-
-// export default MuscleGroupsModal;

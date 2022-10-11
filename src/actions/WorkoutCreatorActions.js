@@ -1,8 +1,8 @@
-import { SELECT_INTENSITY } from "./types";
+import { MUSCLE_GROUPS } from "./types";
 
-export const getSelectIntensity = (selectIntensityData) => {
+export const getMuscleGroups = (muscleGroupsData) => {
   return {
-    type: SELECT_INTENSITY,
-    payload: selectIntensityData,
+    type: MUSCLE_GROUPS,
+    payload: muscleGroupsData,
   };
 };

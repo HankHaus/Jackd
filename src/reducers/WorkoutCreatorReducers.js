@@ -1,15 +1,15 @@
-import { SELECT_INTENSITY } from "../actions/types";
+import { MUSCLE_GROUPS } from "../actions/types";
 
 const initialState = {
-  selectIntensityData: {},
+  muscleGroupsData: {},
 };
 
 const WorkoutCreatorReducers = (state = initialState, action) => {
   switch (action.type) {
-    case SELECT_INTENSITY:
+    case MUSCLE_GROUPS:
       return {
         ...state,
-        selectIntensityData: action.payload,
+        muscleGroupsData: action.payload,
       };
     default:
       return state;
