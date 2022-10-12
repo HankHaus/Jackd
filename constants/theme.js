@@ -6,6 +6,7 @@ const colors = {
   BACKGROUND: ["#A2D2FF", "#FEF9EF"],
   DARK_ORANGE: "#ff865e",
   LIGHT_ORANGE: "#FFA081",
+  SELECTED_BLEND: ["#FE96FF", "#FF0083"],
 };
 
 export { colors };

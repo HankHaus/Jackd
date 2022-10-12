@@ -1,12 +1,5 @@
-import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  ScrollView,
-} from "react-native";
+import React from "react";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import { colors } from "../../constants/theme";
 import { connect } from "react-redux";
@@ -15,43 +8,40 @@ import LinearBottomSheet from "../../components/common/LinearBottomSheet";
 import { LinearGradient } from "expo-linear-gradient";
 import { GlossyButton } from "../../components/common";
 const viewPosition = -500;
-const { WHITE, LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
+const { WHITE, BLACK, SELECTED_BLEND, LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
 
 const SelectIntensityModal = ({
   muscleGroupsData,
   getMuscleGroups,
   onPressClose,
   opacity,
-  chest,
-  arms,
-  back,
-  legs,
-  chest1,
-  arms1,
-  back1,
-  legs1,
-  chest5,
-  arms5,
-  back5,
-  legs5,
-  chest10,
-  arms10,
-  back10,
-  legs10,
-  setChest1,
-  setArms1,
-  setBack1,
-  setLegs1,
-  setChest5,
-  setArms5,
-  setBack5,
-  setLegs5,
-  setChest10,
-  setArms10,
-  setBack10,
-  setLegs10,
   onPressStartWorkout,
 }) => {
+  const handleSelectChestIntensity = (intensityLevel) => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      chestIntensity: intensityLevel,
+    });
+  };
+  const handleSelectArmsIntensity = (intensityLevel) => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      armsIntensity: intensityLevel,
+    });
+  };
+  const handleSelectBackIntensity = (intensityLevel) => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      backIntensity: intensityLevel,
+    });
+  };
+  const handleSelectLegsIntensity = (intensityLevel) => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      legsIntensity: intensityLevel,
+    });
+  };
+
   return (
     <View style={styles.modalStyle}>
       <LinearBottomSheet
@@ -68,247 +58,380 @@ const SelectIntensityModal = ({
           <View style={styles.option}>
             <Text style={styles.optionLabel}>Chest:</Text>
             <View style={styles.intensityOptionStack}>
-              {muscleGroupsData.chest1 && (
-                <TouchableOpacity onPress={setChest1}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+              <TouchableOpacity
+                onPress={() => handleSelectChestIntensity(1)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.chestIntensity === 1 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.chestIntensity === 1
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.chestIntensity === 1
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>1</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!muscleGroupsData.chest1 && (
-                <TouchableOpacity style={styles.number} onPress={setChest1}>
-                  <Text style={styles.optionTextInactive}>1</Text>
-                </TouchableOpacity>
-              )}
-              {muscleGroupsData.chest5 && (
-                <TouchableOpacity onPress={setChest5}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+                    1
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectChestIntensity(5)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.chestIntensity === 5 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.chestIntensity === 5
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.chestIntensity === 5
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>5</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!muscleGroupsData.chest5 && (
-                <TouchableOpacity style={styles.number} onPress={setChest5}>
-                  <Text style={styles.optionTextInactive}>5</Text>
-                </TouchableOpacity>
-              )}
-              {muscleGroupsData.chest10 && (
-                <TouchableOpacity onPress={setChest10}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+                    5
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectChestIntensity(10)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.chestIntensity === 10 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.chestIntensity === 10
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.chestIntensity === 10
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>10</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!muscleGroupsData.chest10 && (
-                <TouchableOpacity style={styles.number} onPress={setChest10}>
-                  <Text style={styles.optionTextInactive}>10</Text>
-                </TouchableOpacity>
-              )}
+                    10
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
             </View>
           </View>
         )}
-        {/* {back && (
-          <View style={styles.option}>
-            <Text style={styles.optionLabel}>Back:</Text>
-            <View style={styles.intensityOptionStack}>
-              {back1 && (
-                <TouchableOpacity onPress={setBack1}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
-                  >
-                    <Text style={styles.optionTextActive}>1</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!back1 && (
-                <TouchableOpacity style={styles.number} onPress={setBack1}>
-                  <Text style={styles.optionTextInactive}>1</Text>
-                </TouchableOpacity>
-              )}
-              {back5 && (
-                <TouchableOpacity onPress={setBack5}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
-                  >
-                    <Text style={styles.optionTextActive}>5</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!back5 && (
-                <TouchableOpacity style={styles.number} onPress={setBack5}>
-                  <Text style={styles.optionTextInactive}>5</Text>
-                </TouchableOpacity>
-              )}
-              {back10 && (
-                <TouchableOpacity onPress={setBack10}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
-                  >
-                    <Text style={styles.optionTextActive}>10</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!back10 && (
-                <TouchableOpacity style={styles.number} onPress={setBack10}>
-                  <Text style={styles.optionTextInactive}>10</Text>
-                </TouchableOpacity>
-              )}
-            </View>
-          </View>
-        )}
-        {arms && (
+        {muscleGroupsData.arms && (
           <View style={styles.option}>
             <Text style={styles.optionLabel}>Arms:</Text>
             <View style={styles.intensityOptionStack}>
-              {arms1 && (
-                <TouchableOpacity onPress={setArms1}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+              <TouchableOpacity
+                onPress={() => handleSelectArmsIntensity(1)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.armsIntensity === 1 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.armsIntensity === 1
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.armsIntensity === 1
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>1</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!arms1 && (
-                <TouchableOpacity style={styles.number} onPress={setArms1}>
-                  <Text style={styles.optionTextInactive}>1</Text>
-                </TouchableOpacity>
-              )}
-              {arms5 && (
-                <TouchableOpacity onPress={setArms5}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+                    1
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectArmsIntensity(5)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.armsIntensity === 5 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.armsIntensity === 5
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.armsIntensity === 5
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>5</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!arms5 && (
-                <TouchableOpacity style={styles.number} onPress={setArms5}>
-                  <Text style={styles.optionTextInactive}>5</Text>
-                </TouchableOpacity>
-              )}
-              {arms10 && (
-                <TouchableOpacity onPress={setArms10}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+                    5
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectArmsIntensity(10)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.armsIntensity === 10 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.armsIntensity === 10
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.armsIntensity === 10
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>10</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!arms10 && (
-                <TouchableOpacity style={styles.number} onPress={setArms10}>
-                  <Text style={styles.optionTextInactive}>10</Text>
-                </TouchableOpacity>
-              )}
+                    10
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
             </View>
           </View>
         )}
-        {legs && (
+        {muscleGroupsData.back && (
           <View style={styles.option}>
-            <Text style={styles.optionLabel}>Legs:</Text>
+            <Text style={styles.optionLabel}>Back:</Text>
             <View style={styles.intensityOptionStack}>
-              {legs1 && (
-                <TouchableOpacity onPress={setLegs1}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+              <TouchableOpacity
+                onPress={() => handleSelectBackIntensity(1)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.backIntensity === 1 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.backIntensity === 1
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.backIntensity === 1
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>1</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!legs1 && (
-                <TouchableOpacity style={styles.number} onPress={setLegs1}>
-                  <Text style={styles.optionTextInactive}>1</Text>
-                </TouchableOpacity>
-              )}
-              {legs5 && (
-                <TouchableOpacity onPress={setLegs5}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+                    1
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectBackIntensity(5)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.backIntensity === 5 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.backIntensity === 5
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.backIntensity === 5
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>5</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!legs5 && (
-                <TouchableOpacity style={styles.number} onPress={setLegs5}>
-                  <Text style={styles.optionTextInactive}>5</Text>
-                </TouchableOpacity>
-              )}
-              {legs10 && (
-                <TouchableOpacity onPress={setLegs10}>
-                  <LinearGradient
-                    colors={["#FE96FF", "#FF0083"]}
-                    start={(0, 0.4)}
-                    end={(0, 1)}
-                    style={styles.optionActiveBorder}
+                    5
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectBackIntensity(10)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.backIntensity === 10 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.backIntensity === 10
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.backIntensity === 10
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
                   >
-                    <Text style={styles.optionTextActive}>10</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              )}
-              {!legs10 && (
-                <TouchableOpacity style={styles.number} onPress={setLegs10}>
-                  <Text style={styles.optionTextInactive}>10</Text>
-                </TouchableOpacity>
-              )}
+                    10
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
             </View>
           </View>
-        )} */}
-        {/* <View style={styles.bottomButtonContainer}>
-          {arms1 ||
-          arms5 ||
-          arms10 ||
-          legs1 ||
-          legs5 ||
-          legs10 ||
-          back1 ||
-          back5 ||
-          back10 ||
-          chest1 ||
-          chest5 ||
-          chest10 ? (
+        )}
+        {muscleGroupsData.legs && (
+          <View style={styles.option}>
+            <Text style={styles.optionLabel}>Legss:</Text>
+            <View style={styles.intensityOptionStack}>
+              <TouchableOpacity
+                onPress={() => handleSelectLegsIntensity(1)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.legsIntensity === 1 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.legsIntensity === 1
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.legsIntensity === 1
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
+                  >
+                    1
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectLegsIntensity(5)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.legsIntensity === 5 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.legsIntensity === 5
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.legsIntensity === 5
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
+                  >
+                    5
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => handleSelectLegsIntensity(10)}
+                style={[
+                  styles.intensityOption,
+                  { opacity: muscleGroupsData.legsIntensity === 10 ? 1 : 0.5 },
+                ]}
+              >
+                <LinearGradient
+                  colors={SELECTED_BLEND}
+                  start={(0, 0.4)}
+                  end={(0, 1)}
+                  style={
+                    muscleGroupsData.legsIntensity === 10
+                      ? styles.optionActiveBorder
+                      : styles.optionInactiveBorder
+                  }
+                >
+                  <Text
+                    style={
+                      muscleGroupsData.legsIntensity === 10
+                        ? styles.optionTextActive
+                        : styles.optionTextInactive
+                    }
+                  >
+                    10
+                  </Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+
+        <View style={styles.bottomButtonContainer}>
+          {muscleGroupsData.chestIntensity === 1 ||
+          muscleGroupsData.armsIntensity === 1 ||
+          muscleGroupsData.backIntensity === 1 ||
+          muscleGroupsData.legsIntensity === 1 ||
+          muscleGroupsData.chestIntensity === 5 ||
+          muscleGroupsData.armsIntensity === 5 ||
+          muscleGroupsData.backIntensity === 5 ||
+          muscleGroupsData.legsIntensity === 5 ||
+          muscleGroupsData.chestIntensity === 10 ||
+          muscleGroupsData.armsIntensity === 10 ||
+          muscleGroupsData.backIntensity === 10 ||
+          muscleGroupsData.legsIntensity === 10 ? (
             <TouchableOpacity
               style={styles.button}
               onPress={onPressStartWorkout}
@@ -322,7 +445,7 @@ const SelectIntensityModal = ({
               />
             </TouchableOpacity>
           ) : null}
-        </View> */}
+        </View>
         <View style={styles.spacer} />
       </LinearBottomSheet>
     </View>
@@ -372,6 +495,7 @@ const styles = StyleSheet.create({
     width: "70%",
     flexDirection: "row",
     alignItems: "center",
+
     justifyContent: "space-evenly",
   },
   optionLabel: {
@@ -381,17 +505,21 @@ const styles = StyleSheet.create({
     justifySelf: "center",
     alignSelf: "center",
   },
+  optionContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
   optionTextInactive: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "black",
+    color: BLACK,
     alignSelf: "center",
     opacity: 0.5,
   },
   optionTextActive: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
-    color: "white",
+    color: WHITE,
     alignSelf: "center",
   },
   optionInactiveBorder: {
@@ -403,11 +531,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   optionActiveBorder: {
-    width: 35,
-    height: 35,
+    width: 42,
+    height: 42,
     borderRadius: 50,
     borderWidth: 1,
-    borderColor: "white",
+    borderColor: WHITE,
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
@@ -420,6 +548,12 @@ const styles = StyleSheet.create({
   bottomButtonContainer: {
     width: "100%",
     height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  intensityOption: {
+    width: 42,
+    height: 42,
     justifyContent: "center",
     alignItems: "center",
   },

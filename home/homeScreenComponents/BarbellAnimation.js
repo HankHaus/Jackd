@@ -68,7 +68,7 @@ const BarbellAnimation = ({
           //TOGGLE THE ABOVE VS THE BELOW BEING COMMENTED TO SEE THE ANIMATION, IT'S A BIT BUGGY
           //RELOAD BETWEEN EACH TOGGLE
           ""
-          //   <Animated.View
+          // <Animated.View
           //   style={[
           //     styles.fortyFivesBlock,
           //     { opacity: progress },
