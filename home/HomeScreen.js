@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  TextInput,
-  ImageBackground,
   Keyboard,
 } from "react-native";
 import {
   Header,
   WeightInputs,
   CalculateButton,
-  PlatesPerSide,
   WorkoutButton,
   BarbellAnimation,
 } from "./homeScreenComponents";
-import { colors } from "../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme, themeData } from "../src/actions";
-const { BACKGROUND } = colors;
+import { getTheme } from "../src/actions";
 
-const HomeScreen = ({ navigation, themeData, getTheme }) => {
-  // const navigation = useNavigation();
+const HomeScreen = ({ navigation, getTheme, themeData }) => {
   const [barWeight, setBarWeight] = useState(0);
   const [desiredWeight, setDesiredWeight] = useState(0);
   const [perSide, setPerSide] = useState(0);
@@ -75,27 +69,57 @@ const HomeScreen = ({ navigation, themeData, getTheme }) => {
   const handleDarkMode = () => {
     getTheme({
       ...themeData,
-      DARK_ORANGE: "#2AFF4E",
-      LIGHT_ORANGE: "#C3FFCD",
-      TEXT_BURGUNDY: "#FF0000",
+      BACKGROUND_BLEND_PRIMARY: ["#000A3D", "#8C0718"],
+      BEHIND_MODAL_BLEND_PRIMARY: ["#FF0000", "transparent"],
+      BUTTON_BLEND_PRIMARY: ["#2AFF4E", "#C3FFCD"],
+      BUTTON_TEXT_PRIMARY: "#FF0000",
+      SHADOW_PRIMARY: "#7B7A72",
+      MODAL_BACKGROUND_BLEND_PRIMARY: ["#C3FFCD", "#7B7A72"],
+      GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#000A3D", "#C3FFCD"],
+      GET_STARTED_BUTTON_BLEND_PRIMARY: ["#2AFF4E", "#C3FFCD"],
+      TEXT_PRIMARY: "#00FFF2",
+      OPTION_DOT_BORDER_INACTIVE_PRIMARY: "#C3FFCD",
+      OPTION_DOT_INACTIVE_PRIMARY: "#C3FFCD",
+      OPTION_DOT_BORDER_ACTIVE_PRIMARY: "#C800FF",
+      OPTION_DOT_ACTIVE_PRIMARY: "#FF9D4C",
+      SELECTED_OPTION_DOT_BLEND_PRIMARY: ["#000A3D", "#8C0718"],
+      FORTY_FIVES_PLATE: "#AAFF00",
+      TWENTY_FIVES_PLATE: "#8885A4",
+      TENS_PLATE: "#B9B04D",
+      FIVES_PLATE: "#41FF8F",
+      TWO_AND_A_HALVES_PLATE: "#A76B6B",
     });
-    console.log("theme", themeData);
   };
   const handleLightMode = () => {
     getTheme({
       ...themeData,
-      DARK_ORANGE: "#ff865e",
-      LIGHT_ORANGE: "#FFA081",
-      TEXT_BURGUNDY: "#34000E",
+      BACKGROUND_BLEND_PRIMARY: ["#A2D2FF", "#FEF9EF"],
+      BEHIND_MODAL_BLEND_PRIMARY: ["#000000", "transparent"],
+      BUTTON_BLEND_PRIMARY: ["#ff865e", "#FFA081"],
+      BUTTON_TEXT_PRIMARY: "#34000E",
+      SHADOW_PRIMARY: "#7B7A72",
+      MODAL_BACKGROUND_BLEND_PRIMARY: ["#6C464F", "#B891A9"],
+      GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#31CF0A", "#C7F0BD"],
+      GET_STARTED_BUTTON_BLEND_PRIMARY: ["#24AB03", "#197502"],
+      TEXT_PRIMARY: "#000000",
+      OPTION_DOT_BORDER_INACTIVE_PRIMARY: "#76B486",
+      OPTION_DOT_INACTIVE_PRIMARY: "#9EFFB7",
+      OPTION_DOT_BORDER_ACTIVE_PRIMARY: "#FF00B7",
+      OPTION_DOT_ACTIVE_PRIMARY: "#F8FF4C",
+      SELECTED_OPTION_DOT_BLEND_PRIMARY: ["#FE96FF", "#FF0083"],
+      FORTY_FIVES_PLATE: "#00FF46",
+      TWENTY_FIVES_PLATE: "#1B00FF",
+      TENS_PLATE: "#FFEC00",
+      FIVES_PLATE: "#538668",
+      TWO_AND_A_HALVES_PLATE: "#FF4141",
     });
-    console.log("theme", themeData);
   };
 
   return (
     <>
       <LinearGradient
         style={styles.container}
-        colors={BACKGROUND}
+        colors={themeData.BACKGROUND_BLEND_PRIMARY}
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
@@ -134,10 +158,14 @@ const HomeScreen = ({ navigation, themeData, getTheme }) => {
         </View>
         <View style={styles.textContainer}>
           <TouchableOpacity onPress={handleDarkMode}>
-            <Text style={styles.text}>dark</Text>
+            <Text style={[styles.text, { color: themeData.TEXT_PRIMARY }]}>
+              dark
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleLightMode}>
-            <Text style={styles.text}>light</Text>
+            <Text style={[styles.text, { color: themeData.TEXT_PRIMARY }]}>
+              light
+            </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.workoutButtonContainer}>
@@ -178,7 +206,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   text: {
-    // color: "white",
     fontSize: 20,
   },
 });
@@ -190,5 +217,3 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getTheme,
 })(HomeScreen);
-
-// export default HomeScreen;

@@ -1,28 +1,26 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
-import { themeData, getTheme } from "../../src/actions";
-import { colors } from "../../constants/theme";
+import { getTheme } from "../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
-const { SHADOW, TEXT_BURGUNDY } = colors;
 
-const GlossyButton = ({
-  colorOne,
-  colorTwo,
-  width,
-  height,
-  text,
-  themeData,
-  getTheme,
-}) => {
+const GlossyButton = ({ colors, width, height, text, themeData }) => {
   return (
     <>
       <View
-        style={[styles.buttonShape, (width = { width }), (height = { height })]}
+        style={[
+          styles.buttonShape,
+          {
+            borderColor: themeData.BUTTON_TEXT_PRIMARY,
+            shadowColor: themeData.SHADOW_PRIMARY,
+          },
+          (width = { width }),
+          (height = { height }),
+        ]}
       >
         <LinearGradient
           style={styles.buttonFill}
-          colors={[colorOne, colorTwo]}
+          colors={colors}
           start={[0.0, 0.7]}
           end={[0.0, 1.0]}
         >
@@ -32,7 +30,14 @@ const GlossyButton = ({
             start={[0.0, 0.0]}
             end={[0.0, 0.5]}
           ></LinearGradient>
-          <Text style={styles.buttonText}>{text}</Text>
+          <Text
+            style={[
+              styles.buttonText,
+              { color: themeData.BUTTON_TEXT_PRIMARY },
+            ]}
+          >
+            {text}
+          </Text>
         </LinearGradient>
       </View>
     </>
@@ -43,9 +48,7 @@ const styles = StyleSheet.create({
   buttonShape: {
     alignSelf: "center",
     borderWidth: 1,
-    borderColor: TEXT_BURGUNDY,
     borderRadius: 10,
-    shadowColor: SHADOW,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
     shadowRadius: 2,
@@ -55,7 +58,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     position: "absolute",
     justifyContent: "center",
-    color: TEXT_BURGUNDY,
     fontFamily: "Lobster_400Regular",
   },
   buttonFill: {
@@ -82,7 +84,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getTheme,
-  themeData,
 })(GlossyButton);
-
-// export default GlossyButton;

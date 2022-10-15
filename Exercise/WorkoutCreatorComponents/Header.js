@@ -1,21 +1,17 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { colors } from "../../constants/theme";
-const { WHITE } = colors;
-const Header = ({ navigation, onPress }) => {
+import { connect } from "react-redux";
+import { getTheme } from "../../src/actions";
+const Header = ({ onPress, themeData }) => {
   return (
     <>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Workout Creator</Text>
+        <Text style={[styles.title, { color: themeData.TEXT_PRIMARY }]}>
+          Workout Creator
+        </Text>
         <View style={styles.subtitleContainer}>
-          <Text style={styles.subTitle}>
+          <Text style={[styles.subTitle, { color: themeData.TEXT_PRIMARY }]}>
             Here you'll be able to get a custom workout plan for the day.
           </Text>
           <Text style={styles.subTitle}>Tap the circle to get started!</Text>
@@ -23,13 +19,13 @@ const Header = ({ navigation, onPress }) => {
         <TouchableOpacity style={styles.circleContainer} onPress={onPress}>
           <LinearGradient
             style={styles.getStartedButtonBorder}
-            colors={["#31CF0A", "#C7F0BD"]}
+            colors={themeData.GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY}
             start={[0.7, 0.9]}
             end={[1.2, 0.3]}
           >
             <LinearGradient
               style={styles.getStartedButton}
-              colors={["#24AB03", "#197502"]}
+              colors={themeData.GET_STARTED_BUTTON_BLEND_PRIMARY}
               start={[1, 0.1]}
               end={[1, 0.9]}
             ></LinearGradient>
@@ -51,12 +47,10 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: "center",
     fontSize: 50,
-    color: WHITE,
   },
   subTitle: {
     textAlign: "center",
     fontSize: 20,
-    color: WHITE,
   },
   subtitleContainer: {
     width: "100%",
@@ -66,7 +60,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 200,
-    backgroundColor: WHITE,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -74,7 +67,6 @@ const styles = StyleSheet.create({
     width: 195,
     height: 195,
     borderRadius: 200,
-    backgroundColor: WHITE,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -88,4 +80,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Header;
+const mapStateToProps = (state) => ({
+  themeData: state.theme.themeData,
+});
+
+export default connect(mapStateToProps, {
+  getTheme,
+})(Header);

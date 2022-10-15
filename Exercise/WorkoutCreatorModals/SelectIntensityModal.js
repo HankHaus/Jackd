@@ -1,16 +1,14 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-
-import { colors } from "../../constants/theme";
 import { connect } from "react-redux";
-import { muscleGroupsData, getMuscleGroups } from "../../src/actions";
+import { getMuscleGroups, getTheme } from "../../src/actions";
 import LinearBottomSheet from "../../components/common/LinearBottomSheet";
 import { LinearGradient } from "expo-linear-gradient";
 import { GlossyButton } from "../../components/common";
 const viewPosition = -500;
-const { WHITE, BLACK, SELECTED_BLEND, LIGHT_SILVER_BLUE, SILVER_BLUE } = colors;
 
 const SelectIntensityModal = ({
+  themeData,
   muscleGroupsData,
   getMuscleGroups,
   onPressClose,
@@ -56,7 +54,11 @@ const SelectIntensityModal = ({
         </View>
         {muscleGroupsData.chest && (
           <View style={styles.option}>
-            <Text style={styles.optionLabel}>Chest:</Text>
+            <Text
+              style={[styles.optionLabel, { color: themeData.TEXT_PRIMARY }]}
+            >
+              Chest:
+            </Text>
             <View style={styles.intensityOptionStack}>
               <TouchableOpacity
                 onPress={() => handleSelectChestIntensity(1)}
@@ -66,20 +68,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.chestIntensity === 1
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.chestIntensity === 1
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     1
@@ -94,20 +108,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.chestIntensity === 5
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.chestIntensity === 5
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     5
@@ -122,20 +148,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.chestIntensity === 10
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.chestIntensity === 10
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     10
@@ -147,7 +185,11 @@ const SelectIntensityModal = ({
         )}
         {muscleGroupsData.arms && (
           <View style={styles.option}>
-            <Text style={styles.optionLabel}>Arms:</Text>
+            <Text
+              style={[styles.optionLabel, { color: themeData.TEXT_PRIMARY }]}
+            >
+              Arms:
+            </Text>
             <View style={styles.intensityOptionStack}>
               <TouchableOpacity
                 onPress={() => handleSelectArmsIntensity(1)}
@@ -157,20 +199,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.armsIntensity === 1
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.armsIntensity === 1
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     1
@@ -185,20 +239,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.armsIntensity === 5
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.armsIntensity === 5
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     5
@@ -213,20 +279,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.armsIntensity === 10
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.armsIntensity === 10
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     10
@@ -238,7 +316,11 @@ const SelectIntensityModal = ({
         )}
         {muscleGroupsData.back && (
           <View style={styles.option}>
-            <Text style={styles.optionLabel}>Back:</Text>
+            <Text
+              style={[styles.optionLabel, { color: themeData.TEXT_PRIMARY }]}
+            >
+              Back:
+            </Text>
             <View style={styles.intensityOptionStack}>
               <TouchableOpacity
                 onPress={() => handleSelectBackIntensity(1)}
@@ -248,20 +330,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.backIntensity === 1
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.backIntensity === 1
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     1
@@ -276,20 +370,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.backIntensity === 5
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.backIntensity === 5
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     5
@@ -304,20 +410,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.backIntensity === 10
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.backIntensity === 10
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     10
@@ -329,7 +447,11 @@ const SelectIntensityModal = ({
         )}
         {muscleGroupsData.legs && (
           <View style={styles.option}>
-            <Text style={styles.optionLabel}>Legss:</Text>
+            <Text
+              style={[styles.optionLabel, { color: themeData.TEXT_PRIMARY }]}
+            >
+              Legss:
+            </Text>
             <View style={styles.intensityOptionStack}>
               <TouchableOpacity
                 onPress={() => handleSelectLegsIntensity(1)}
@@ -339,20 +461,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.legsIntensity === 1
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.legsIntensity === 1
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     1
@@ -367,20 +501,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.legsIntensity === 5
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.legsIntensity === 5
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     5
@@ -395,20 +541,32 @@ const SelectIntensityModal = ({
                 ]}
               >
                 <LinearGradient
-                  colors={SELECTED_BLEND}
+                  colors={themeData.SELECTED_OPTION_DOT_BLEND_PRIMARY}
                   start={(0, 0.4)}
                   end={(0, 1)}
                   style={
                     muscleGroupsData.legsIntensity === 10
-                      ? styles.optionActiveBorder
+                      ? [
+                          styles.optionActiveBorder,
+                          {
+                            borderColor:
+                              themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                          },
+                        ]
                       : styles.optionInactiveBorder
                   }
                 >
                   <Text
                     style={
                       muscleGroupsData.legsIntensity === 10
-                        ? styles.optionTextActive
-                        : styles.optionTextInactive
+                        ? [
+                            styles.optionTextActive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
+                        : [
+                            styles.optionTextInactive,
+                            { color: themeData.TEXT_PRIMARY },
+                          ]
                     }
                   >
                     10
@@ -440,8 +598,7 @@ const SelectIntensityModal = ({
                 height={50}
                 width={"100%"}
                 text="Start Workout"
-                colorOne={LIGHT_SILVER_BLUE}
-                colorTwo={SILVER_BLUE}
+                colors={themeData.BUTTON_BLEND_PRIMARY}
               />
             </TouchableOpacity>
           ) : null}
@@ -481,8 +638,7 @@ const styles = StyleSheet.create({
   },
   spacer: {
     width: "100%",
-    marginTop: 20,
-    height: 20,
+    height: 40,
   },
   option: {
     width: "90%",
@@ -495,31 +651,23 @@ const styles = StyleSheet.create({
     width: "70%",
     flexDirection: "row",
     alignItems: "center",
-
     justifyContent: "space-evenly",
   },
   optionLabel: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "black",
     justifySelf: "center",
     alignSelf: "center",
-  },
-  optionContainer: {
-    justifyContent: "center",
-    alignItems: "center",
   },
   optionTextInactive: {
     fontSize: 22,
     fontWeight: "bold",
-    color: BLACK,
     alignSelf: "center",
     opacity: 0.5,
   },
   optionTextActive: {
     fontSize: 24,
     fontWeight: "bold",
-    color: WHITE,
     alignSelf: "center",
   },
   optionInactiveBorder: {
@@ -535,15 +683,9 @@ const styles = StyleSheet.create({
     height: 42,
     borderRadius: 50,
     borderWidth: 1,
-    borderColor: WHITE,
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-  },
-  number: {
-    width: 35,
-    height: 35,
-    justifyContent: "center",
   },
   bottomButtonContainer: {
     width: "100%",
@@ -561,8 +703,10 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   muscleGroupsData: state.workoutCreator.muscleGroupsData,
+  themeData: state.theme.themeData,
 });
 
 export default connect(mapStateToProps, {
   getMuscleGroups,
+  getTheme,
 })(SelectIntensityModal);

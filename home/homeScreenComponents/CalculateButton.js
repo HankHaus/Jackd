@@ -1,17 +1,14 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { colors } from "../../constants/theme";
 import { GlossyButton } from "../../components/common";
 import { connect } from "react-redux";
-import { getTheme, themeData } from "../../src/actions";
-const { DARK_ORANGE, LIGHT_ORANGE } = colors;
+import { getTheme } from "../../src/actions";
 
 const CalculateButton = ({
   onPress,
   barWeight,
   desiredWeight,
   perSide,
-  getTheme,
   themeData,
 }) => {
   return (
@@ -24,8 +21,7 @@ const CalculateButton = ({
           height={50}
           width={"100%"}
           text="Calculate"
-          colorOne={themeData.DARK_ORANGE}
-          colorTwo={themeData.LIGHT_ORANGE}
+          colors={themeData.BUTTON_BLEND_PRIMARY}
         />
       </TouchableOpacity>
     </>

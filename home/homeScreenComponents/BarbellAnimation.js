@@ -1,26 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Animated,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import React, { useEffect, useRef } from "react";
+import { View, StyleSheet, Text, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-
+import { connect } from "react-redux";
+import { getTheme } from "../../src/actions";
 const BarbellAnimation = ({
-  perSide,
   fortyFives,
   twentyFives,
   tens,
   fives,
   twoAndAHalves,
+  themeData,
 }) => {
-  const SCREEN_WIDTH = Dimensions.get("window").width;
   const progress = useRef(new Animated.Value(0)).current;
   const slide = useRef(new Animated.Value(0)).current;
-  const [show, setShow] = useState(false);
   useEffect(() => {
     Animated.timing(progress, {
       toValue: 1,
@@ -57,6 +49,7 @@ const BarbellAnimation = ({
           <Animated.View
             style={[
               styles.fortyFivesBlock,
+              { backgroundColor: themeData.FORTY_FIVES_PLATE },
               { opacity: progress },
               { transform: [{ translateX: slide }] },
             ]}
@@ -71,6 +64,7 @@ const BarbellAnimation = ({
           // <Animated.View
           //   style={[
           //     styles.fortyFivesBlock,
+          // {backgroundColor: themeData.FORTY_FIVES_PLATE}
           //     { opacity: progress },
           //     { transform: [{ translateX: slide }] },
           //   ]}
@@ -80,7 +74,12 @@ const BarbellAnimation = ({
           // </Animated.View>
         )}
         {twentyFives !== 0 ? (
-          <View style={styles.twentyFivesBlock}>
+          <View
+            style={[
+              styles.twentyFivesBlock,
+              { backgroundColor: themeData.TWENTY_FIVES_PLATE },
+            ]}
+          >
             <Text style={styles.plateText}>25lb</Text>
             <Text style={styles.numberOfPlates}>{twentyFives}</Text>
           </View>
@@ -88,7 +87,12 @@ const BarbellAnimation = ({
           ""
         )}
         {tens !== 0 ? (
-          <View style={styles.tensBlock}>
+          <View
+            style={[
+              styles.tensBlock,
+              { backgroundColor: themeData.TENS_PLATE },
+            ]}
+          >
             <Text style={styles.plateText}>10lb</Text>
             <Text style={styles.numberOfPlates}>{tens}</Text>
           </View>
@@ -96,7 +100,12 @@ const BarbellAnimation = ({
           ""
         )}
         {fives !== 0 ? (
-          <View style={styles.fivesBlock}>
+          <View
+            style={[
+              styles.fivesBlock,
+              { backgroundColor: themeData.FIVES_PLATE },
+            ]}
+          >
             <Text style={styles.plateText}>5lb</Text>
             <Text style={styles.numberOfPlates}>{fives}</Text>
           </View>
@@ -104,7 +113,12 @@ const BarbellAnimation = ({
           ""
         )}
         {twoAndAHalves !== 0 ? (
-          <View style={styles.twoAndAHalvesBlock}>
+          <View
+            style={[
+              styles.twoAndAHalvesBlock,
+              { backgroundColor: themeData.TWO_AND_A_HALVES_PLATE },
+            ]}
+          >
             <Text style={styles.plateText}>2.5lb</Text>
             <Text style={styles.numberOfPlates}>{twoAndAHalves}</Text>
           </View>
@@ -117,13 +131,6 @@ const BarbellAnimation = ({
 };
 
 const styles = StyleSheet.create({
-  test: {
-    width: 50,
-    height: 50,
-    marginTop: 50,
-    backgroundColor: "red",
-    borderRadius: 50,
-  },
   output: {
     alignSelf: "center",
     justifyContent: "center",
@@ -157,10 +164,8 @@ const styles = StyleSheet.create({
   fortyFivesBlock: {
     paddingHorizontal: 10,
     height: 170,
-    backgroundColor: "red",
     marginTop: -80,
     borderRadius: 10,
-    // marginLeft: -100,
     justifyContent: "space-between",
     paddingVertical: "4%",
     alignItems: "center",
@@ -168,7 +173,6 @@ const styles = StyleSheet.create({
   twentyFivesBlock: {
     paddingHorizontal: 5,
     height: 150,
-    backgroundColor: "blue",
     marginTop: -65,
     justifyContent: "space-between",
     paddingVertical: "5%",
@@ -177,7 +181,6 @@ const styles = StyleSheet.create({
   tensBlock: {
     paddingHorizontal: 5,
     height: 120,
-    backgroundColor: "yellow",
     marginTop: -50,
     justifyContent: "space-between",
     paddingVertical: "4%",
@@ -186,7 +189,6 @@ const styles = StyleSheet.create({
   fivesBlock: {
     paddingHorizontal: 5,
     height: 100,
-    backgroundColor: "green",
     marginTop: -40,
     justifyContent: "space-between",
     paddingVertical: "3%",
@@ -201,11 +203,6 @@ const styles = StyleSheet.create({
     paddingVertical: "2%",
     borderRadius: 10,
   },
-  fortyFiveWrapper: {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   numberOfPlates: {
     color: "white",
     fontSize: 20,
@@ -219,4 +216,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BarbellAnimation;
+const mapStateToProps = (state) => ({
+  themeData: state.theme.themeData,
+});
+
+export default connect(mapStateToProps, {
+  getTheme,
+})(BarbellAnimation);
+
+// export default BarbellAnimation;

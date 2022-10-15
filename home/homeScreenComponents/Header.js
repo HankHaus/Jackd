@@ -1,8 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { colors } from "../../constants/theme";
+import { View, StyleSheet, Image } from "react-native";
 import logo3 from "../../assets/logo3.png";
-const { TEXT_BURGUNDY } = colors;
 const Header = () => {
   return (
     <>

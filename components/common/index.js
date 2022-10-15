@@ -1,2 +1,3 @@
 import GlossyButton from "./GlossyButton";
-export { GlossyButton };
+import { LinearBottomSheet } from "./LinearBottomSheet";
+export { GlossyButton, LinearBottomSheet };

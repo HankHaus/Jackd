@@ -1,10 +1,12 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { GlossyButton } from "../../components/common";
+import { connect } from "react-redux";
+import { getTheme } from "../../src/actions";
 import { colors } from "../../constants/theme";
 const { DARK_ORANGE, LIGHT_ORANGE } = colors;
 
-const WorkoutButton = ({ navigation }) => {
+const WorkoutButton = ({ navigation, themeData }) => {
   return (
     <>
       <TouchableOpacity
@@ -17,8 +19,7 @@ const WorkoutButton = ({ navigation }) => {
           width={"100%"}
           height={50}
           text="Workout Creator"
-          colorOne={DARK_ORANGE}
-          colorTwo={LIGHT_ORANGE}
+          colors={themeData.BUTTON_BLEND_PRIMARY}
         />
       </TouchableOpacity>
     </>
@@ -33,4 +34,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WorkoutButton;
+const mapStateToProps = (state) => ({
+  themeData: state.theme.themeData,
+});
+
+export default connect(mapStateToProps, {
+  getTheme,
+})(WorkoutButton);

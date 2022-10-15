@@ -1,24 +1,44 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
-import { colors } from "../../constants/theme";
-const { TEXT_BURGUNDY, BLACK } = colors;
-const WeightInputs = ({ onChangeBarWeight, onChangeDesiredWeight }) => {
+import { connect } from "react-redux";
+import { getTheme } from "../../src/actions";
+const WeightInputs = ({
+  onChangeBarWeight,
+  onChangeDesiredWeight,
+  themeData,
+}) => {
   return (
     <>
       <View style={styles.inputContainer}>
         <View style={styles.row}>
-          <Text style={styles.label}>Bar Weight:</Text>
+          <Text style={[styles.label, { color: themeData.TEXT_PRIMARY }]}>
+            Bar Weight:
+          </Text>
           <TextInput
             keyboardType="numeric"
-            style={styles.weightInputField}
+            style={[
+              styles.weightInputField,
+              {
+                color: themeData.TEXT_PRIMARY,
+                borderBottomColor: themeData.TEXT_PRIMARY,
+              },
+            ]}
             onChangeText={onChangeBarWeight}
           ></TextInput>
         </View>
         <View style={styles.row}>
-          <Text style={styles.label}>Desired Weight:</Text>
+          <Text style={[styles.label, { color: themeData.TEXT_PRIMARY }]}>
+            Desired Weight:
+          </Text>
           <TextInput
             keyboardType="numeric"
-            style={styles.weightInputField}
+            style={[
+              styles.weightInputField,
+              {
+                color: themeData.TEXT_PRIMARY,
+                borderBottomColor: themeData.TEXT_PRIMARY,
+              },
+            ]}
             onChangeText={onChangeDesiredWeight}
           ></TextInput>
         </View>
@@ -36,7 +56,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: "Oswald_400Regular",
-    color: BLACK,
     fontSize: 25,
     fontWeight: "bold",
     alignSelf: "center",
@@ -50,11 +69,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   weightInputField: {
-    color: BLACK,
     fontSize: 25,
     borderWidth: 1,
     textAlign: "center",
-    borderBottomColor: BLACK,
     borderLeftColor: "transparent",
     borderTopColor: "transparent",
     borderRightColor: "transparent",
@@ -63,4 +80,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WeightInputs;
+const mapStateToProps = (state) => ({
+  themeData: state.theme.themeData,
+});
+
+export default connect(mapStateToProps, {
+  getTheme,
+})(WeightInputs);

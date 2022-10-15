@@ -6,15 +6,14 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
 } from "react-native";
+import { connect } from "react-redux";
+import { getTheme } from "../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
-
-import { colors } from "../../constants/theme";
-
-const { TEXT_BLACK, BLACK, TRANSPARENT } = colors;
 
 const { height } = Dimensions.get("window");
 
 const LinearBottomSheet = ({
+  themeData,
   viewPosition,
   onPressClose,
   disabled,
@@ -39,7 +38,7 @@ const LinearBottomSheet = ({
 
   return (
     <LinearGradient
-      colors={[BLACK, "transparent"]}
+      colors={themeData.BEHIND_MODAL_BLEND_PRIMARY}
       start={[0, 0.7]}
       end={[0, 0.0]}
       style={[contentContainerStyle, styles.container]}
@@ -52,10 +51,11 @@ const LinearBottomSheet = ({
           { bottom: sliderInView, maxHeight: height - 150 },
           sheetStyle,
           styles.contentWrapper,
+          { shadowColor: themeData.SHADOW_PRIMARY },
         ]}
       >
         <LinearGradient
-          colors={["#6C464F", "#B891A9"]}
+          colors={themeData.MODAL_BACKGROUND_BLEND_PRIMARY}
           start={[1, 1.4]}
           end={[1, 0]}
           style={[
@@ -80,8 +80,7 @@ const styles = StyleSheet.create({
   },
   contentWrapper: {
     width: "100%",
-    backgroundColor: TRANSPARENT,
-    shadowColor: BLACK,
+    backgroundColor: "transparent",
     shadowOpacity: 0.15,
     shadowOffset: { width: 0, height: 8 },
     shadowRadius: 5,
@@ -90,27 +89,12 @@ const styles = StyleSheet.create({
   linearWrapper: {
     width: "100%",
   },
-  headerWrapper: {
-    width: "100%",
-    paddingHorizontal: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  headerTextStyle: {
-    fontFamily: "PoppinsBold",
-    fontSize: 12,
-    color: TEXT_BLACK,
-    paddingVertical: 10,
-  },
-  closeButtonStyle: {
-    width: 30,
-    height: 30,
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 5,
-  },
 });
 
-export default LinearBottomSheet;
+const mapStateToProps = (state) => ({
+  themeData: state.theme.themeData,
+});
+
+export default connect(mapStateToProps, {
+  getTheme,
+})(LinearBottomSheet);
