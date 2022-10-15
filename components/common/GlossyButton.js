@@ -1,10 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+import { themeData, getTheme } from "../../src/actions";
 import { colors } from "../../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
 const { SHADOW, TEXT_BURGUNDY } = colors;
 
-const GlossyButton = ({ colorOne, colorTwo, width, height, text }) => {
+const GlossyButton = ({
+  colorOne,
+  colorTwo,
+  width,
+  height,
+  text,
+  themeData,
+  getTheme,
+}) => {
   return (
     <>
       <View
@@ -66,4 +76,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GlossyButton;
+const mapStateToProps = (state) => ({
+  themeData: state.theme.themeData,
+});
+
+export default connect(mapStateToProps, {
+  getTheme,
+  themeData,
+})(GlossyButton);
+
+// export default GlossyButton;

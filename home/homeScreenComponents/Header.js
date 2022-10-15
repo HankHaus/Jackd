@@ -21,12 +21,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
   },
-  title: {
-    fontFamily: "Lobster_400Regular",
-    alignSelf: "center",
-    fontSize: 50,
-    color: TEXT_BURGUNDY,
-  },
+
   logo: {
     width: "100%",
     height: 150,

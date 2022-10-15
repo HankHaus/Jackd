@@ -18,9 +18,11 @@ import {
 } from "./homeScreenComponents";
 import { colors } from "../constants/theme";
 import { LinearGradient } from "expo-linear-gradient";
+import { connect } from "react-redux";
+import { getTheme, themeData } from "../src/actions";
 const { BACKGROUND } = colors;
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, themeData, getTheme }) => {
   // const navigation = useNavigation();
   const [barWeight, setBarWeight] = useState(0);
   const [desiredWeight, setDesiredWeight] = useState(0);
@@ -70,6 +72,24 @@ const HomeScreen = ({ navigation }) => {
     }
     return x;
   }
+  const handleDarkMode = () => {
+    getTheme({
+      ...themeData,
+      DARK_ORANGE: "#2AFF4E",
+      LIGHT_ORANGE: "#C3FFCD",
+      TEXT_BURGUNDY: "#FF0000",
+    });
+    console.log("theme", themeData);
+  };
+  const handleLightMode = () => {
+    getTheme({
+      ...themeData,
+      DARK_ORANGE: "#ff865e",
+      LIGHT_ORANGE: "#FFA081",
+      TEXT_BURGUNDY: "#34000E",
+    });
+    console.log("theme", themeData);
+  };
 
   return (
     <>
@@ -112,6 +132,14 @@ const HomeScreen = ({ navigation }) => {
             twoAndAHalves={twoAndAHalves}
           />
         </View>
+        <View style={styles.textContainer}>
+          <TouchableOpacity onPress={handleDarkMode}>
+            <Text style={styles.text}>dark</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleLightMode}>
+            <Text style={styles.text}>light</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.workoutButtonContainer}>
           <WorkoutButton navigation={navigation} />
         </View>
@@ -144,6 +172,23 @@ const styles = StyleSheet.create({
     position: "relative",
     top: 20,
   },
+  textContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  text: {
+    // color: "white",
+    fontSize: 20,
+  },
 });
 
-export default HomeScreen;
+const mapStateToProps = (state) => ({
+  themeData: state.theme.themeData,
+});
+
+export default connect(mapStateToProps, {
+  getTheme,
+})(HomeScreen);
+
+// export default HomeScreen;
