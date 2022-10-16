@@ -17,7 +17,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../src/actions";
 
-const HomeScreen = ({ navigation, getTheme, themeData }) => {
+const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
   const [barWeight, setBarWeight] = useState(0);
   const [desiredWeight, setDesiredWeight] = useState(0);
   const [perSide, setPerSide] = useState(0);
@@ -68,7 +68,7 @@ const HomeScreen = ({ navigation, getTheme, themeData }) => {
   }
   const handleDarkMode = () => {
     getTheme({
-      ...themeData,
+      ...selectedTheme,
       BACKGROUND_BLEND_PRIMARY: ["#000A3D", "#8C0718"],
       BEHIND_MODAL_BLEND_PRIMARY: ["#FF0000", "transparent"],
       BUTTON_BLEND_PRIMARY: ["#2AFF4E", "#C3FFCD"],
@@ -92,7 +92,7 @@ const HomeScreen = ({ navigation, getTheme, themeData }) => {
   };
   const handleLightMode = () => {
     getTheme({
-      ...themeData,
+      ...selectedTheme,
       BACKGROUND_BLEND_PRIMARY: ["#A2D2FF", "#FEF9EF"],
       BEHIND_MODAL_BLEND_PRIMARY: ["#000000", "transparent"],
       BUTTON_BLEND_PRIMARY: ["#ff865e", "#FFA081"],
@@ -119,7 +119,7 @@ const HomeScreen = ({ navigation, getTheme, themeData }) => {
     <>
       <LinearGradient
         style={styles.container}
-        colors={themeData.BACKGROUND_BLEND_PRIMARY}
+        colors={selectedTheme.BACKGROUND_BLEND_PRIMARY}
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
@@ -158,12 +158,12 @@ const HomeScreen = ({ navigation, getTheme, themeData }) => {
         </View>
         <View style={styles.textContainer}>
           <TouchableOpacity onPress={handleDarkMode}>
-            <Text style={[styles.text, { color: themeData.TEXT_PRIMARY }]}>
+            <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
               dark
             </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleLightMode}>
-            <Text style={[styles.text, { color: themeData.TEXT_PRIMARY }]}>
+            <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
               light
             </Text>
           </TouchableOpacity>
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {

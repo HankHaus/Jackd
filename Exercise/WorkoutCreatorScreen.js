@@ -5,14 +5,27 @@ import {
   SelectIntensityModal,
 } from "./WorkoutCreatorModals";
 import { connect } from "react-redux";
-import { getTheme } from "../src/actions";
+import { getTheme, getMuscleGroups } from "../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
 import Header from "./WorkoutCreatorComponents/Header";
 
-const WorkoutCreatorScreen = ({ themeData }) => {
+const WorkoutCreatorScreen = ({
+  selectedTheme,
+  muscleGroupsData,
+  getMuscleGroups,
+}) => {
   const [muscleGroupsModal, setMuscleGroupsModal] = useState(false);
   const [selectIntensityModal, setSelectIntensityModal] = useState(false);
   const [modalsCompleted, SetModalsCompleted] = useState(false);
+  const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]);
+
+  const handleAddOrRemoveMuscleGroupFromSelctedMuscleGroups = (muscleGroup) => {
+    if (selectedMuscleGroups.includes(muscleGroup)) {
+      selectedMuscleGroups.splice(selectedMuscleGroups.indexOf(muscleGroup), 1);
+    } else {
+      selectedMuscleGroups.push(muscleGroup);
+    }
+  };
 
   const toggleMuscleGroupsModal = () => {
     setMuscleGroupsModal(!muscleGroupsModal);
@@ -22,12 +35,42 @@ const WorkoutCreatorScreen = ({ themeData }) => {
     setMuscleGroupsModal(!muscleGroupsModal);
     setSelectIntensityModal(!selectIntensityModal);
   };
+  const handleSelectChest = () => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      chest: !muscleGroupsData.chest,
+    });
+    handleAddOrRemoveMuscleGroupFromSelctedMuscleGroups("Chest");
+  };
 
+  const handleSelectArms = () => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      arms: !muscleGroupsData.arms,
+    });
+    handleAddOrRemoveMuscleGroupFromSelctedMuscleGroups("Arms");
+  };
+
+  const handleSelectBack = () => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      back: !muscleGroupsData.back,
+    });
+    handleAddOrRemoveMuscleGroupFromSelctedMuscleGroups("Back");
+  };
+  const handleSelectLegs = () => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      legs: !muscleGroupsData.legs,
+    });
+    handleAddOrRemoveMuscleGroupFromSelctedMuscleGroups("Legs");
+  };
+  console.log(selectedMuscleGroups);
   return (
     <>
       <LinearGradient
         style={styles.container}
-        colors={themeData.BACKGROUND_BLEND_PRIMARY}
+        colors={selectedTheme.BACKGROUND_BLEND_PRIMARY}
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
@@ -35,10 +78,18 @@ const WorkoutCreatorScreen = ({ themeData }) => {
           <Header onPress={toggleMuscleGroupsModal} />
         </View>
         {muscleGroupsModal && (
-          <MuscleGroupsModal onPressNext={onPressNextMuscleGroupsModal} />
+          <MuscleGroupsModal
+            onPressNext={onPressNextMuscleGroupsModal}
+            selectedMuscleGroups={selectedMuscleGroups}
+            handleSelectChest={handleSelectChest}
+            handleSelectArms={handleSelectArms}
+            handleSelectBack={handleSelectBack}
+            handleSelectLegs={handleSelectLegs}
+          />
         )}
         {selectIntensityModal && (
           <SelectIntensityModal
+            selectedMuscleGroups={selectedMuscleGroups}
             onPressStartWorkout={() => SetModalsCompleted(!modalsCompleted)}
           />
         )}
@@ -61,9 +112,11 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
+  muscleGroupsData: state.workoutCreator.muscleGroupsData,
 });
 
 export default connect(mapStateToProps, {
   getTheme,
+  getMuscleGroups,
 })(WorkoutCreatorScreen);

@@ -1,7 +1,7 @@
 import { THEME } from "../actions/types";
 
 const initialState = {
-  themeData: {
+  selectedTheme: {
     BLACK: "#000000",
     SHADOW: "#7B7A72",
     BEHIND_MODAL_BLEND_PRIMARY: ["#000000", "transparent"],
@@ -32,7 +32,7 @@ const ThemeReducers = (state = initialState, action) => {
     case THEME:
       return {
         ...state,
-        themeData: action.payload,
+        selectedTheme: action.payload,
       };
     default:
       return state;

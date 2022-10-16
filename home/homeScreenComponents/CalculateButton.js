@@ -9,7 +9,7 @@ const CalculateButton = ({
   barWeight,
   desiredWeight,
   perSide,
-  themeData,
+  selectedTheme,
 }) => {
   return (
     <>
@@ -21,7 +21,7 @@ const CalculateButton = ({
           height={50}
           width={"100%"}
           text="Calculate"
-          colors={themeData.BUTTON_BLEND_PRIMARY}
+          colors={selectedTheme.BUTTON_BLEND_PRIMARY}
         />
       </TouchableOpacity>
     </>
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {

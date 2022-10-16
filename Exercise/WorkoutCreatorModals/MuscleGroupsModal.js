@@ -6,38 +6,19 @@ import LinearBottomSheet from "../../components/common/LinearBottomSheet";
 const viewPosition = -500;
 
 const MuscleGroupsModal = ({
-  themeData,
+  selectedTheme,
+  selectedMuscleGroups,
+  handleSelectChest,
+
+  handleSelectArms,
+  handleSelectBack,
+  handleSelectLegs,
   muscleGroupsData,
   getMuscleGroups,
   onPressClose,
   opacity,
   onPressNext,
 }) => {
-  const handleSelectChest = () => {
-    getMuscleGroups({
-      ...muscleGroupsData,
-      chest: !muscleGroupsData.chest,
-    });
-  };
-  const handleSelectArms = () => {
-    getMuscleGroups({
-      ...muscleGroupsData,
-      arms: !muscleGroupsData.arms,
-    });
-  };
-  const handleSelectBack = () => {
-    getMuscleGroups({
-      ...muscleGroupsData,
-      back: !muscleGroupsData.back,
-    });
-  };
-  const handleSelectLegs = () => {
-    getMuscleGroups({
-      ...muscleGroupsData,
-      legs: !muscleGroupsData.legs,
-    });
-  };
-
   return (
     <View style={styles.modalStyle}>
       <LinearBottomSheet
@@ -46,7 +27,7 @@ const MuscleGroupsModal = ({
         opacity={opacity}
       >
         <View style={styles.titleContainer}>
-          <Text style={[styles.title, { color: themeData.TEXT_PRIMARY }]}>
+          <Text style={[styles.title, { color: selectedTheme.TEXT_PRIMARY }]}>
             Which Muscle Groups Do you want to focus on today?
           </Text>
         </View>
@@ -56,7 +37,10 @@ const MuscleGroupsModal = ({
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectChest}>
                 <Text
-                  style={[styles.optionText, { color: themeData.TEXT_PRIMARY }]}
+                  style={[
+                    styles.optionText,
+                    { color: selectedTheme.TEXT_PRIMARY },
+                  ]}
                 >
                   Chest
                 </Text>
@@ -70,14 +54,17 @@ const MuscleGroupsModal = ({
                     styles.optionDotBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
                     },
                   ]}
                 >
                   <View
                     style={[
                       styles.optionDot,
-                      { backgroundColor: themeData.OPTION_DOT_ACTIVE_PRIMARY },
+                      {
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
+                      },
                     ]}
                   />
                 </View>
@@ -90,7 +77,7 @@ const MuscleGroupsModal = ({
                 <Text
                   style={[
                     styles.optionTextInactive,
-                    { color: themeData.TEXT_PRIMARY },
+                    { color: selectedTheme.TEXT_PRIMARY },
                   ]}
                 >
                   Chest
@@ -105,7 +92,7 @@ const MuscleGroupsModal = ({
                     styles.optionDotInactiveBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
                     },
                   ]}
                 >
@@ -113,7 +100,8 @@ const MuscleGroupsModal = ({
                     style={[
                       styles.optionDotInactive,
                       {
-                        backgroundColor: themeData.OPTION_DOT_INACTIVE_PRIMARY,
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_INACTIVE_PRIMARY,
                       },
                     ]}
                   />
@@ -125,7 +113,10 @@ const MuscleGroupsModal = ({
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectBack}>
                 <Text
-                  style={[styles.optionText, { color: themeData.TEXT_PRIMARY }]}
+                  style={[
+                    styles.optionText,
+                    { color: selectedTheme.TEXT_PRIMARY },
+                  ]}
                 >
                   Back
                 </Text>
@@ -139,14 +130,17 @@ const MuscleGroupsModal = ({
                     styles.optionDotBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
                     },
                   ]}
                 >
                   <View
                     style={[
                       styles.optionDot,
-                      { backgroundColor: themeData.OPTION_DOT_ACTIVE_PRIMARY },
+                      {
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
+                      },
                     ]}
                   />
                 </View>
@@ -159,7 +153,7 @@ const MuscleGroupsModal = ({
                 <Text
                   style={[
                     styles.optionTextInactive,
-                    { color: themeData.TEXT_PRIMARY },
+                    { color: selectedTheme.TEXT_PRIMARY },
                   ]}
                 >
                   Back
@@ -174,7 +168,7 @@ const MuscleGroupsModal = ({
                     styles.optionDotInactiveBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
                     },
                   ]}
                 >
@@ -182,7 +176,8 @@ const MuscleGroupsModal = ({
                     style={[
                       styles.optionDotInactive,
                       {
-                        backgroundColor: themeData.OPTION_DOT_INACTIVE_PRIMARY,
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_INACTIVE_PRIMARY,
                       },
                     ]}
                   />
@@ -195,7 +190,10 @@ const MuscleGroupsModal = ({
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectArms}>
                 <Text
-                  style={[styles.optionText, { color: themeData.TEXT_PRIMARY }]}
+                  style={[
+                    styles.optionText,
+                    { color: selectedTheme.TEXT_PRIMARY },
+                  ]}
                 >
                   Arms
                 </Text>
@@ -209,14 +207,17 @@ const MuscleGroupsModal = ({
                     styles.optionDotBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
                     },
                   ]}
                 >
                   <View
                     style={[
                       styles.optionDot,
-                      { backgroundColor: themeData.OPTION_DOT_ACTIVE_PRIMARY },
+                      {
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
+                      },
                     ]}
                   />
                 </View>
@@ -229,7 +230,7 @@ const MuscleGroupsModal = ({
                 <Text
                   style={[
                     styles.optionTextInactive,
-                    { color: themeData.TEXT_PRIMARY },
+                    { color: selectedTheme.TEXT_PRIMARY },
                   ]}
                 >
                   Arms
@@ -244,7 +245,7 @@ const MuscleGroupsModal = ({
                     styles.optionDotInactiveBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
                     },
                   ]}
                 >
@@ -252,7 +253,8 @@ const MuscleGroupsModal = ({
                     style={[
                       styles.optionDotInactive,
                       {
-                        backgroundColor: themeData.OPTION_DOT_INACTIVE_PRIMARY,
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_INACTIVE_PRIMARY,
                       },
                     ]}
                   />
@@ -264,7 +266,10 @@ const MuscleGroupsModal = ({
             <View style={styles.option}>
               <TouchableOpacity onPress={handleSelectLegs}>
                 <Text
-                  style={[styles.optionText, { color: themeData.TEXT_PRIMARY }]}
+                  style={[
+                    styles.optionText,
+                    { color: selectedTheme.TEXT_PRIMARY },
+                  ]}
                 >
                   Legs
                 </Text>
@@ -278,14 +283,17 @@ const MuscleGroupsModal = ({
                     styles.optionDotBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_ACTIVE_PRIMARY,
                     },
                   ]}
                 >
                   <View
                     style={[
                       styles.optionDot,
-                      { backgroundColor: themeData.OPTION_DOT_ACTIVE_PRIMARY },
+                      {
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
+                      },
                     ]}
                   />
                 </View>
@@ -298,7 +306,7 @@ const MuscleGroupsModal = ({
                 <Text
                   style={[
                     styles.optionTextInactive,
-                    { color: themeData.TEXT_PRIMARY },
+                    { color: selectedTheme.TEXT_PRIMARY },
                   ]}
                 >
                   Legs
@@ -313,7 +321,7 @@ const MuscleGroupsModal = ({
                     styles.optionDotInactiveBorder,
                     {
                       backgroundColor:
-                        themeData.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
+                        selectedTheme.OPTION_DOT_BORDER_INACTIVE_PRIMARY,
                     },
                   ]}
                 >
@@ -321,7 +329,8 @@ const MuscleGroupsModal = ({
                     style={[
                       styles.optionDotInactive,
                       {
-                        backgroundColor: themeData.OPTION_DOT_INACTIVE_PRIMARY,
+                        backgroundColor:
+                          selectedTheme.OPTION_DOT_INACTIVE_PRIMARY,
                       },
                     ]}
                   />
@@ -342,7 +351,7 @@ const MuscleGroupsModal = ({
               <Text
                 style={[
                   styles.nextButtonText,
-                  { color: themeData.TEXT_PRIMARY },
+                  { color: selectedTheme.TEXT_PRIMARY },
                 ]}
               >
                 Next
@@ -451,7 +460,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   muscleGroupsData: state.workoutCreator.muscleGroupsData,
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {

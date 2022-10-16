@@ -2,24 +2,39 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { GlossyButton } from "../../components/common";
 import { connect } from "react-redux";
-import { getTheme } from "../../src/actions";
-import { colors } from "../../constants/theme";
-const { DARK_ORANGE, LIGHT_ORANGE } = colors;
+import { getTheme, getMuscleGroups } from "../../src/actions";
 
-const WorkoutButton = ({ navigation, themeData }) => {
+const WorkoutButton = ({
+  navigation,
+  selectedTheme,
+  muscleGroupsData,
+  getMuscleGroups,
+}) => {
+  const handleWorkoutButtonPress = () => {
+    getMuscleGroups({
+      ...muscleGroupsData,
+      chestIntensity: null,
+      armsIntensity: null,
+      backIntensity: null,
+      legsIntensity: null,
+      chest: false,
+      arms: false,
+      back: false,
+      legs: false,
+    });
+    navigation.navigate("WorkoutCreator");
+  };
   return (
     <>
       <TouchableOpacity
         style={styles.buttonShape}
-        onPress={() => {
-          navigation.navigate("WorkoutCreator");
-        }}
+        onPress={handleWorkoutButtonPress}
       >
         <GlossyButton
           width={"100%"}
           height={50}
           text="Workout Creator"
-          colors={themeData.BUTTON_BLEND_PRIMARY}
+          colors={selectedTheme.BUTTON_BLEND_PRIMARY}
         />
       </TouchableOpacity>
     </>
@@ -35,9 +50,11 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  muscleGroupsData: state.workoutCreator.muscleGroupsData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {
+  getMuscleGroups,
   getTheme,
 })(WorkoutButton);

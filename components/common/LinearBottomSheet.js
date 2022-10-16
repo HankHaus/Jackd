@@ -13,7 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 const { height } = Dimensions.get("window");
 
 const LinearBottomSheet = ({
-  themeData,
+  selectedTheme,
   viewPosition,
   onPressClose,
   disabled,
@@ -38,7 +38,7 @@ const LinearBottomSheet = ({
 
   return (
     <LinearGradient
-      colors={themeData.BEHIND_MODAL_BLEND_PRIMARY}
+      colors={selectedTheme.BEHIND_MODAL_BLEND_PRIMARY}
       start={[0, 0.7]}
       end={[0, 0.0]}
       style={[contentContainerStyle, styles.container]}
@@ -51,11 +51,11 @@ const LinearBottomSheet = ({
           { bottom: sliderInView, maxHeight: height - 150 },
           sheetStyle,
           styles.contentWrapper,
-          { shadowColor: themeData.SHADOW_PRIMARY },
+          { shadowColor: selectedTheme.SHADOW_PRIMARY },
         ]}
       >
         <LinearGradient
-          colors={themeData.MODAL_BACKGROUND_BLEND_PRIMARY}
+          colors={selectedTheme.MODAL_BACKGROUND_BLEND_PRIMARY}
           start={[1, 1.4]}
           end={[1, 0]}
           style={[
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {

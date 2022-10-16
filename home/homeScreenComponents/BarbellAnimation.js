@@ -9,7 +9,7 @@ const BarbellAnimation = ({
   tens,
   fives,
   twoAndAHalves,
-  themeData,
+  selectedTheme,
 }) => {
   const progress = useRef(new Animated.Value(0)).current;
   const slide = useRef(new Animated.Value(0)).current;
@@ -49,7 +49,7 @@ const BarbellAnimation = ({
           <Animated.View
             style={[
               styles.fortyFivesBlock,
-              { backgroundColor: themeData.FORTY_FIVES_PLATE },
+              { backgroundColor: selectedTheme.FORTY_FIVES_PLATE },
               { opacity: progress },
               { transform: [{ translateX: slide }] },
             ]}
@@ -64,7 +64,7 @@ const BarbellAnimation = ({
           // <Animated.View
           //   style={[
           //     styles.fortyFivesBlock,
-          // {backgroundColor: themeData.FORTY_FIVES_PLATE}
+          // {backgroundColor: selectedTheme.FORTY_FIVES_PLATE}
           //     { opacity: progress },
           //     { transform: [{ translateX: slide }] },
           //   ]}
@@ -77,7 +77,7 @@ const BarbellAnimation = ({
           <View
             style={[
               styles.twentyFivesBlock,
-              { backgroundColor: themeData.TWENTY_FIVES_PLATE },
+              { backgroundColor: selectedTheme.TWENTY_FIVES_PLATE },
             ]}
           >
             <Text style={styles.plateText}>25lb</Text>
@@ -90,7 +90,7 @@ const BarbellAnimation = ({
           <View
             style={[
               styles.tensBlock,
-              { backgroundColor: themeData.TENS_PLATE },
+              { backgroundColor: selectedTheme.TENS_PLATE },
             ]}
           >
             <Text style={styles.plateText}>10lb</Text>
@@ -103,7 +103,7 @@ const BarbellAnimation = ({
           <View
             style={[
               styles.fivesBlock,
-              { backgroundColor: themeData.FIVES_PLATE },
+              { backgroundColor: selectedTheme.FIVES_PLATE },
             ]}
           >
             <Text style={styles.plateText}>5lb</Text>
@@ -116,7 +116,7 @@ const BarbellAnimation = ({
           <View
             style={[
               styles.twoAndAHalvesBlock,
-              { backgroundColor: themeData.TWO_AND_A_HALVES_PLATE },
+              { backgroundColor: selectedTheme.TWO_AND_A_HALVES_PLATE },
             ]}
           >
             <Text style={styles.plateText}>2.5lb</Text>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {

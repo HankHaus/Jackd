@@ -5,13 +5,13 @@ import { getTheme } from "../../src/actions";
 const WeightInputs = ({
   onChangeBarWeight,
   onChangeDesiredWeight,
-  themeData,
+  selectedTheme,
 }) => {
   return (
     <>
       <View style={styles.inputContainer}>
         <View style={styles.row}>
-          <Text style={[styles.label, { color: themeData.TEXT_PRIMARY }]}>
+          <Text style={[styles.label, { color: selectedTheme.TEXT_PRIMARY }]}>
             Bar Weight:
           </Text>
           <TextInput
@@ -19,15 +19,15 @@ const WeightInputs = ({
             style={[
               styles.weightInputField,
               {
-                color: themeData.TEXT_PRIMARY,
-                borderBottomColor: themeData.TEXT_PRIMARY,
+                color: selectedTheme.TEXT_PRIMARY,
+                borderBottomColor: selectedTheme.TEXT_PRIMARY,
               },
             ]}
             onChangeText={onChangeBarWeight}
           ></TextInput>
         </View>
         <View style={styles.row}>
-          <Text style={[styles.label, { color: themeData.TEXT_PRIMARY }]}>
+          <Text style={[styles.label, { color: selectedTheme.TEXT_PRIMARY }]}>
             Desired Weight:
           </Text>
           <TextInput
@@ -35,8 +35,8 @@ const WeightInputs = ({
             style={[
               styles.weightInputField,
               {
-                color: themeData.TEXT_PRIMARY,
-                borderBottomColor: themeData.TEXT_PRIMARY,
+                color: selectedTheme.TEXT_PRIMARY,
+                borderBottomColor: selectedTheme.TEXT_PRIMARY,
               },
             ]}
             onChangeText={onChangeDesiredWeight}
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {

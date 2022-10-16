@@ -3,29 +3,35 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../../src/actions";
-const Header = ({ onPress, themeData }) => {
+const Header = ({ onPress, selectedTheme }) => {
   return (
     <>
       <View style={styles.titleContainer}>
-        <Text style={[styles.title, { color: themeData.TEXT_PRIMARY }]}>
+        <Text style={[styles.title, { color: selectedTheme.TEXT_PRIMARY }]}>
           Workout Creator
         </Text>
         <View style={styles.subtitleContainer}>
-          <Text style={[styles.subTitle, { color: themeData.TEXT_PRIMARY }]}>
+          <Text
+            style={[styles.subTitle, { color: selectedTheme.TEXT_PRIMARY }]}
+          >
             Here you'll be able to get a custom workout plan for the day.
           </Text>
-          <Text style={styles.subTitle}>Tap the circle to get started!</Text>
+          <Text
+            style={[styles.subTitle, { color: selectedTheme.TEXT_PRIMARY }]}
+          >
+            Tap the circle to get started!
+          </Text>
         </View>
         <TouchableOpacity style={styles.circleContainer} onPress={onPress}>
           <LinearGradient
             style={styles.getStartedButtonBorder}
-            colors={themeData.GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY}
+            colors={selectedTheme.GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY}
             start={[0.7, 0.9]}
             end={[1.2, 0.3]}
           >
             <LinearGradient
               style={styles.getStartedButton}
-              colors={themeData.GET_STARTED_BUTTON_BLEND_PRIMARY}
+              colors={selectedTheme.GET_STARTED_BUTTON_BLEND_PRIMARY}
               start={[1, 0.1]}
               end={[1, 0.9]}
             ></LinearGradient>
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  themeData: state.theme.themeData,
+  selectedTheme: state.theme.selectedTheme,
 });
 
 export default connect(mapStateToProps, {
