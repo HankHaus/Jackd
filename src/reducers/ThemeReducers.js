@@ -3,7 +3,7 @@ import { THEME } from "../actions/types";
 const initialState = {
   selectedTheme: {
     BLACK: "#000000",
-    SHADOW: "#7B7A72",
+    SHADOW_PRIMARY: "#7B7A72",
     BEHIND_MODAL_BLEND_PRIMARY: ["#000000", "transparent"],
     MODAL_BACKGROUND_BLEND_PRIMARY: ["#6C464F", "#B891A9"],
     BACKGROUND_BLEND_PRIMARY: ["#A2D2FF", "#FEF9EF"],

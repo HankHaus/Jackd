@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { View, StyleSheet, Text, Animated } from "react-native";
+import { View, StyleSheet, Text, Animated, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../../src/actions";
+
+// const { width: SCREEN_WIDTH } = Dimensions.get("window").width;
 const BarbellAnimation = ({
   fortyFives,
   twentyFives,
@@ -10,23 +12,26 @@ const BarbellAnimation = ({
   fives,
   twoAndAHalves,
   selectedTheme,
+  runPlateAnimation,
 }) => {
-  const progress = useRef(new Animated.Value(0)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
   const slide = useRef(new Animated.Value(0)).current;
+
   useEffect(() => {
-    Animated.timing(progress, {
-      toValue: 1,
-      duration: 2000,
-      useNativeDriver: false,
-    }).start();
-  }, []);
-  useEffect(() => {
-    Animated.timing(slide, {
-      toValue: -120,
-      duration: 1000,
-      useNativeDriver: false,
-    }).start();
-  }, []);
+    if (runPlateAnimation) {
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: false,
+      }).start();
+    } else {
+      Animated.timing(opacity, {
+        toValue: 0,
+        duration: 0,
+        useNativeDriver: false,
+      }).start();
+    }
+  }, [runPlateAnimation]);
 
   return (
     <>
@@ -50,78 +55,68 @@ const BarbellAnimation = ({
             style={[
               styles.fortyFivesBlock,
               { backgroundColor: selectedTheme.FORTY_FIVES_PLATE },
-              { opacity: progress },
-              { transform: [{ translateX: slide }] },
+              { opacity: opacity },
             ]}
           >
             <Text style={styles.plateText}>45lb</Text>
             <Text style={styles.numberOfPlates}>{fortyFives}</Text>
           </Animated.View>
         ) : (
-          //TOGGLE THE ABOVE VS THE BELOW BEING COMMENTED TO SEE THE ANIMATION, IT'S A BIT BUGGY
-          //RELOAD BETWEEN EACH TOGGLE
           ""
-          // <Animated.View
-          //   style={[
-          //     styles.fortyFivesBlock,
-          // {backgroundColor: selectedTheme.FORTY_FIVES_PLATE}
-          //     { opacity: progress },
-          //     { transform: [{ translateX: slide }] },
-          //   ]}
-          // >
-          //   <Text style={styles.plateText}>45lb</Text>
-          //   <Text style={styles.numberOfPlates}>{fortyFives}</Text>
-          // </Animated.View>
         )}
         {twentyFives !== 0 ? (
-          <View
+          <Animated.View
             style={[
               styles.twentyFivesBlock,
               { backgroundColor: selectedTheme.TWENTY_FIVES_PLATE },
+              { opacity: opacity },
             ]}
           >
             <Text style={styles.plateText}>25lb</Text>
             <Text style={styles.numberOfPlates}>{twentyFives}</Text>
-          </View>
+          </Animated.View>
         ) : (
           ""
         )}
         {tens !== 0 ? (
-          <View
+          <Animated.View
             style={[
               styles.tensBlock,
               { backgroundColor: selectedTheme.TENS_PLATE },
+              { opacity: opacity },
             ]}
           >
             <Text style={styles.plateText}>10lb</Text>
             <Text style={styles.numberOfPlates}>{tens}</Text>
-          </View>
+          </Animated.View>
         ) : (
           ""
         )}
         {fives !== 0 ? (
-          <View
+          <Animated.View
             style={[
               styles.fivesBlock,
               { backgroundColor: selectedTheme.FIVES_PLATE },
+              { opacity: opacity },
             ]}
           >
             <Text style={styles.plateText}>5lb</Text>
             <Text style={styles.numberOfPlates}>{fives}</Text>
-          </View>
+          </Animated.View>
         ) : (
           ""
         )}
         {twoAndAHalves !== 0 ? (
-          <View
+          <Animated.View
             style={[
               styles.twoAndAHalvesBlock,
               { backgroundColor: selectedTheme.TWO_AND_A_HALVES_PLATE },
+              { opacity: opacity },
             ]}
           >
             <Text style={styles.plateText}>2.5lb</Text>
             <Text style={styles.numberOfPlates}>{twoAndAHalves}</Text>
-          </View>
+          </Animated.View>
         ) : (
           ""
         )}
@@ -133,15 +128,15 @@ const BarbellAnimation = ({
 const styles = StyleSheet.create({
   output: {
     alignSelf: "center",
-    justifyContent: "center",
     marginTop: 20,
+    paddingLeft: "8%",
     width: "100%",
     height: 200,
     flexDirection: "row",
     paddingTop: 100,
   },
   barbell: {
-    width: "85%",
+    width: "100%",
     height: 25,
     position: "absolute",
     top: 102,
@@ -223,5 +218,3 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getTheme,
 })(BarbellAnimation);
-
-// export default BarbellAnimation;

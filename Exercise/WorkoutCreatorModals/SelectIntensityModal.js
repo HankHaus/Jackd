@@ -53,8 +53,6 @@ const SelectIntensityModal = ({
     });
     handleKeepTrackOfNumberOfSelections("Legs");
   };
-  console.log("selectedMuscleGroups", selectedMuscleGroups);
-  console.log("choicesMade", choicesMade);
 
   return (
     <View style={styles.modalStyle}>
@@ -478,7 +476,7 @@ const SelectIntensityModal = ({
                 { color: selectedTheme.TEXT_PRIMARY },
               ]}
             >
-              Legss:
+              Legs:
             </Text>
             <View style={styles.intensityOptionStack}>
               <TouchableOpacity

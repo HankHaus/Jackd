@@ -10,13 +10,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import Header from "./WorkoutCreatorComponents/Header";
 
 const WorkoutCreatorScreen = ({
+  navigation,
   selectedTheme,
   muscleGroupsData,
   getMuscleGroups,
 }) => {
   const [muscleGroupsModal, setMuscleGroupsModal] = useState(false);
   const [selectIntensityModal, setSelectIntensityModal] = useState(false);
-  const [modalsCompleted, SetModalsCompleted] = useState(false);
   const [selectedMuscleGroups, setSelectedMuscleGroups] = useState([]);
 
   const handleAddOrRemoveMuscleGroupFromSelctedMuscleGroups = (muscleGroup) => {
@@ -25,6 +25,9 @@ const WorkoutCreatorScreen = ({
     } else {
       selectedMuscleGroups.push(muscleGroup);
     }
+  };
+  const handleStartWorkout = () => {
+    navigation.navigate("ExercisePlan");
   };
 
   const toggleMuscleGroupsModal = () => {
@@ -65,7 +68,6 @@ const WorkoutCreatorScreen = ({
     });
     handleAddOrRemoveMuscleGroupFromSelctedMuscleGroups("Legs");
   };
-  console.log(selectedMuscleGroups);
   return (
     <>
       <LinearGradient
@@ -90,7 +92,7 @@ const WorkoutCreatorScreen = ({
         {selectIntensityModal && (
           <SelectIntensityModal
             selectedMuscleGroups={selectedMuscleGroups}
-            onPressStartWorkout={() => SetModalsCompleted(!modalsCompleted)}
+            onPressStartWorkout={handleStartWorkout}
           />
         )}
       </LinearGradient>

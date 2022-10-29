@@ -26,6 +26,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
   const [tens, setTens] = useState(0);
   const [fives, setFives] = useState(0);
   const [twoAndAHalves, setTwoAndAHalves] = useState(0);
+  const [runPlateAnimation, setRunPlateAnimation] = useState(false);
 
   const onChangeBarWeight = (value) => {
     setBarWeight(check(value));
@@ -59,6 +60,10 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
     setTwoAndAHalves(numberOfTwoAndAHalvesPerSide);
 
     setPerSide(perSide);
+    setRunPlateAnimation(false);
+    setTimeout(() => {
+      setRunPlateAnimation(true);
+    }, 301);
   };
   function check(x) {
     if (x === NaN) {
@@ -69,15 +74,15 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
   const handleDarkMode = () => {
     getTheme({
       ...selectedTheme,
-      BACKGROUND_BLEND_PRIMARY: ["#000A3D", "#8C0718"],
+      BACKGROUND_BLEND_PRIMARY: ["#002B5B", "#0F3E72"],
       BEHIND_MODAL_BLEND_PRIMARY: ["#FF0000", "transparent"],
-      BUTTON_BLEND_PRIMARY: ["#2AFF4E", "#C3FFCD"],
-      BUTTON_TEXT_PRIMARY: "#FF0000",
-      SHADOW_PRIMARY: "#7B7A72",
+      BUTTON_BLEND_PRIMARY: ["#7B113A", "#A62E5D"],
+      BUTTON_TEXT_PRIMARY: "#FFF8EA",
+      SHADOW_PRIMARY: "#FFFFFF",
       MODAL_BACKGROUND_BLEND_PRIMARY: ["#C3FFCD", "#7B7A72"],
       GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#000A3D", "#C3FFCD"],
       GET_STARTED_BUTTON_BLEND_PRIMARY: ["#2AFF4E", "#C3FFCD"],
-      TEXT_PRIMARY: "#00FFF2",
+      TEXT_PRIMARY: "#FFF8EA",
       OPTION_DOT_BORDER_INACTIVE_PRIMARY: "#C3FFCD",
       OPTION_DOT_INACTIVE_PRIMARY: "#C3FFCD",
       OPTION_DOT_BORDER_ACTIVE_PRIMARY: "#C800FF",
@@ -97,7 +102,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
       BEHIND_MODAL_BLEND_PRIMARY: ["#000000", "transparent"],
       BUTTON_BLEND_PRIMARY: ["#ff865e", "#FFA081"],
       BUTTON_TEXT_PRIMARY: "#34000E",
-      SHADOW_PRIMARY: "#7B7A72",
+      SHADOW_PRIMARY: "#000000",
       MODAL_BACKGROUND_BLEND_PRIMARY: ["#6C464F", "#B891A9"],
       GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#31CF0A", "#C7F0BD"],
       GET_STARTED_BUTTON_BLEND_PRIMARY: ["#24AB03", "#197502"],
@@ -133,6 +138,8 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
           />
         </View>
         <CalculateButton
+          // runPlateAnimation={runPlateAnimation}
+          // setRunPlateAnimation={setRunPlateAnimation}
           onPress={calc}
           barWeight={barWeight}
           desiredWeight={desiredWeight}
@@ -154,6 +161,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
             tens={tens}
             fives={fives}
             twoAndAHalves={twoAndAHalves}
+            runPlateAnimation={runPlateAnimation}
           />
         </View>
         <View style={styles.textContainer}>
