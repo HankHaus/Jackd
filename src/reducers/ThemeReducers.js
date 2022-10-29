@@ -21,7 +21,7 @@ const initialState = {
     TENS_PLATE: "#FFEC00",
     FIVES_PLATE: "#538668",
     TWO_AND_A_HALVES_PLATE: "#FF4141",
-
+    INPUT_BLEND_PRIMARY: ["#FFFFFF", "#E0E0E0"],
     WHITE: "#fff",
     TEXT_BURGUNDY: "#34000E",
   },

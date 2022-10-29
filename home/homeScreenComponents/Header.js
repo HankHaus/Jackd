@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: "center",
     width: "100%",
-    marginTop: "-10%",
-    alignSelf: "center",
-    justifyContent: "center",
+    paddingVertical: 5,
+    marginTop: "12%",
   },
 
   logo: {
-    width: "100%",
-    height: 150,
+    width: "88%",
+    height: 120,
+    resizeMode: "cover",
   },
 });
 

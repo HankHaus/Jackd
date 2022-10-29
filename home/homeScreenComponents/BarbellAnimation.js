@@ -43,83 +43,85 @@ const BarbellAnimation = ({
           locations={[0.0, 0.2, 0.4, 0.6, 0.8]}
           style={styles.barbell}
         />
-        <LinearGradient
-          start={[0.0, 0.0]}
-          end={[0.0, 1.0]}
-          colors={["#000000", "#FFFFFF", "#000000", "#000000", "#c0c0c0"]}
-          locations={[0.0, 0.3, 0.4, 0.6, 0.9]}
-          style={styles.barbellStopper}
-        ></LinearGradient>
-        {fortyFives !== 0 ? (
-          <Animated.View
-            style={[
-              styles.fortyFivesBlock,
-              { backgroundColor: selectedTheme.FORTY_FIVES_PLATE },
-              { opacity: opacity },
-            ]}
-          >
-            <Text style={styles.plateText}>45lb</Text>
-            <Text style={styles.numberOfPlates}>{fortyFives}</Text>
-          </Animated.View>
-        ) : (
-          ""
-        )}
-        {twentyFives !== 0 ? (
-          <Animated.View
-            style={[
-              styles.twentyFivesBlock,
-              { backgroundColor: selectedTheme.TWENTY_FIVES_PLATE },
-              { opacity: opacity },
-            ]}
-          >
-            <Text style={styles.plateText}>25lb</Text>
-            <Text style={styles.numberOfPlates}>{twentyFives}</Text>
-          </Animated.View>
-        ) : (
-          ""
-        )}
-        {tens !== 0 ? (
-          <Animated.View
-            style={[
-              styles.tensBlock,
-              { backgroundColor: selectedTheme.TENS_PLATE },
-              { opacity: opacity },
-            ]}
-          >
-            <Text style={styles.plateText}>10lb</Text>
-            <Text style={styles.numberOfPlates}>{tens}</Text>
-          </Animated.View>
-        ) : (
-          ""
-        )}
-        {fives !== 0 ? (
-          <Animated.View
-            style={[
-              styles.fivesBlock,
-              { backgroundColor: selectedTheme.FIVES_PLATE },
-              { opacity: opacity },
-            ]}
-          >
-            <Text style={styles.plateText}>5lb</Text>
-            <Text style={styles.numberOfPlates}>{fives}</Text>
-          </Animated.View>
-        ) : (
-          ""
-        )}
-        {twoAndAHalves !== 0 ? (
-          <Animated.View
-            style={[
-              styles.twoAndAHalvesBlock,
-              { backgroundColor: selectedTheme.TWO_AND_A_HALVES_PLATE },
-              { opacity: opacity },
-            ]}
-          >
-            <Text style={styles.plateText}>2.5lb</Text>
-            <Text style={styles.numberOfPlates}>{twoAndAHalves}</Text>
-          </Animated.View>
-        ) : (
-          ""
-        )}
+        <View style={styles.platesStopperWrap}>
+          <LinearGradient
+            start={[0.0, 0.0]}
+            end={[0.0, 1.0]}
+            colors={["#000000", "#FFFFFF", "#000000", "#000000", "#c0c0c0"]}
+            locations={[0.0, 0.3, 0.4, 0.6, 0.9]}
+            style={styles.barbellStopper}
+          ></LinearGradient>
+          {fortyFives !== 0 ? (
+            <Animated.View
+              style={[
+                styles.fortyFivesBlock,
+                { backgroundColor: selectedTheme.FORTY_FIVES_PLATE },
+                { opacity: opacity },
+              ]}
+            >
+              <Text style={styles.plateText}>45lb</Text>
+              <Text style={styles.numberOfPlates}>{fortyFives}</Text>
+            </Animated.View>
+          ) : (
+            ""
+          )}
+          {twentyFives !== 0 ? (
+            <Animated.View
+              style={[
+                styles.twentyFivesBlock,
+                { backgroundColor: selectedTheme.TWENTY_FIVES_PLATE },
+                { opacity: opacity },
+              ]}
+            >
+              <Text style={styles.plateText}>25lb</Text>
+              <Text style={styles.numberOfPlates}>{twentyFives}</Text>
+            </Animated.View>
+          ) : (
+            ""
+          )}
+          {tens !== 0 ? (
+            <Animated.View
+              style={[
+                styles.tensBlock,
+                { backgroundColor: selectedTheme.TENS_PLATE },
+                { opacity: opacity },
+              ]}
+            >
+              <Text style={styles.plateText}>10lb</Text>
+              <Text style={styles.numberOfPlates}>{tens}</Text>
+            </Animated.View>
+          ) : (
+            ""
+          )}
+          {fives !== 0 ? (
+            <Animated.View
+              style={[
+                styles.fivesBlock,
+                { backgroundColor: selectedTheme.FIVES_PLATE },
+                { opacity: opacity },
+              ]}
+            >
+              <Text style={styles.plateText}>5lb</Text>
+              <Text style={styles.numberOfPlates}>{fives}</Text>
+            </Animated.View>
+          ) : (
+            ""
+          )}
+          {twoAndAHalves !== 0 ? (
+            <Animated.View
+              style={[
+                styles.twoAndAHalvesBlock,
+                { backgroundColor: selectedTheme.TWO_AND_A_HALVES_PLATE },
+                { opacity: opacity },
+              ]}
+            >
+              <Text style={styles.plateText}>2.5lb</Text>
+              <Text style={styles.numberOfPlates}>{twoAndAHalves}</Text>
+            </Animated.View>
+          ) : (
+            ""
+          )}
+        </View>
       </View>
     </>
   );
@@ -128,7 +130,7 @@ const BarbellAnimation = ({
 const styles = StyleSheet.create({
   output: {
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: 50,
     paddingLeft: "8%",
     width: "100%",
     height: 200,
@@ -149,9 +151,10 @@ const styles = StyleSheet.create({
     width: 10,
     height: 40,
     borderTopLeftRadius: 3,
-    position: "absolute",
-    left: "6%",
-    top: 95,
+    // position: "absolute",
+    // left: "6%",
+    top: -5,
+    // left: 120,
     borderBottomLeftRadius: 3,
     borderBottomRightRadius: 3,
     borderTopRightRadius: 3,
@@ -208,6 +211,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "Oswald_400Regular",
     alignSelf: "center",
+  },
+  platesStopperWrap: {
+    width: "100%",
+    flexDirection: "row",
   },
 });
 

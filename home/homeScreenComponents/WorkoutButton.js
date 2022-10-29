@@ -1,5 +1,10 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  KeyboardAvoidingView,
+} from "react-native";
 import { GlossyButton } from "../../components/common";
 import { connect } from "react-redux";
 import { getTheme, getMuscleGroups } from "../../src/actions";
@@ -26,26 +31,26 @@ const WorkoutButton = ({
   };
   return (
     <>
-      <TouchableOpacity
-        style={styles.buttonShape}
-        onPress={handleWorkoutButtonPress}
-      >
-        <GlossyButton
-          width={"100%"}
-          height={50}
-          text="Workout Creator"
-          colors={selectedTheme.BUTTON_BLEND_PRIMARY}
-        />
-      </TouchableOpacity>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleWorkoutButtonPress}>
+          <GlossyButton
+            width={"100%"}
+            height={50}
+            text="Workout Creator"
+            colors={selectedTheme.BUTTON_BLEND_PRIMARY}
+          />
+        </TouchableOpacity>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonShape: {
+  container: {
     width: "75%",
     alignSelf: "center",
-    borderRadius: 10,
+    position: "absolute",
+    bottom: 50,
   },
 });
 

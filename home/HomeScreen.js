@@ -16,6 +16,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../src/actions";
+import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
 const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
   const [barWeight, setBarWeight] = useState(0);
@@ -93,6 +94,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
       TENS_PLATE: "#B9B04D",
       FIVES_PLATE: "#41FF8F",
       TWO_AND_A_HALVES_PLATE: "#A76B6B",
+      INPUT_BLEND_PRIMARY: ["#FFFFFF", "#E0E0E0"],
     });
   };
   const handleLightMode = () => {
@@ -117,6 +119,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
       TENS_PLATE: "#FFEC00",
       FIVES_PLATE: "#538668",
       TWO_AND_A_HALVES_PLATE: "#FF4141",
+      INPUT_BLEND_PRIMARY: ["#FFFFFF", "#E0E0E0"],
     });
   };
 
@@ -128,23 +131,23 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
-        <View style={styles.headerContainer}>
-          <Header />
-        </View>
-        <View style={styles.weightInputsContainer}>
-          <WeightInputs
-            onChangeBarWeight={onChangeBarWeight}
-            onChangeDesiredWeight={onChangeDesiredWeight}
-          />
-        </View>
+        <Header />
+        <WeightInputs
+          onChangeBarWeight={onChangeBarWeight}
+          onChangeDesiredWeight={onChangeDesiredWeight}
+        />
         <CalculateButton
-          // runPlateAnimation={runPlateAnimation}
-          // setRunPlateAnimation={setRunPlateAnimation}
           onPress={calc}
           barWeight={barWeight}
           desiredWeight={desiredWeight}
           perSide={perSide}
         />
+
+        {/* <AntDesign
+          name="heart"
+          size={40}
+          color={selectedTheme.OPTION_DOT_ACTIVE_PRIMARY}
+        /> */}
         {/* <PlatesPerSide
           perSide={perSide}
           fortyFives={fortyFives}
@@ -153,18 +156,16 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
           fives={fives}
           twoAndAHalves={twoAndAHalves}
         /> */}
-        <View style={styles.barbellContainer}>
-          <BarbellAnimation
-            perSide={perSide}
-            fortyFives={fortyFives}
-            twentyFives={twentyFives}
-            tens={tens}
-            fives={fives}
-            twoAndAHalves={twoAndAHalves}
-            runPlateAnimation={runPlateAnimation}
-          />
-        </View>
-        <View style={styles.textContainer}>
+        <BarbellAnimation
+          perSide={perSide}
+          fortyFives={fortyFives}
+          twentyFives={twentyFives}
+          tens={tens}
+          fives={fives}
+          twoAndAHalves={twoAndAHalves}
+          runPlateAnimation={runPlateAnimation}
+        />
+        {/* <View style={styles.textContainer}>
           <TouchableOpacity onPress={handleDarkMode}>
             <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
               dark
@@ -175,10 +176,8 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
               light
             </Text>
           </TouchableOpacity>
-        </View>
-        <View style={styles.workoutButtonContainer}>
-          <WorkoutButton navigation={navigation} />
-        </View>
+        </View> */}
+        <WorkoutButton navigation={navigation} />
       </LinearGradient>
     </>
   );
@@ -187,7 +186,6 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
   },
   headerContainer: {
     marginTop: -60,
@@ -195,6 +193,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   weightInputsContainer: {
+    backgroundColor: "blue",
     width: "100%",
     marginTop: "-10%",
   },
@@ -207,11 +206,13 @@ const styles = StyleSheet.create({
   barbellContainer: {
     position: "relative",
     top: 20,
+    backgroundColor: "yellow",
   },
   textContainer: {
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-evenly",
+    backgroundColor: "green",
   },
   text: {
     fontSize: 20,

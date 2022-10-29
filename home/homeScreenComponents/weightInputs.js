@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { connect } from "react-redux";
 import { getTheme } from "../../src/actions";
+import { LinearGradient } from "expo-linear-gradient";
 const WeightInputs = ({
   onChangeBarWeight,
   onChangeDesiredWeight,
@@ -14,33 +15,53 @@ const WeightInputs = ({
           <Text style={[styles.label, { color: selectedTheme.TEXT_PRIMARY }]}>
             Bar Weight:
           </Text>
-          <TextInput
-            keyboardType="numeric"
-            style={[
-              styles.weightInputField,
-              {
-                color: selectedTheme.TEXT_PRIMARY,
-                borderBottomColor: selectedTheme.TEXT_PRIMARY,
-              },
-            ]}
-            onChangeText={onChangeBarWeight}
-          ></TextInput>
+          <View style={styles.inputShape}>
+            <LinearGradient
+              colors={selectedTheme.INPUT_BLEND_PRIMARY}
+              start={[0, 0.8]}
+              end={[0, 0]}
+              style={styles.inputFill}
+            >
+              <TextInput
+                keyboardType="numeric"
+                style={[
+                  styles.weightInputField,
+                  {
+                    color: selectedTheme.TEXT_PRIMARY,
+                    borderBottomColor: selectedTheme.TEXT_PRIMARY,
+                  },
+                ]}
+                onChangeText={onChangeBarWeight}
+                maxLength={3}
+              ></TextInput>
+            </LinearGradient>
+          </View>
         </View>
         <View style={styles.row}>
           <Text style={[styles.label, { color: selectedTheme.TEXT_PRIMARY }]}>
             Desired Weight:
           </Text>
-          <TextInput
-            keyboardType="numeric"
-            style={[
-              styles.weightInputField,
-              {
-                color: selectedTheme.TEXT_PRIMARY,
-                borderBottomColor: selectedTheme.TEXT_PRIMARY,
-              },
-            ]}
-            onChangeText={onChangeDesiredWeight}
-          ></TextInput>
+          <View style={styles.inputShape}>
+            <LinearGradient
+              colors={selectedTheme.INPUT_BLEND_PRIMARY}
+              start={[0, 0.8]}
+              end={[0, 0]}
+              style={styles.inputFill}
+            >
+              <TextInput
+                keyboardType="numeric"
+                style={[
+                  styles.weightInputField,
+                  {
+                    color: selectedTheme.TEXT_PRIMARY,
+                    borderBottomColor: selectedTheme.TEXT_PRIMARY,
+                  },
+                ]}
+                maxLength={4}
+                onChangeText={onChangeDesiredWeight}
+              ></TextInput>
+            </LinearGradient>
+          </View>
         </View>
       </View>
     </>
@@ -51,8 +72,10 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: "100%",
     alignSelf: "center",
-    marginTop: 20,
+    height: 100,
+    marginTop: "10%",
     justifyContent: "center",
+    alignItems: "center",
   },
   label: {
     fontFamily: "Oswald_400Regular",
@@ -61,22 +84,33 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   row: {
-    marginTop: 20,
+    marginBottom: 20,
     alignSelf: "center",
     flexDirection: "row",
-    paddingHorizontal: 20,
     width: "80%",
     justifyContent: "space-between",
   },
   weightInputField: {
     fontSize: 25,
-    borderWidth: 1,
-    textAlign: "center",
-    borderLeftColor: "transparent",
-    borderTopColor: "transparent",
-    borderRightColor: "transparent",
-    width: "30%",
-    alignSelf: "center",
+    flex: 1,
+  },
+  inputShape: {
+    width: 100,
+    height: 40,
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: 2,
+    elevation: 4,
+  },
+  inputFill: {
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: 10,
+    borderRadius: 50,
   },
 });
 
