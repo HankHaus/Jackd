@@ -4,6 +4,7 @@ import CalculateButton from "./CalculateButton";
 import PlatesPerSide from "./PlatesPerSide";
 import WorkoutButton from "./WorkoutButton";
 import BarbellAnimation from "./BarbellAnimation";
+import SettingsButton from "./SettingsButton";
 
 export {
   Header,
@@ -12,4 +13,5 @@ export {
   PlatesPerSide,
   WorkoutButton,
   BarbellAnimation,
+  SettingsButton,
 };

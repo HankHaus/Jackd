@@ -12,6 +12,7 @@ import {
   CalculateButton,
   WorkoutButton,
   BarbellAnimation,
+  SettingsButton,
 } from "./homeScreenComponents";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
@@ -59,7 +60,6 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
       5 * numberOfFivesPerSide);
     const numberOfTwoAndAHalvesPerSide = Math.floor(weightPerSideAfter5s / 2.5);
     setTwoAndAHalves(numberOfTwoAndAHalvesPerSide);
-
     setPerSide(perSide);
     setRunPlateAnimation(false);
     setTimeout(() => {
@@ -136,6 +136,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
           onChangeBarWeight={onChangeBarWeight}
           onChangeDesiredWeight={onChangeDesiredWeight}
         />
+        <SettingsButton navigation={navigation} />
         <CalculateButton
           onPress={calc}
           barWeight={barWeight}
@@ -143,11 +144,6 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
           perSide={perSide}
         />
 
-        {/* <AntDesign
-          name="heart"
-          size={40}
-          color={selectedTheme.OPTION_DOT_ACTIVE_PRIMARY}
-        /> */}
         {/* <PlatesPerSide
           perSide={perSide}
           fortyFives={fortyFives}
@@ -167,14 +163,14 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
         />
         {/* <View style={styles.textContainer}>
           <TouchableOpacity onPress={handleDarkMode}>
-            <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
-              dark
-            </Text>
+          <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
+          dark
+          </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleLightMode}>
-            <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
-              light
-            </Text>
+          <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
+          light
+          </Text>
           </TouchableOpacity>
         </View> */}
         <WorkoutButton navigation={navigation} />

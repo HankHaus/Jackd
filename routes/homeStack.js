@@ -3,6 +3,7 @@ import { createAppContainer } from "react-navigation";
 import HomeScreen from "../home/HomeScreen";
 import WorkoutCreatorScreen from "../Exercise/WorkoutCreatorScreen";
 import ExercisePlan from "../Exercise/ExercisePlan";
+import SettingsScreen from "../Settings/SettingsScreen";
 const screens = {
   Home: {
     screen: HomeScreen,
@@ -18,6 +19,12 @@ const screens = {
   },
   ExercisePlan: {
     screen: ExercisePlan,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  SettingsScreen: {
+    screen: SettingsScreen,
     navigationOptions: {
       headerShown: false,
     },
