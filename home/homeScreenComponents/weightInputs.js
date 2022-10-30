@@ -27,8 +27,7 @@ const WeightInputs = ({
                 style={[
                   styles.weightInputField,
                   {
-                    color: selectedTheme.TEXT_PRIMARY,
-                    borderBottomColor: selectedTheme.TEXT_PRIMARY,
+                    color: selectedTheme.WEIGHT_INPUT_TEXT_PRIMARY,
                   },
                 ]}
                 onChangeText={onChangeBarWeight}
@@ -53,8 +52,7 @@ const WeightInputs = ({
                 style={[
                   styles.weightInputField,
                   {
-                    color: selectedTheme.TEXT_PRIMARY,
-                    borderBottomColor: selectedTheme.TEXT_PRIMARY,
+                    color: selectedTheme.WEIGHT_INPUT_TEXT_PRIMARY,
                   },
                 ]}
                 maxLength={4}

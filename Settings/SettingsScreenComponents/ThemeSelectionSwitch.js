@@ -10,11 +10,11 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
     getTheme({
       ...selectedTheme,
       theme: "dark",
-      BACKGROUND_BLEND_PRIMARY: ["#002B5B", "#0F3E72"],
+      BACKGROUND_BLEND_PRIMARY: ["#01020D", "#081463"],
       BEHIND_MODAL_BLEND_PRIMARY: ["#FF0000", "transparent"],
-      BUTTON_BLEND_PRIMARY: ["#7B113A", "#A62E5D"],
-      BUTTON_TEXT_PRIMARY: "#FFF8EA",
-      SHADOW_PRIMARY: "#FFFFFF",
+      BUTTON_BLEND_PRIMARY: ["#78FF00", "#63C60C"],
+      BUTTON_TEXT_PRIMARY: "#000000",
+      SHADOW_PRIMARY: "#000000",
       MODAL_BACKGROUND_BLEND_PRIMARY: ["#C3FFCD", "#7B7A72"],
       GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#000A3D", "#C3FFCD"],
       GET_STARTED_BUTTON_BLEND_PRIMARY: ["#2AFF4E", "#C3FFCD"],
@@ -23,13 +23,14 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
       OPTION_DOT_INACTIVE_PRIMARY: "#C3FFCD",
       OPTION_DOT_BORDER_ACTIVE_PRIMARY: "#C800FF",
       OPTION_DOT_ACTIVE_PRIMARY: "#FF9D4C",
-      SELECTED_OPTION_DOT_BLEND_PRIMARY: ["#000A3D", "#8C0718"],
+      SELECTED_OPTION_DOT_BLEND_PRIMARY: ["#FF6F6F", "#8C0718"],
       FORTY_FIVES_PLATE: "#AAFF00",
       TWENTY_FIVES_PLATE: "#8885A4",
       TENS_PLATE: "#B9B04D",
       FIVES_PLATE: "#41FF8F",
       TWO_AND_A_HALVES_PLATE: "#A76B6B",
       INPUT_BLEND_PRIMARY: ["#FFFFFF", "#E0E0E0"],
+      WEIGHT_INPUT_TEXT_PRIMARY: "#000000",
     });
   };
   const handleLightMode = () => {
@@ -56,6 +57,7 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
       FIVES_PLATE: "#538668",
       TWO_AND_A_HALVES_PLATE: "#FF4141",
       INPUT_BLEND_PRIMARY: ["#FFFFFF", "#E0E0E0"],
+      WEIGHT_INPUT_TEXT_PRIMARY: "#000000",
     });
   };
 
@@ -68,7 +70,9 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
         end={[1, 0.1]}
       >
         <View style={styles.labelAndSwitchWrapper}>
-          <Text style={styles.label}>Theme</Text>
+          <Text style={[{ color: selectedTheme.TEXT_PRIMARY }, styles.label]}>
+            Theme
+          </Text>
           <View style={styles.switchShape}>
             <LinearGradient
               colors={selectedTheme.INPUT_BLEND_PRIMARY}
