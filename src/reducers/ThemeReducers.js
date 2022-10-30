@@ -2,6 +2,7 @@ import { THEME } from "../actions/types";
 
 const initialState = {
   selectedTheme: {
+    theme: "light",
     BLACK: "#000000",
     SHADOW_PRIMARY: "#7B7A72",
     BEHIND_MODAL_BLEND_PRIMARY: ["#000000", "transparent"],

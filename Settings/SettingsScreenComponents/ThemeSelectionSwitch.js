@@ -1,21 +1,15 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Keyboard,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../../src/actions";
-import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
 const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
   const handleDarkMode = () => {
     getTheme({
       ...selectedTheme,
+      theme: "dark",
       BACKGROUND_BLEND_PRIMARY: ["#002B5B", "#0F3E72"],
       BEHIND_MODAL_BLEND_PRIMARY: ["#FF0000", "transparent"],
       BUTTON_BLEND_PRIMARY: ["#7B113A", "#A62E5D"],
@@ -41,6 +35,7 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
   const handleLightMode = () => {
     getTheme({
       ...selectedTheme,
+      theme: "light",
       BACKGROUND_BLEND_PRIMARY: ["#A2D2FF", "#FEF9EF"],
       BEHIND_MODAL_BLEND_PRIMARY: ["#000000", "transparent"],
       BUTTON_BLEND_PRIMARY: ["#ff865e", "#FFA081"],
@@ -82,14 +77,33 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
               style={styles.switchFill}
             >
               <LinearGradient
-                colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+                colors={
+                  selectedTheme.theme === "dark"
+                    ? ["transparent", "transparent"]
+                    : selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY
+                }
                 start={[0, 0.8]}
                 end={[0, 0]}
-                style={styles.lightActive}
+                style={styles.active}
               >
-                <Text style={styles.switchOptionText}>Light</Text>
+                <TouchableOpacity onPress={handleLightMode}>
+                  <Text style={styles.switchOptionText}>Light</Text>
+                </TouchableOpacity>
               </LinearGradient>
-              <Text style={styles.switchOptionText}>Dark</Text>
+              <LinearGradient
+                colors={
+                  selectedTheme.theme === "dark"
+                    ? selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY
+                    : ["transparent", "transparent"]
+                }
+                start={[0, 0.8]}
+                end={[0, 0]}
+                style={styles.active}
+              >
+                <TouchableOpacity onPress={handleDarkMode}>
+                  <Text style={styles.switchOptionText}>Dark</Text>
+                </TouchableOpacity>
+              </LinearGradient>
             </LinearGradient>
           </View>
         </View>
@@ -107,7 +121,6 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     height: 80,
-    // backgroundColor: "red",
     alignItems: "center",
     fontFamily: "Oswald_400Regular",
     justifyContent: "space-between",
@@ -117,7 +130,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   switchShape: {
-    // backgroundColor: "red",
     width: 150,
     height: 50,
     padding: 2,
@@ -140,13 +152,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingRight: 20,
   },
+
   switchOptionText: {
     fontSize: 20,
   },
-  lightActive: {
-    width: 75,
+  active: {
+    width: 70,
     height: "100%",
     borderRadius: 50,
     justifyContent: "center",
