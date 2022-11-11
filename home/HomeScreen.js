@@ -13,6 +13,7 @@ import {
   WorkoutButton,
   BarbellAnimation,
   SettingsButton,
+  PerSideOrTotalToggle,
 } from "./homeScreenComponents";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
@@ -42,29 +43,37 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
     const initialWeight = (desiredWeight -= barWeight);
     const perSide = initialWeight / 2;
     let totalWeightPerSide = initialWeight / 2;
-    const numberOfFortyFivesPerSide = Math.floor(totalWeightPerSide / 45);
-    setFortyFives(numberOfFortyFivesPerSide);
-    const weightPerSideAfter45s = (totalWeightPerSide -=
-      45 * numberOfFortyFivesPerSide);
-    const numberOfTwentyFivesPerSide = Math.floor(weightPerSideAfter45s / 25);
-    setwentyFives(numberOfTwentyFivesPerSide);
-    const weightPerSideAfter25s = (totalWeightPerSide -=
-      25 * numberOfTwentyFivesPerSide);
-    const numberOfTensPerSide = Math.floor(weightPerSideAfter25s / 10);
-    setTens(numberOfTensPerSide);
-    const weightPerSideAfter10s = (totalWeightPerSide -=
-      10 * numberOfTensPerSide);
-    const numberOfFivesPerSide = Math.floor(weightPerSideAfter10s / 5);
-    setFives(numberOfFivesPerSide);
-    const weightPerSideAfter5s = (totalWeightPerSide -=
-      5 * numberOfFivesPerSide);
-    const numberOfTwoAndAHalvesPerSide = Math.floor(weightPerSideAfter5s / 2.5);
-    setTwoAndAHalves(numberOfTwoAndAHalvesPerSide);
-    setPerSide(perSide);
-    setRunPlateAnimation(false);
-    setTimeout(() => {
-      setRunPlateAnimation(true);
-    }, 301);
+    if (totalWeightPerSide % 2.5 === 0) {
+      const numberOfFortyFivesPerSide = Math.floor(totalWeightPerSide / 45);
+      setFortyFives(numberOfFortyFivesPerSide);
+      const weightPerSideAfter45s = (totalWeightPerSide -=
+        45 * numberOfFortyFivesPerSide);
+      const numberOfTwentyFivesPerSide = Math.floor(weightPerSideAfter45s / 25);
+      setwentyFives(numberOfTwentyFivesPerSide);
+      const weightPerSideAfter25s = (totalWeightPerSide -=
+        25 * numberOfTwentyFivesPerSide);
+      const numberOfTensPerSide = Math.floor(weightPerSideAfter25s / 10);
+      setTens(numberOfTensPerSide);
+      const weightPerSideAfter10s = (totalWeightPerSide -=
+        10 * numberOfTensPerSide);
+      const numberOfFivesPerSide = Math.floor(weightPerSideAfter10s / 5);
+      setFives(numberOfFivesPerSide);
+      const weightPerSideAfter5s = (totalWeightPerSide -=
+        5 * numberOfFivesPerSide);
+      const numberOfTwoAndAHalvesPerSide = Math.floor(
+        weightPerSideAfter5s / 2.5
+      );
+      setTwoAndAHalves(numberOfTwoAndAHalvesPerSide);
+      setPerSide(perSide);
+      setRunPlateAnimation(false);
+      setTimeout(() => {
+        setRunPlateAnimation(true);
+      }, 301);
+    } else {
+      alert(
+        "Please enter a weight that allows for even distribution of plates"
+      );
+    }
   };
   function check(x) {
     if (x === NaN) {
@@ -93,6 +102,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
           desiredWeight={desiredWeight}
           perSide={perSide}
         />
+        <PerSideOrTotalToggle />
 
         {/* <PlatesPerSide
           perSide={perSide}
@@ -123,7 +133,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
           </Text>
           </TouchableOpacity>
         </View> */}
-        <WorkoutButton navigation={navigation} />
+        {/* <WorkoutButton navigation={navigation} /> */}
       </LinearGradient>
     </>
   );
@@ -132,12 +142,9 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: "10%",
   },
-  headerContainer: {
-    marginTop: -60,
-    marginBottom: 60,
-    width: "100%",
-  },
+
   weightInputsContainer: {
     backgroundColor: "blue",
     width: "100%",

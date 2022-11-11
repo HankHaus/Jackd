@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../../src/actions";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 const Header = ({ onPress, selectedTheme }) => {
   return (
     <>
@@ -32,9 +34,15 @@ const Header = ({ onPress, selectedTheme }) => {
             <LinearGradient
               style={styles.getStartedButton}
               colors={selectedTheme.GET_STARTED_BUTTON_BLEND_PRIMARY}
-              start={[1, 0.1]}
-              end={[1, 0.9]}
-            ></LinearGradient>
+              start={[1, 0.0]}
+              end={[1, 2]}
+            >
+              <MaterialCommunityIcons
+                name="weight-lifter"
+                size={85}
+                color={"black"}
+              />
+            </LinearGradient>
           </LinearGradient>
         </TouchableOpacity>
       </View>

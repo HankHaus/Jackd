@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+import Entypo from "@expo/vector-icons/Entypo";
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
+import React, { useState, useEffect, useCallback } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Provider } from "react-redux";
 import store from "./src/store";
@@ -9,8 +12,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import HomeScreen from "./home/HomeScreen";
-import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import Navigator from "./routes/homeStack";
 import {
   Oswald_200ExtraLight,
@@ -20,6 +21,7 @@ import {
   Oswald_600SemiBold,
   Oswald_700Bold,
 } from "@expo-google-fonts/oswald";
+import { Lobster_400Regular } from "@expo-google-fonts/lobster";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
@@ -29,18 +31,47 @@ const DismissKeyboard = ({ children }) => (
   </TouchableWithoutFeedback>
 );
 
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
-  let [fontsLoaded, error] = useFonts({
-    Lobster_400Regular,
-    Oswald_400Regular,
-  });
-  if (!fontsLoaded) {
-    return <AppLoading />;
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await Font.loadAsync({
+          Oswald_200ExtraLight,
+          Oswald_300Light,
+          Oswald_400Regular,
+          Oswald_500Medium,
+          Oswald_600SemiBold,
+          Oswald_700Bold,
+          Lobster_400Regular,
+        });
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return null;
   }
+
   return (
     <Provider store={store}>
       <DismissKeyboard>
-        <View style={styles.container}>
+        <View style={styles.container} onLayout={onLayoutRootView}>
           <Navigator />
           <StatusBar style="auto" />
         </View>
@@ -48,12 +79,8 @@ export default function App() {
     </Provider>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
 });

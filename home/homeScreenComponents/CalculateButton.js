@@ -31,7 +31,7 @@ const CalculateButton = ({
 const styles = StyleSheet.create({
   buttonContainer: {
     width: "50%",
-    marginTop: 50,
+    marginTop: "20%",
     alignSelf: "center",
     borderRadius: 10,
   },

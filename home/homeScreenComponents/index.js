@@ -5,6 +5,7 @@ import PlatesPerSide from "./PlatesPerSide";
 import WorkoutButton from "./WorkoutButton";
 import BarbellAnimation from "./BarbellAnimation";
 import SettingsButton from "./SettingsButton";
+import PerSideOrTotalToggle from "./PerSideOrTotalToggle";
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   WorkoutButton,
   BarbellAnimation,
   SettingsButton,
+  PerSideOrTotalToggle,
 };

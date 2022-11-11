@@ -9,10 +9,9 @@ import {
 
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme } from "../src/actions";
+import { getTheme } from "../../redux/actions";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import ThemeSelectionSwitch from "./SettingsScreenComponents/ThemeSelectionSwitch";
-import { Ionicons } from "@expo/vector-icons";
 
 const SettingsScreen = ({ navigation, getTheme, selectedTheme }) => {
   return (
@@ -23,14 +22,7 @@ const SettingsScreen = ({ navigation, getTheme, selectedTheme }) => {
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons
-            name="chevron-back-sharp"
-            size={30}
-            color={selectedTheme.theme === "dark" ? "white" : "black"}
-            style={styles.backButton}
-          />
-        </TouchableOpacity>
+        {/* <TouchableOpacity style={styles.backButton}></TouchableOpacity> */}
         <ThemeSelectionSwitch />
       </LinearGradient>
     </>
@@ -71,8 +63,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   backButton: {
-    marginTop: "15%",
-    marginLeft: "5%",
+    position: "absolute",
+    top: 50,
+    left: 20,
+    backgroundColor: "red",
+    width: 50,
+    height: 50,
+    borderRadius: 50,
   },
 });
 

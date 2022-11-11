@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { View, StyleSheet, Text, Animated, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme } from "../../src/actions";
+import { getTheme, getBarbellToggleStatus } from "../../src/actions";
 
 // const { width: SCREEN_WIDTH } = Dimensions.get("window").width;
 const BarbellAnimation = ({
@@ -13,6 +13,8 @@ const BarbellAnimation = ({
   twoAndAHalves,
   selectedTheme,
   runPlateAnimation,
+  barbellToggleSelection,
+  getBarbellToggleStatus,
 }) => {
   const opacity = useRef(new Animated.Value(0)).current;
   const slide = useRef(new Animated.Value(0)).current;
@@ -53,70 +55,100 @@ const BarbellAnimation = ({
           ></LinearGradient>
           {fortyFives !== 0 ? (
             <Animated.View
-              style={[
-                styles.fortyFivesBlock,
-                { backgroundColor: selectedTheme.FORTY_FIVES_PLATE },
-                { opacity: opacity },
-              ]}
+              style={[styles.fortyFivesBlock, { opacity: opacity }]}
             >
-              <Text style={styles.plateText}>45lb</Text>
-              <Text style={styles.numberOfPlates}>{fortyFives}</Text>
+              <LinearGradient
+                style={styles.gradientFIll}
+                start={[0.0, 0.0]}
+                end={[0.0, 1.0]}
+                colors={["#e0aa3e", "#f9f295", "#b88a44", "#EACE7A"]}
+                locations={[0.0, 0.1, 0.3, 0.9]}
+              >
+                <Text style={styles.plateText}>45lb</Text>
+                <Text style={styles.numberOfPlates}>
+                  {barbellToggleSelection.perSide ? fortyFives : fortyFives * 2}
+                </Text>
+              </LinearGradient>
             </Animated.View>
           ) : (
             ""
           )}
           {twentyFives !== 0 ? (
             <Animated.View
-              style={[
-                styles.twentyFivesBlock,
-                { backgroundColor: selectedTheme.TWENTY_FIVES_PLATE },
-                { opacity: opacity },
-              ]}
+              style={[styles.twentyFivesBlock, { opacity: opacity }]}
             >
-              <Text style={styles.plateText}>25lb</Text>
-              <Text style={styles.numberOfPlates}>{twentyFives}</Text>
+              <LinearGradient
+                style={styles.gradientFIll}
+                start={[0.0, 0.0]}
+                end={[0.0, 1.0]}
+                colors={["#e0aa3e", "#f9f295", "#b88a44", "#EACE7A"]}
+                locations={[0.0, 0.1, 0.3, 0.9]}
+              >
+                <Text style={styles.plateText}>25lb</Text>
+                <Text style={styles.numberOfPlates}>
+                  {barbellToggleSelection.perSide
+                    ? twentyFives
+                    : twentyFives * 2}
+                </Text>
+              </LinearGradient>
             </Animated.View>
           ) : (
             ""
           )}
           {tens !== 0 ? (
-            <Animated.View
-              style={[
-                styles.tensBlock,
-                { backgroundColor: selectedTheme.TENS_PLATE },
-                { opacity: opacity },
-              ]}
-            >
-              <Text style={styles.plateText}>10lb</Text>
-              <Text style={styles.numberOfPlates}>{tens}</Text>
+            <Animated.View style={[styles.tensBlock, { opacity: opacity }]}>
+              <LinearGradient
+                style={styles.gradientFIll}
+                start={[0.0, 0.0]}
+                end={[0.0, 1.0]}
+                colors={["#e0aa3e", "#f9f295", "#b88a44", "#EACE7A"]}
+                locations={[0.0, 0.1, 0.3, 0.9]}
+              >
+                <Text style={styles.plateText}>10lb</Text>
+                <Text style={styles.numberOfPlates}>
+                  {barbellToggleSelection.perSide ? tens : tens * 2}
+                </Text>
+              </LinearGradient>
             </Animated.View>
           ) : (
             ""
           )}
           {fives !== 0 ? (
-            <Animated.View
-              style={[
-                styles.fivesBlock,
-                { backgroundColor: selectedTheme.FIVES_PLATE },
-                { opacity: opacity },
-              ]}
-            >
-              <Text style={styles.plateText}>5lb</Text>
-              <Text style={styles.numberOfPlates}>{fives}</Text>
+            <Animated.View style={[styles.fivesBlock, { opacity: opacity }]}>
+              <LinearGradient
+                style={styles.gradientFIll}
+                start={[0.0, 0.0]}
+                end={[0.0, 1.0]}
+                colors={["#e0aa3e", "#f9f295", "#b88a44", "#EACE7A"]}
+                locations={[0.0, 0.1, 0.3, 0.9]}
+              >
+                <Text style={styles.plateText}>5lb</Text>
+                <Text style={styles.numberOfPlates}>
+                  {barbellToggleSelection.perSide ? fives : fives * 2}
+                </Text>
+              </LinearGradient>
             </Animated.View>
           ) : (
             ""
           )}
           {twoAndAHalves !== 0 ? (
             <Animated.View
-              style={[
-                styles.twoAndAHalvesBlock,
-                { backgroundColor: selectedTheme.TWO_AND_A_HALVES_PLATE },
-                { opacity: opacity },
-              ]}
+              style={[styles.twoAndAHalvesBlock, { opacity: opacity }]}
             >
-              <Text style={styles.plateText}>2.5lb</Text>
-              <Text style={styles.numberOfPlates}>{twoAndAHalves}</Text>
+              <LinearGradient
+                style={styles.gradientFIll}
+                start={[0.0, 0.0]}
+                end={[0.0, 1.0]}
+                colors={["#e0aa3e", "#f9f295", "#b88a44", "#EACE7A"]}
+                locations={[0.0, 0.1, 0.3, 0.9]}
+              >
+                <Text style={styles.plateText}>2.5lb</Text>
+                <Text style={styles.numberOfPlates}>
+                  {barbellToggleSelection.perSide
+                    ? twoAndAHalves
+                    : twoAndAHalves * 2}
+                </Text>
+              </LinearGradient>
             </Animated.View>
           ) : (
             ""
@@ -130,19 +162,16 @@ const BarbellAnimation = ({
 const styles = StyleSheet.create({
   output: {
     alignSelf: "center",
-    marginTop: 50,
+    flex: 1,
     paddingLeft: "8%",
     width: "100%",
-    height: 200,
     flexDirection: "row",
-    paddingTop: 100,
+    paddingTop: "25%",
+    marginTop: "8%",
   },
   barbell: {
     width: "100%",
     height: 25,
-    position: "absolute",
-    top: 102,
-    left: 0,
     marginLeft: -70,
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2,
@@ -151,58 +180,59 @@ const styles = StyleSheet.create({
     width: 10,
     height: 40,
     borderTopLeftRadius: 3,
-    // position: "absolute",
-    // left: "6%",
-    top: -5,
-    // left: 120,
+    top: -8,
+    marginLeft: "-80%",
     borderBottomLeftRadius: 3,
     borderBottomRightRadius: 3,
     borderTopRightRadius: 3,
   },
   fortyFivesBlock: {
-    paddingHorizontal: 10,
-    height: 170,
+    height: 180,
     marginTop: -80,
-    borderRadius: 10,
-    justifyContent: "space-between",
-    paddingVertical: "4%",
+    justifyContent: "center",
     alignItems: "center",
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: "#000000",
   },
   twentyFivesBlock: {
-    paddingHorizontal: 5,
-    height: 150,
+    height: 155,
     marginTop: -65,
     justifyContent: "space-between",
-    paddingVertical: "5%",
     borderRadius: 10,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: "#000000",
   },
   tensBlock: {
-    paddingHorizontal: 5,
-    height: 120,
-    marginTop: -50,
+    height: 130,
+    marginTop: -55,
     justifyContent: "space-between",
-    paddingVertical: "4%",
     borderRadius: 10,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: "#000000",
   },
   fivesBlock: {
-    paddingHorizontal: 5,
-    height: 100,
-    marginTop: -40,
+    height: 110,
+    marginTop: -45,
     justifyContent: "space-between",
-    paddingVertical: "3%",
     borderRadius: 10,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: "#000000",
   },
   twoAndAHalvesBlock: {
-    paddingHorizontal: 5,
-    height: 80,
-    backgroundColor: "pink",
-    marginTop: -30,
+    height: 90,
+    marginTop: -35,
     justifyContent: "space-between",
-    paddingVertical: "2%",
     borderRadius: 10,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: "#000000",
   },
   numberOfPlates: {
-    color: "white",
+    color: "black",
     fontSize: 20,
     fontFamily: "Oswald_400Regular",
     alignSelf: "center",
@@ -216,12 +246,22 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
   },
+  gradientFIll: {
+    width: "100.5%",
+    height: "100%",
+    borderRadius: 10,
+    justifyContent: "space-between",
+    paddingVertical: "4%",
+    paddingHorizontal: 4,
+  },
 });
 
 const mapStateToProps = (state) => ({
   selectedTheme: state.theme.selectedTheme,
+  barbellToggleSelection: state.barbell.barbellToggleSelection,
 });
 
 export default connect(mapStateToProps, {
   getTheme,
+  getBarbellToggleStatus,
 })(BarbellAnimation);

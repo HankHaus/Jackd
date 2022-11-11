@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme } from "../../src/actions";
+import { getTheme } from "../../../redux/actions";
 
 const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
   const handleDarkMode = () => {
@@ -12,8 +12,8 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
       theme: "dark",
       BACKGROUND_BLEND_PRIMARY: ["#01020D", "#081463"],
       BEHIND_MODAL_BLEND_PRIMARY: ["#FF0000", "transparent"],
-      BUTTON_BLEND_PRIMARY: ["#0059FF", "#3277F9"],
-      BUTTON_TEXT_PRIMARY: "#ffffff",
+      BUTTON_BLEND_PRIMARY: ["#78FF00", "#63C60C"],
+      BUTTON_TEXT_PRIMARY: "#000000",
       SHADOW_PRIMARY: "#000000",
       MODAL_BACKGROUND_BLEND_PRIMARY: ["#C3FFCD", "#7B7A72"],
       GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#000A3D", "#C3FFCD"],
@@ -23,7 +23,7 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
       OPTION_DOT_INACTIVE_PRIMARY: "#C3FFCD",
       OPTION_DOT_BORDER_ACTIVE_PRIMARY: "#C800FF",
       OPTION_DOT_ACTIVE_PRIMARY: "#FF9D4C",
-      SELECTED_OPTION_DOT_BLEND_PRIMARY: ["#0059FF", "#00FFF9"],
+      SELECTED_OPTION_DOT_BLEND_PRIMARY: ["#FF6F6F", "#8C0718"],
       FORTY_FIVES_PLATE: "#AAFF00",
       TWENTY_FIVES_PLATE: "#8885A4",
       TENS_PLATE: "#B9B04D",
@@ -43,8 +43,8 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
       BUTTON_TEXT_PRIMARY: "#34000E",
       SHADOW_PRIMARY: "#000000",
       MODAL_BACKGROUND_BLEND_PRIMARY: ["#6C464F", "#B891A9"],
-      GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#000", "#000"],
-      GET_STARTED_BUTTON_BLEND_PRIMARY: ["#FF7171", "#FFFFFF", "#CF00FF"],
+      GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY: ["#31CF0A", "#C7F0BD"],
+      GET_STARTED_BUTTON_BLEND_PRIMARY: ["#24AB03", "#197502"],
       TEXT_PRIMARY: "#000000",
       OPTION_DOT_BORDER_INACTIVE_PRIMARY: "#76B486",
       OPTION_DOT_INACTIVE_PRIMARY: "#9EFFB7",
@@ -71,7 +71,7 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
       >
         <View style={styles.labelAndSwitchWrapper}>
           <Text style={[{ color: selectedTheme.TEXT_PRIMARY }, styles.label]}>
-            Theme
+            Themes
           </Text>
           <View style={styles.switchShape}>
             <LinearGradient
@@ -117,11 +117,11 @@ const ThemeSelectionSwitch = ({ navigation, getTheme, selectedTheme }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  // container: {
+  // flex: 1,
+  // },
   labelAndSwitchWrapper: {
-    marginTop: 10,
+    marginTop: 100,
     width: "100%",
     flexDirection: "row",
     height: 80,

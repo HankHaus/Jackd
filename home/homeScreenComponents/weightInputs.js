@@ -55,7 +55,7 @@ const WeightInputs = ({
                     color: selectedTheme.WEIGHT_INPUT_TEXT_PRIMARY,
                   },
                 ]}
-                maxLength={4}
+                maxLength={5}
                 onChangeText={onChangeDesiredWeight}
               ></TextInput>
             </LinearGradient>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignSelf: "center",
     height: 100,
-    marginTop: "10%",
+    marginTop: "12%",
     justifyContent: "center",
     alignItems: "center",
   },

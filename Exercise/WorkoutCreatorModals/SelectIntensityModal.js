@@ -20,7 +20,6 @@ const SelectIntensityModal = ({
 
   const handleKeepTrackOfNumberOfSelections = (choice) => {
     if (choicesMade.includes(choice)) {
-      null;
     } else {
       choicesMade.push(choice);
     }
