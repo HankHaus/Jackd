@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
   label: {
     fontFamily: "Oswald_400Regular",
     fontSize: 25,
-    fontWeight: "bold",
     alignSelf: "center",
   },
   row: {

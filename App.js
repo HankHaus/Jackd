@@ -36,8 +36,32 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
 
+  // useEffect(() => {
+  //   async function prepare() {
+  //     try {
+  //       await Font.loadAsync({
+  //         Oswald_200ExtraLight,
+  //         Oswald_300Light,
+  //         Oswald_400Regular,
+  //         Oswald_500Medium,
+  //         Oswald_600SemiBold,
+  //         Oswald_700Bold,
+  //         Lobster_400Regular,
+  //       });
+  //       //wait for fonts to load
+  //  //     await new Promise((resolve) => setTimeout(resolve, 1000));
+  //     } catch (e) {
+  //       console.warn(e);
+  //     } finally {
+  //       setAppIsReady(true);
+  //     }
+  //   }
+
+  //   prepare();
+  // }, []);
   useEffect(() => {
     async function prepare() {
+      // load fonts, wait for fonts to load and hide splash screen
       try {
         await Font.loadAsync({
           Oswald_200ExtraLight,
@@ -48,6 +72,7 @@ export default function App() {
           Oswald_700Bold,
           Lobster_400Regular,
         });
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       } catch (e) {
         console.warn(e);
       } finally {
