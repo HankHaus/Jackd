@@ -1,26 +1,19 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Keyboard,
-} from "react-native";
+import { StyleSheet, Keyboard } from "react-native";
 import {
   Header,
   WeightInputs,
   CalculateButton,
-  WorkoutButton,
+  //   WorkoutButton,
   BarbellAnimation,
   SettingsButton,
   PerSideOrTotalToggle,
-} from "./homeScreenComponents";
+} from "./BarbellScreenComponents";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme } from "../src/actions";
-import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { getTheme } from "../../src/actions";
 
-const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
+const BarbellScreen = ({ navigation, selectedTheme }) => {
   const [barWeight, setBarWeight] = useState(0);
   const [desiredWeight, setDesiredWeight] = useState(0);
   const [perSide, setPerSide] = useState(0);
@@ -104,14 +97,6 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
         />
         <PerSideOrTotalToggle />
 
-        {/* <PlatesPerSide
-          perSide={perSide}
-          fortyFives={fortyFives}
-          twentyFives={twentyFives}
-          tens={tens}
-          fives={fives}
-          twoAndAHalves={twoAndAHalves}
-        /> */}
         <BarbellAnimation
           perSide={perSide}
           fortyFives={fortyFives}
@@ -121,18 +106,7 @@ const HomeScreen = ({ navigation, getTheme, selectedTheme }) => {
           twoAndAHalves={twoAndAHalves}
           runPlateAnimation={runPlateAnimation}
         />
-        {/* <View style={styles.textContainer}>
-          <TouchableOpacity onPress={handleDarkMode}>
-          <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
-          dark
-          </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handleLightMode}>
-          <Text style={[styles.text, { color: selectedTheme.TEXT_PRIMARY }]}>
-          light
-          </Text>
-          </TouchableOpacity>
-        </View> */}
+
         {/* <WorkoutButton navigation={navigation} /> */}
       </LinearGradient>
     </>
@@ -178,4 +152,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getTheme,
-})(HomeScreen);
+})(BarbellScreen);

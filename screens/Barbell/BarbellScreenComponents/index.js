@@ -1,8 +1,7 @@
 import Header from "./Header";
-import WeightInputs from "./weightInputs";
+import WeightInputs from "./WeightInputs";
 import CalculateButton from "./CalculateButton";
-import PlatesPerSide from "./PlatesPerSide";
-import WorkoutButton from "./WorkoutButton";
+// import WorkoutButton from "./WorkoutButton";
 import BarbellAnimation from "./BarbellAnimation";
 import SettingsButton from "./SettingsButton";
 import PerSideOrTotalToggle from "./PerSideOrTotalToggle";
@@ -11,8 +10,7 @@ export {
   Header,
   WeightInputs,
   CalculateButton,
-  PlatesPerSide,
-  WorkoutButton,
+  //   WorkoutButton,
   BarbellAnimation,
   SettingsButton,
   PerSideOrTotalToggle,

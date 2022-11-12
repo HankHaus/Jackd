@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
-import logo3 from "../../assets/logo3.png";
-import DARK_MODE_LOGO from "../../assets/DARK_MODE_LOGO.png";
+import logo3 from "../../../assets/logo3.png";
+import DARK_MODE_LOGO from "../../../assets/DARK_MODE_LOGO.png";
 import { connect } from "react-redux";
-import { getTheme, getBarbellToggleStatus } from "../../src/actions";
+import { getTheme } from "../../../src/actions";
 const Header = ({ selectedTheme }) => {
   return (
     <>

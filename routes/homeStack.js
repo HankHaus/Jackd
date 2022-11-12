@@ -1,12 +1,12 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-import HomeScreen from "../home/HomeScreen";
+import BarbellScreen from "../screens/Barbell/BarbellScreen";
 import WorkoutCreatorScreen from "../Exercise/WorkoutCreatorScreen";
 import ExercisePlan from "../Exercise/ExercisePlan";
-import SettingsScreen from "../Settings/SettingsScreen";
+import SettingsScreen from "../screens/Settings/SettingsScreen";
 const screens = {
   Home: {
-    screen: HomeScreen,
+    screen: BarbellScreen,
     navigationOptions: {
       headerShown: false,
     },

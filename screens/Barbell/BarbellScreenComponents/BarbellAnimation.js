@@ -1,20 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { View, StyleSheet, Text, Animated, Dimensions } from "react-native";
+import { View, StyleSheet, Text, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme, getBarbellToggleStatus } from "../../src/actions";
+import { getTheme, getBarbellToggleStatus } from "../../../src/actions";
 
-// const { width: SCREEN_WIDTH } = Dimensions.get("window").width;
 const BarbellAnimation = ({
   fortyFives,
   twentyFives,
   tens,
   fives,
   twoAndAHalves,
-  selectedTheme,
   runPlateAnimation,
   barbellToggleSelection,
-  getBarbellToggleStatus,
 }) => {
   const opacity = useRef(new Animated.Value(0)).current;
   const slide = useRef(new Animated.Value(0)).current;

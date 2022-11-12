@@ -1,19 +1,13 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Keyboard,
-} from "react-native";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme } from "../../redux/actions";
-import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { getTheme } from "../../src/actions";
 import ThemeSelectionSwitch from "./SettingsScreenComponents/ThemeSelectionSwitch";
+import { Ionicons } from "@expo/vector-icons";
 
-const SettingsScreen = ({ navigation, getTheme, selectedTheme }) => {
+const SettingsScreen = ({ navigation, selectedTheme }) => {
   return (
     <>
       <LinearGradient
@@ -22,7 +16,14 @@ const SettingsScreen = ({ navigation, getTheme, selectedTheme }) => {
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
-        {/* <TouchableOpacity style={styles.backButton}></TouchableOpacity> */}
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons
+            name="chevron-back-sharp"
+            size={30}
+            color={selectedTheme.theme === "dark" ? "white" : "black"}
+            style={styles.backButton}
+          />
+        </TouchableOpacity>
         <ThemeSelectionSwitch />
       </LinearGradient>
     </>
@@ -63,13 +64,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   backButton: {
-    position: "absolute",
-    top: 50,
-    left: 20,
-    backgroundColor: "red",
-    width: 50,
-    height: 50,
-    borderRadius: 50,
+    marginTop: "15%",
+    marginLeft: "5%",
   },
 });
 

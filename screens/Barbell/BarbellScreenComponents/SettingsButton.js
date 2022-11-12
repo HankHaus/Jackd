@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { GlossyButton } from "../../components/common";
 import { connect } from "react-redux";
-import { getTheme } from "../../src/actions";
+import { getTheme } from "../../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 
