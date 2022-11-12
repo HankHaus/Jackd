@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { connect } from "react-redux";
-import { getTheme } from "../../src/actions";
+import { getTheme } from "../../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
 const WeightInputs = ({
   onChangeBarWeight,

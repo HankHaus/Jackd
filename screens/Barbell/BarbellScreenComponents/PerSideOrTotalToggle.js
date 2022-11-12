@@ -7,9 +7,8 @@ import {
   Dimensions,
 } from "react-native";
 
-import { GlossyButton } from "../../components/common";
 import { connect } from "react-redux";
-import { getTheme, getBarbellToggleStatus } from "../../src/actions";
+import { getTheme, getBarbellToggleStatus } from "../../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
 
 const SCREEN_WIDTH = Dimensions.get("window");

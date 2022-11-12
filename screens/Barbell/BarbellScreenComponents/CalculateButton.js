@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { GlossyButton } from "../../components/common";
+import { GlossyButton } from "../../../components/common";
 import { connect } from "react-redux";
-import { getTheme } from "../../src/actions";
+import { getTheme } from "../../../src/actions";
 
 const CalculateButton = ({
   onPress,
