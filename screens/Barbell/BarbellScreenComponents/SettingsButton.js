@@ -5,6 +5,7 @@ import {
   View,
   Animated,
   Dimensions,
+  Keyboard,
 } from "react-native";
 import { connect } from "react-redux";
 import { getTheme, getMenuToggleStatus } from "../../../src/actions";
@@ -29,6 +30,7 @@ const SettingsButton = ({
   const moveWeightButtonHorizontal = useRef(new Animated.Value(0)).current;
   const moveProfileButtonVertical = useRef(new Animated.Value(0)).current;
   const handleOpenMenu = () => {
+    Keyboard.dismiss();
     getMenuToggleStatus({
       ...menuToggleState,
       open: true,
@@ -169,7 +171,7 @@ const SettingsButton = ({
             <TouchableOpacity
               onPress={() => {
                 handleCollapseMenu();
-                // navigation.navigate("SettingsScreen");
+                navigation.navigate("SettingsScreen");
               }}
               style={[styles.settingButtonBacking]}
             >
