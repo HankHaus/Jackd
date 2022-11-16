@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, Keyboard } from "react-native";
+import { StyleSheet, Keyboard, TouchableWithoutFeedback } from "react-native";
 import {
   Header,
   WeightInputs,
   CalculateButton,
-  //   WorkoutButton,
   BarbellAnimation,
   SettingsButton,
   PerSideOrTotalToggle,
@@ -77,38 +76,43 @@ const BarbellScreen = ({ navigation, selectedTheme }) => {
 
   return (
     <>
-      <LinearGradient
-        style={styles.container}
-        colors={selectedTheme.BACKGROUND_BLEND_PRIMARY}
-        start={[0.8, 0.9]}
-        end={[1, 0.1]}
+      <TouchableWithoutFeedback
+        activeOpacity={1}
+        onPress={() => Keyboard.dismiss()}
       >
-        <Header />
-        <WeightInputs
-          onChangeBarWeight={onChangeBarWeight}
-          onChangeDesiredWeight={onChangeDesiredWeight}
-        />
-        <SettingsButton navigation={navigation} />
-        <CalculateButton
-          onPress={calc}
-          barWeight={barWeight}
-          desiredWeight={desiredWeight}
-          perSide={perSide}
-        />
-        <PerSideOrTotalToggle />
+        <LinearGradient
+          style={styles.container}
+          colors={selectedTheme.BACKGROUND_BLEND_PRIMARY}
+          start={[0.8, 0.9]}
+          end={[1, 0.1]}
+        >
+          <Header />
+          <WeightInputs
+            onChangeBarWeight={onChangeBarWeight}
+            onChangeDesiredWeight={onChangeDesiredWeight}
+          />
+          <SettingsButton navigation={navigation} />
+          <CalculateButton
+            onPress={calc}
+            barWeight={barWeight}
+            desiredWeight={desiredWeight}
+            perSide={perSide}
+          />
+          <PerSideOrTotalToggle />
 
-        <BarbellAnimation
-          perSide={perSide}
-          fortyFives={fortyFives}
-          twentyFives={twentyFives}
-          tens={tens}
-          fives={fives}
-          twoAndAHalves={twoAndAHalves}
-          runPlateAnimation={runPlateAnimation}
-        />
+          <BarbellAnimation
+            perSide={perSide}
+            fortyFives={fortyFives}
+            twentyFives={twentyFives}
+            tens={tens}
+            fives={fives}
+            twoAndAHalves={twoAndAHalves}
+            runPlateAnimation={runPlateAnimation}
+          />
 
-        {/* <WorkoutButton navigation={navigation} /> */}
-      </LinearGradient>
+          {/* <WorkoutButton navigation={navigation} /> */}
+        </LinearGradient>
+      </TouchableWithoutFeedback>
     </>
   );
 };

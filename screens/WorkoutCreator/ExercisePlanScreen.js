@@ -1,29 +1,36 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
 import {
-  MuscleGroupsModal,
-  SelectIntensityModal,
-} from "./WorkoutCreatorModals";
+  View,
+  StyleSheet,
+  Text,
+  FlatList,
+  Dimensions,
+  Animated,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
+
 import { connect } from "react-redux";
 import {
   getTheme,
   getMuscleGroups,
   getCurrentChestWorkout,
 } from "../../src/actions";
+import { Foundation, Entypo } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import Header from "./WorkoutCreatorComponents/Header";
 import chestExercises from "../../src/chestExercises";
 import armExercises from "../../src/armExercises";
 import backExercises from "../../src/backExercises";
 import legExercises from "../../src/legExercises";
 
+const SPACING = 20;
+const AVATAR_SIZE = 70;
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const ITEM_SIZE = AVATAR_SIZE + SPACING * 3;
 const ExercisePlanScreen = ({
   navigation,
   selectedTheme,
   muscleGroupsData,
-  getMuscleGroups,
-  getCurrentChestWorkout,
-  currentChestWorkout,
 }) => {
   const [runChest, setRunChest] = useState(false);
   const [runArms, setRunArms] = useState(false);
@@ -176,6 +183,51 @@ const ExercisePlanScreen = ({
     muscleGroupsData.back ? addOneBackLift() : null;
     muscleGroupsData.legs ? addOneLegLift() : null;
   }, []);
+
+  const scrollY = useRef(new Animated.Value(0)).current;
+  // const renderItem = ({ item, index }) => {
+  //   const inputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 2)];
+  //   const scale = scrollY.interpolate({
+  //     inputRange,
+  //     outputRange: [1, 1, 1, 0],
+  //   });
+  //   return (
+  //     <Animated.View
+  //       style={{
+  //         width: "90%",
+  //         height: 100,
+  //         backgroundColor: "red",
+  //         borderRadius: 10,
+  //         // marginVertical: 10,
+  //         margin: SPACING,
+  //         alignSelf: "center",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         shadowColor: "#000",
+  //         shadowOffset: {
+  //           width: 0,
+  //           height: 3,
+  //         },
+  //         shadowOpacity: 0.5,
+  //         shadowRadius: 3,
+  //         elevation: 5,
+  //         transform: [{ scale }],
+  //       }}
+  //     >
+  //       {/* <Text style={styles.liftName}>{item.name}</Text> */}
+  //       <View
+  //         style={{
+  //           width: AVATAR_SIZE,
+  //           height: AVATAR_SIZE,
+  //           borderRadius: AVATAR_SIZE,
+  //           backgroundColor: "blue",
+  //         }}
+  //       />
+  //     </Animated.View>
+  //   );
+  //   console.log(item);
+  // };
+
   return (
     <>
       <LinearGradient
@@ -184,18 +236,71 @@ const ExercisePlanScreen = ({
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
-        <FlatList
-          contentContainerStyle={{
-            alignItems: "center",
-            marginTop: "50%",
-          }}
+        <Animated.FlatList
           data={totalLifts}
-          keyExtractor={(lift) => lift.name}
-          renderItem={({ item }) => {
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+            { useNativeDriver: true }
+          )}
+          contentContainerStyle={{
+            padding: SPACING,
+            paddingTop: StatusBar.currentHeight || 42,
+          }}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item, index }) => {
+            const inputRange = [
+              -1,
+              0,
+              ITEM_SIZE * index,
+              ITEM_SIZE * (index + 2),
+            ];
+            const scale = scrollY.interpolate({
+              inputRange,
+              outputRange: [1, 1, 1, 0],
+            });
             return (
-              <View>
-                <Text>{item.name}</Text>
-              </View>
+              <Animated.View
+                style={{
+                  flexDirection: "row",
+                  // padding: SPACING,
+                  marginBottom: SPACING,
+                  backgroundColor: "red",
+                  shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 10,
+                  },
+                  shadowOpacity: 0.4,
+                  shadowRadius: 12,
+                  elevation: 5,
+
+                  borderRadius: 16,
+                  transform: [{ scale }],
+                }}
+              >
+                <LinearGradient
+                  style={styles.card}
+                  colors={["rgba(114, 195, 227, 1)", "rgba(0, 81, 153, 1)"]}
+                >
+                  <View
+                    style={{
+                      marginRight: SPACING / 2,
+                      width: AVATAR_SIZE / 200,
+                      height: AVATAR_SIZE,
+                      borderRadius: AVATAR_SIZE,
+                      backgroundColor: "transparent",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  ></View>
+                  <View>
+                    <Text style={styles.name}>{item.name}</Text>
+                    <Text style={[styles.name, { opacity: 0.8 }]}>
+                      Sets: {item.sets}
+                    </Text>
+                  </View>
+                </LinearGradient>
+              </Animated.View>
             );
           }}
         />
@@ -206,9 +311,34 @@ const ExercisePlanScreen = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    flex: 1,
+    height: "100%",
+  },
+  testShape: {
+    width: "90%",
+    height: ITEM_SIZE,
+    borderRadius: 10,
+    margin: SPACING,
+    alignSelf: "center",
     justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+  },
+  card: {
+    alignItems: "center",
+    flexDirection: "row",
+    flex: 1,
+    borderRadius: 16,
+    padding: SPACING,
+  },
+  name: {
+    fontSize: SCREEN_WIDTH / 19,
+    fontFamily: "Oswald_400Regular",
   },
 });
 
