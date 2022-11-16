@@ -1,7 +1,8 @@
-import { MUSCLE_GROUPS } from "../actions/types";
+import { MUSCLE_GROUPS, CURRENT_CHEST_WORKOUT } from "../actions/types";
 
 const initialState = {
   muscleGroupsData: {},
+  currentChestWorkout: {},
 };
 
 const WorkoutCreatorReducers = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const WorkoutCreatorReducers = (state = initialState, action) => {
       return {
         ...state,
         muscleGroupsData: action.payload,
+      };
+    case CURRENT_CHEST_WORKOUT:
+      return {
+        ...state,
+        currentChestWorkout: action.payload,
       };
     default:
       return state;

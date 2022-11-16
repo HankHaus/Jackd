@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
-import { getTheme } from "../../src/actions";
+import { getTheme } from "../../../src/actions";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const Header = ({ onPress, selectedTheme }) => {
   return (
     <>
@@ -27,19 +34,19 @@ const Header = ({ onPress, selectedTheme }) => {
         <TouchableOpacity style={styles.circleContainer} onPress={onPress}>
           <LinearGradient
             style={styles.getStartedButtonBorder}
-            colors={selectedTheme.GET_STARTED_BUTTON_BORDER_BLEND_PRIMARY}
-            start={[0.7, 0.9]}
-            end={[1.2, 0.3]}
+            colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+            start={[0.0, 0.0]}
+            end={[0.0, 1.0]}
           >
             <LinearGradient
               style={styles.getStartedButton}
-              colors={selectedTheme.GET_STARTED_BUTTON_BLEND_PRIMARY}
-              start={[1, 0.0]}
-              end={[1, 2]}
+              colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+              start={[0.0, 0.8]}
+              end={[0.0, 0.0]}
             >
               <MaterialCommunityIcons
                 name="weight-lifter"
-                size={85}
+                size={SCREEN_WIDTH / 4}
                 color={"black"}
               />
             </LinearGradient>
@@ -60,26 +67,27 @@ const styles = StyleSheet.create({
   },
   title: {
     alignSelf: "center",
-    fontSize: 50,
+    fontSize: SCREEN_WIDTH / 8,
   },
   subTitle: {
     textAlign: "center",
-    fontSize: 20,
+    fontSize: SCREEN_WIDTH / 18,
   },
   subtitleContainer: {
     width: "100%",
     marginTop: 15,
   },
   getStartedButtonBorder: {
-    width: 200,
-    height: 200,
+    width: SCREEN_WIDTH / 1.8,
+    height: SCREEN_WIDTH / 1.8,
+    padding: SCREEN_WIDTH / 55,
     borderRadius: 200,
     justifyContent: "center",
     alignItems: "center",
   },
   getStartedButton: {
-    width: 195,
-    height: 195,
+    width: "100%",
+    height: "100%",
     borderRadius: 200,
     justifyContent: "center",
     alignItems: "center",

@@ -5,7 +5,7 @@ import {
   SelectIntensityModal,
 } from "./WorkoutCreatorModals";
 import { connect } from "react-redux";
-import { getTheme, getMuscleGroups } from "../src/actions";
+import { getTheme, getMuscleGroups } from "../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
 import Header from "./WorkoutCreatorComponents/Header";
 
@@ -91,6 +91,7 @@ const WorkoutCreatorScreen = ({
         )}
         {selectIntensityModal && (
           <SelectIntensityModal
+            navigation={navigation}
             selectedMuscleGroups={selectedMuscleGroups}
             onPressStartWorkout={handleStartWorkout}
           />

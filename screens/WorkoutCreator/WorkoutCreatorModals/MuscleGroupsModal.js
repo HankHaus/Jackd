@@ -1,10 +1,18 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import { connect } from "react-redux";
-import { getMuscleGroups, getTheme } from "../../src/actions";
-import LinearBottomSheet from "../../components/common/LinearBottomSheet";
+import { getMuscleGroups, getTheme } from "../../../src/actions";
+import LinearBottomSheet from "../../../components/common/LinearBottomSheet";
+import { LinearGradient } from "expo-linear-gradient";
 const viewPosition = -500;
-
+import { GlossyButton } from "../../../components/common";
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const MuscleGroupsModal = ({
   selectedTheme,
   selectedMuscleGroups,
@@ -58,14 +66,11 @@ const MuscleGroupsModal = ({
                     },
                   ]}
                 >
-                  <View
-                    style={[
-                      styles.optionDot,
-                      {
-                        backgroundColor:
-                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
-                      },
-                    ]}
+                  <LinearGradient
+                    colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+                    start={[0, 0.8]}
+                    end={[0, 0]}
+                    style={[styles.optionDot]}
                   />
                 </View>
               </TouchableOpacity>
@@ -134,14 +139,11 @@ const MuscleGroupsModal = ({
                     },
                   ]}
                 >
-                  <View
-                    style={[
-                      styles.optionDot,
-                      {
-                        backgroundColor:
-                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
-                      },
-                    ]}
+                  <LinearGradient
+                    colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+                    start={[0, 0.8]}
+                    end={[0, 0]}
+                    style={[styles.optionDot]}
                   />
                 </View>
               </TouchableOpacity>
@@ -211,14 +213,11 @@ const MuscleGroupsModal = ({
                     },
                   ]}
                 >
-                  <View
-                    style={[
-                      styles.optionDot,
-                      {
-                        backgroundColor:
-                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
-                      },
-                    ]}
+                  <LinearGradient
+                    colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+                    start={[0, 0.8]}
+                    end={[0, 0]}
+                    style={[styles.optionDot]}
                   />
                 </View>
               </TouchableOpacity>
@@ -287,14 +286,11 @@ const MuscleGroupsModal = ({
                     },
                   ]}
                 >
-                  <View
-                    style={[
-                      styles.optionDot,
-                      {
-                        backgroundColor:
-                          selectedTheme.OPTION_DOT_ACTIVE_PRIMARY,
-                      },
-                    ]}
+                  <LinearGradient
+                    colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+                    start={[0, 0.8]}
+                    end={[0, 0]}
+                    style={[styles.optionDot]}
                   />
                 </View>
               </TouchableOpacity>
@@ -348,14 +344,20 @@ const MuscleGroupsModal = ({
               style={styles.nextButtonContainer}
               onPress={onPressNext}
             >
-              <Text
+              {/* <Text
                 style={[
                   styles.nextButtonText,
                   { color: selectedTheme.TEXT_PRIMARY },
                 ]}
               >
                 Next
-              </Text>
+              </Text> */}
+              <GlossyButton
+                height={50}
+                width={"100%"}
+                text="Next"
+                colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
+              />
             </TouchableOpacity>
           ) : (
             <View />
@@ -378,22 +380,21 @@ const styles = StyleSheet.create({
     width: "80%",
     alignSelf: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: "10%",
   },
   title: {
-    fontSize: 22,
+    fontSize: SCREEN_WIDTH / 18,
     fontWeight: "bold",
     textAlign: "center",
   },
   optionStack: {
     width: "80%",
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: "8%",
   },
   spacer: {
-    width: "100%",
-    marginTop: 20,
-    height: 100,
+    marginTop: "5%",
+    height: SCREEN_WIDTH / 4,
   },
   option: {
     width: "55%",
@@ -404,18 +405,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   optionText: {
-    fontSize: 25,
+    fontSize: SCREEN_WIDTH / 18 + 1,
     fontWeight: "bold",
   },
   optionTextInactive: {
-    fontSize: 25,
+    fontSize: SCREEN_WIDTH / 18,
     opacity: 0.4,
   },
   optionDotInactiveBorder: {
-    width: 30,
-    height: 30,
+    width: SCREEN_WIDTH / 12,
+    height: SCREEN_WIDTH / 12,
     borderRadius: 30,
-    marginHorizontal: 10,
+    marginHorizontal: SCREEN_WIDTH / 35,
     alignItems: "center",
     justifyContent: "center",
     opacity: 0.4,
@@ -428,24 +429,26 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   optionDotBorder: {
-    width: 30,
-    height: 30,
+    width: SCREEN_WIDTH / 12,
+    height: SCREEN_WIDTH / 12,
     borderRadius: 30,
-    marginHorizontal: 10,
+    marginHorizontal: SCREEN_WIDTH / 35,
     justifyContent: "center",
     alignItems: "center",
   },
   optionDot: {
-    width: 28,
-    height: 28,
-    borderRadius: 28,
+    width: SCREEN_WIDTH / 14,
+    height: SCREEN_WIDTH / 14,
+    borderRadius: 30,
     alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
   dotWrapper: {
     flexDirection: "row",
   },
   nextButtonContainer: {
-    width: "80%",
+    width: "50%",
     height: 50,
     alignSelf: "center",
     justifyContent: "center",

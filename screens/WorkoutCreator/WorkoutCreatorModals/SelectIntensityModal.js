@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import { getMuscleGroups, getTheme } from "../../src/actions";
-import LinearBottomSheet from "../../components/common/LinearBottomSheet";
+import { getMuscleGroups, getTheme } from "../../../src/actions";
+import LinearBottomSheet from "../../../components/common/LinearBottomSheet";
 import { LinearGradient } from "expo-linear-gradient";
-import { GlossyButton } from "../../components/common";
+import { GlossyButton } from "../../../components/common";
 const viewPosition = -500;
 
 const SelectIntensityModal = ({
@@ -15,6 +15,7 @@ const SelectIntensityModal = ({
   onPressClose,
   opacity,
   onPressStartWorkout,
+  navigation,
 }) => {
   const [choicesMade, setChoicesMade] = useState([]);
 
@@ -61,7 +62,14 @@ const SelectIntensityModal = ({
         opacity={opacity}
       >
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>
+          <Text
+            style={[
+              styles.title,
+              {
+                color: selectedTheme.TEXT_PRIMARY,
+              },
+            ]}
+          >
             Select your intensity level for each muscle group
           </Text>
         </View>
@@ -85,8 +93,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.chestIntensity === 1
                       ? [
@@ -125,8 +133,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.chestIntensity === 5
                       ? [
@@ -165,8 +173,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.chestIntensity === 10
                       ? [
@@ -219,8 +227,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.armsIntensity === 1
                       ? [
@@ -259,8 +267,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.armsIntensity === 5
                       ? [
@@ -299,8 +307,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.armsIntensity === 10
                       ? [
@@ -353,8 +361,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.backIntensity === 1
                       ? [
@@ -393,8 +401,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.backIntensity === 5
                       ? [
@@ -433,8 +441,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.backIntensity === 10
                       ? [
@@ -487,8 +495,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.legsIntensity === 1
                       ? [
@@ -527,8 +535,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.legsIntensity === 5
                       ? [
@@ -567,8 +575,8 @@ const SelectIntensityModal = ({
               >
                 <LinearGradient
                   colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
-                  start={(0, 0.4)}
-                  end={(0, 1)}
+                  start={[0, 0.8]}
+                  end={[0, 0.0]}
                   style={
                     muscleGroupsData.legsIntensity === 10
                       ? [
@@ -606,7 +614,9 @@ const SelectIntensityModal = ({
           {selectedMuscleGroups.length === choicesMade.length ? (
             <TouchableOpacity
               style={styles.button}
-              onPress={onPressStartWorkout}
+              onPress={() => {
+                navigation.navigate("ExercisePlanScreen");
+              }}
             >
               <GlossyButton
                 height={50}

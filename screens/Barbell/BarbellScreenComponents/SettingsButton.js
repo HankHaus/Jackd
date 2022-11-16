@@ -204,7 +204,7 @@ const SettingsButton = ({
             <TouchableOpacity
               onPress={() => {
                 handleCollapseMenu();
-                // navigation.navigate("SettingsScreen");
+                navigation.navigate("WorkoutCreator");
               }}
               style={[styles.settingButtonBacking]}
             >
