@@ -22,6 +22,7 @@ import chestExercises from "../../src/chestExercises";
 import armExercises from "../../src/armExercises";
 import backExercises from "../../src/backExercises";
 import legExercises from "../../src/legExercises";
+import GlossyButton from "../../components/common/GlossyButton";
 
 const SPACING = 20;
 const AVATAR_SIZE = 70;
@@ -185,48 +186,6 @@ const ExercisePlanScreen = ({
   }, []);
 
   const scrollY = useRef(new Animated.Value(0)).current;
-  // const renderItem = ({ item, index }) => {
-  //   const inputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 2)];
-  //   const scale = scrollY.interpolate({
-  //     inputRange,
-  //     outputRange: [1, 1, 1, 0],
-  //   });
-  //   return (
-  //     <Animated.View
-  //       style={{
-  //         width: "90%",
-  //         height: 100,
-  //         backgroundColor: "red",
-  //         borderRadius: 10,
-  //         // marginVertical: 10,
-  //         margin: SPACING,
-  //         alignSelf: "center",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //         shadowColor: "#000",
-  //         shadowOffset: {
-  //           width: 0,
-  //           height: 3,
-  //         },
-  //         shadowOpacity: 0.5,
-  //         shadowRadius: 3,
-  //         elevation: 5,
-  //         transform: [{ scale }],
-  //       }}
-  //     >
-  //       {/* <Text style={styles.liftName}>{item.name}</Text> */}
-  //       <View
-  //         style={{
-  //           width: AVATAR_SIZE,
-  //           height: AVATAR_SIZE,
-  //           borderRadius: AVATAR_SIZE,
-  //           backgroundColor: "blue",
-  //         }}
-  //       />
-  //     </Animated.View>
-  //   );
-  //   console.log(item);
-  // };
 
   return (
     <>
@@ -245,6 +204,7 @@ const ExercisePlanScreen = ({
           contentContainerStyle={{
             padding: SPACING,
             paddingTop: StatusBar.currentHeight || 42,
+            paddingBottom: "20%",
           }}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => {
@@ -304,6 +264,29 @@ const ExercisePlanScreen = ({
             );
           }}
         />
+        <LinearGradient
+          colors={[
+            "rgba(0, 0, 0, 1)",
+            "rgba(145, 145, 145, 0.6)",
+            "rgba(0, 0, 0, 1)",
+          ]}
+          start={[0.0, 0.0]}
+          end={[0.0, 1]}
+          locations={[0.0, 0.5, 1]}
+          style={styles.bottomBlock}
+        >
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Home")}
+            style={styles.buttonContainer}
+          >
+            <GlossyButton
+              height={"100%"}
+              width={"80%"}
+              text="Home"
+              colors={selectedTheme.BUTTON_BLEND_PRIMARY}
+            />
+          </TouchableOpacity>
+        </LinearGradient>
       </LinearGradient>
     </>
   );
@@ -313,21 +296,21 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
   },
-  testShape: {
-    width: "90%",
-    height: ITEM_SIZE,
-    borderRadius: 10,
-    margin: SPACING,
+  buttonContainer: {
+    width: "50%",
     alignSelf: "center",
+    height: "60%",
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
+  },
+  bottomBlock: {
+    height: "10%",
+    width: "100%",
+    justifyContent: "center",
+    backgroundColor: "black",
+    alignItems: "center",
+    position: "absolute",
+    bottom: 0,
   },
   card: {
     alignItems: "center",

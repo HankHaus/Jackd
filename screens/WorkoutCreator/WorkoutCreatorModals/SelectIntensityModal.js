@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { getMuscleGroups, getTheme } from "../../../src/actions";
@@ -25,6 +25,7 @@ const SelectIntensityModal = ({
       choicesMade.push(choice);
     }
   };
+
   const handleSelectChestIntensity = (intensityLevel) => {
     getMuscleGroups({
       ...muscleGroupsData,

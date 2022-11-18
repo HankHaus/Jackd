@@ -8,7 +8,11 @@ import {
   Keyboard,
 } from "react-native";
 import { connect } from "react-redux";
-import { getTheme, getMenuToggleStatus } from "../../../src/actions";
+import {
+  getTheme,
+  getMenuToggleStatus,
+  getMuscleGroups,
+} from "../../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   Ionicons,
@@ -23,6 +27,8 @@ const SettingsButton = ({
   selectedTheme,
   menuToggleState,
   getMenuToggleStatus,
+  getMuscleGroups,
+  muscleGroupsData,
 }) => {
   const opacity = useRef(new Animated.Value(0)).current;
   const moveSettingsButtonLeft = useRef(new Animated.Value(0)).current;
@@ -205,6 +211,7 @@ const SettingsButton = ({
               onPress={() => {
                 handleCollapseMenu();
                 navigation.navigate("WorkoutCreator");
+                getMuscleGroups({});
               }}
               style={[styles.settingButtonBacking]}
             >
@@ -222,7 +229,7 @@ const SettingsButton = ({
               </LinearGradient>
             </TouchableOpacity>
           </Animated.View>
-
+          {/* 
           <Animated.View
             style={[
               styles.startingPointForMenuOptions,
@@ -251,7 +258,7 @@ const SettingsButton = ({
                 <Ionicons name="person" size={30} color={"white"} />
               </LinearGradient>
             </TouchableOpacity>
-          </Animated.View>
+          </Animated.View> */}
 
           <Animated.View style={[styles.overlayTest, { opacity: opacity }]} />
         </>
@@ -322,9 +329,11 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => ({
   selectedTheme: state.theme.selectedTheme,
   menuToggleState: state.menu.menuToggleState,
+  muscleGroupsData: state.workoutCreator.muscleGroupsData,
 });
 
 export default connect(mapStateToProps, {
   getTheme,
   getMenuToggleStatus,
+  getMuscleGroups,
 })(SettingsButton);

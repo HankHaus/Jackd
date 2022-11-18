@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import {
   MuscleGroupsModal,
@@ -26,12 +26,19 @@ const WorkoutCreatorScreen = ({
       selectedMuscleGroups.push(muscleGroup);
     }
   };
+
   const handleStartWorkout = () => {
     navigation.navigate("ExercisePlan");
   };
 
   const toggleMuscleGroupsModal = () => {
     setMuscleGroupsModal(!muscleGroupsModal);
+    getMuscleGroups({});
+    setSelectedMuscleGroups([]);
+  };
+  const toggleSelectIntensityModal = () => {
+    setSelectIntensityModal(!selectIntensityModal);
+    getMuscleGroups({});
   };
 
   const onPressNextMuscleGroupsModal = () => {
@@ -81,6 +88,7 @@ const WorkoutCreatorScreen = ({
         </View>
         {muscleGroupsModal && (
           <MuscleGroupsModal
+            onPressClose={toggleMuscleGroupsModal}
             onPressNext={onPressNextMuscleGroupsModal}
             selectedMuscleGroups={selectedMuscleGroups}
             handleSelectChest={handleSelectChest}
@@ -91,6 +99,7 @@ const WorkoutCreatorScreen = ({
         )}
         {selectIntensityModal && (
           <SelectIntensityModal
+            onPressClose={toggleSelectIntensityModal}
             navigation={navigation}
             selectedMuscleGroups={selectedMuscleGroups}
             onPressStartWorkout={handleStartWorkout}
