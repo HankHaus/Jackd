@@ -282,6 +282,7 @@ const ExercisePlanScreen = ({
             <GlossyButton
               height={"100%"}
               width={"80%"}
+              fontSize={SCREEN_WIDTH / 13}
               text="Home"
               colors={selectedTheme.BUTTON_BLEND_PRIMARY}
             />

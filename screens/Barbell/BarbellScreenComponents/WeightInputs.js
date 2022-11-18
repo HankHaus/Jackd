@@ -1,8 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, Dimensions } from "react-native";
 import { connect } from "react-redux";
 import { getTheme } from "../../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const WeightInputs = ({
   onChangeBarWeight,
   onChangeDesiredWeight,
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: "Oswald_400Regular",
-    fontSize: 25,
+    fontSize: SCREEN_WIDTH / 16,
     alignSelf: "center",
   },
   row: {

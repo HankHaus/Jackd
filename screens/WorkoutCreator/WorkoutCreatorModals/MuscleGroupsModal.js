@@ -354,6 +354,7 @@ const MuscleGroupsModal = ({
               </Text> */}
               <GlossyButton
                 height={50}
+                fontSize={SCREEN_WIDTH / 13}
                 width={"100%"}
                 text="Next"
                 colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}

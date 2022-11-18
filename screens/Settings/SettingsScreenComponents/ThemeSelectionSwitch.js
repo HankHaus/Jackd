@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../../../src/actions";
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const ThemeSelectionSwitch = ({ getTheme, selectedTheme }) => {
   const handleDarkMode = () => {
     getTheme({
@@ -133,10 +140,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
   },
   label: {
-    fontSize: 30,
+    fontSize: SCREEN_WIDTH / 13,
   },
   switchShape: {
-    width: 150,
+    width: SCREEN_WIDTH / 2.5,
     height: 50,
     padding: 2,
     backgroundColor: "white",
@@ -161,10 +168,10 @@ const styles = StyleSheet.create({
   },
 
   switchOptionText: {
-    fontSize: 20,
+    fontSize: SCREEN_WIDTH / 20,
   },
   active: {
-    width: 70,
+    width: SCREEN_WIDTH / 5.5,
     height: "100%",
     borderRadius: 50,
     justifyContent: "center",

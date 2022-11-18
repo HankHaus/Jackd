@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import { GlossyButton } from "../../../components/common";
 import { connect } from "react-redux";
 import { getTheme } from "../../../src/actions";
-
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const CalculateButton = ({
   onPress,
   barWeight,
@@ -20,6 +20,7 @@ const CalculateButton = ({
         <GlossyButton
           height={50}
           width={"100%"}
+          fontSize={SCREEN_WIDTH / 15}
           text="Calculate"
           colors={selectedTheme.BUTTON_BLEND_PRIMARY}
         />

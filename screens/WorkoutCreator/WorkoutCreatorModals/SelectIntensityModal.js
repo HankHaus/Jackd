@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import { connect } from "react-redux";
 import { getMuscleGroups, getTheme } from "../../../src/actions";
 import LinearBottomSheet from "../../../components/common/LinearBottomSheet";
@@ -7,6 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { GlossyButton } from "../../../components/common";
 const viewPosition = -500;
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const SelectIntensityModal = ({
   selectedMuscleGroups,
   selectedTheme,
@@ -622,8 +629,9 @@ const SelectIntensityModal = ({
               <GlossyButton
                 height={50}
                 width={"100%"}
+                fontSize={SCREEN_WIDTH / 13}
                 text="Start Workout"
-                colors={selectedTheme.BUTTON_BLEND_PRIMARY}
+                colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
               />
             </TouchableOpacity>
           ) : null}
@@ -657,7 +665,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   title: {
-    fontSize: 22,
+    fontSize: SCREEN_WIDTH / 18,
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -679,13 +687,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   optionLabel: {
-    fontSize: 22,
+    fontSize: SCREEN_WIDTH / 18,
     fontWeight: "bold",
     justifySelf: "center",
     alignSelf: "center",
   },
   optionTextInactive: {
-    fontSize: 22,
+    fontSize: SCREEN_WIDTH / 19,
     fontWeight: "bold",
     alignSelf: "center",
     opacity: 0.5,
@@ -696,17 +704,17 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   optionInactiveBorder: {
-    width: 35,
-    height: 35,
-    borderRadius: 50,
+    width: SCREEN_WIDTH / 10,
+    height: SCREEN_WIDTH / 10,
+    borderRadius: SCREEN_WIDTH / 10,
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
   },
   optionActiveBorder: {
-    width: 42,
-    height: 42,
-    borderRadius: 50,
+    width: SCREEN_WIDTH / 9,
+    height: SCREEN_WIDTH / 9,
+    borderRadius: SCREEN_WIDTH / 9,
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -719,8 +727,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   intensityOption: {
-    width: 42,
-    height: 42,
+    width: SCREEN_WIDTH / 10,
+    height: SCREEN_WIDTH / 10,
+    borderRadius: SCREEN_WIDTH / 10,
+    // backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
   },

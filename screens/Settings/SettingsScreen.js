@@ -1,5 +1,10 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+  StatusBar,
+} from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
@@ -7,6 +12,7 @@ import { getTheme } from "../../src/actions";
 import ThemeSelectionSwitch from "./SettingsScreenComponents/ThemeSelectionSwitch";
 import { Ionicons } from "@expo/vector-icons";
 
+const SCREEN_WIDTH = Dimensions.get("window").width;
 const SettingsScreen = ({ navigation, selectedTheme }) => {
   return (
     <>
@@ -16,10 +22,13 @@ const SettingsScreen = ({ navigation, selectedTheme }) => {
         start={[0.8, 0.9]}
         end={[1, 0.1]}
       >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          style={styles.backButtonWrap}
+          onPress={() => navigation.goBack()}
+        >
           <Ionicons
             name="chevron-back-sharp"
-            size={30}
+            size={SCREEN_WIDTH / 15}
             color={selectedTheme.theme === "dark" ? "white" : "black"}
             style={styles.backButton}
           />
@@ -38,6 +47,11 @@ const styles = StyleSheet.create({
     marginTop: -60,
     marginBottom: 60,
     width: "100%",
+  },
+  backButtonWrap: {
+    marginTop: 42,
+    marginLeft: SCREEN_WIDTH / 30,
+    width: SCREEN_WIDTH / 10,
   },
   weightInputsContainer: {
     backgroundColor: "blue",

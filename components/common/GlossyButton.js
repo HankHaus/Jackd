@@ -4,7 +4,14 @@ import { connect } from "react-redux";
 import { getTheme } from "../../src/actions";
 import { LinearGradient } from "expo-linear-gradient";
 
-const GlossyButton = ({ colors, width, height, text, selectedTheme }) => {
+const GlossyButton = ({
+  colors,
+  width,
+  height,
+  text,
+  selectedTheme,
+  fontSize,
+}) => {
   return (
     <>
       <View
@@ -33,7 +40,7 @@ const GlossyButton = ({ colors, width, height, text, selectedTheme }) => {
           <Text
             style={[
               styles.buttonText,
-              { color: selectedTheme.BUTTON_TEXT_PRIMARY },
+              { color: selectedTheme.BUTTON_TEXT_PRIMARY, fontSize: fontSize },
             ]}
           >
             {text}
@@ -54,7 +61,6 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   buttonText: {
-    fontSize: 30,
     alignSelf: "center",
     position: "absolute",
     justifyContent: "center",
