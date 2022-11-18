@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: 60,
     width: "100%",
   },
+
   backButtonWrap: {
     marginTop: 42,
     marginLeft: SCREEN_WIDTH / 30,
