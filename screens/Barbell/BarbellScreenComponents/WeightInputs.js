@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
     fontFamily: "Oswald_400Regular",
     fontSize: SCREEN_WIDTH / 16,
     alignSelf: "center",
-    // color: TEXT_PRIMARY,
   },
   row: {
     marginBottom: 20,

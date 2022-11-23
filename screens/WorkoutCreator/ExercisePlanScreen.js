@@ -222,7 +222,6 @@ const ExercisePlanScreen = ({
               <Animated.View
                 style={{
                   flexDirection: "row",
-                  // padding: SPACING,
                   marginBottom: SPACING,
                   backgroundColor: "red",
                   shadowColor: "#000",
