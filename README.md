@@ -1,6 +1,6 @@
 # weight_adder
 
-## Run _git clone git@github.com:HankHaus/Weight_Addder.git_
+## Run _git clone git@github.com:HankHaus/Jackd.git_
 
 ---
 
