@@ -26,6 +26,8 @@ const initialState = {
     WHITE: "#fff",
     TEXT_BURGUNDY: "#34000E",
     BUTTON_TEXT_PRIMARY: "#000000",
+    PR_CARD_BLEND_PRIMARY: ["#FFFFFF", "#E0E0E0"],
+    MODAL_TOP_BAR: "#000000",
   },
 };
 

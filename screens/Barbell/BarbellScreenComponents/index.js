@@ -3,7 +3,7 @@ import WeightInputs from "./WeightInputs";
 import CalculateButton from "./CalculateButton";
 // import WorkoutButton from "./WorkoutButton";
 import BarbellAnimation from "./BarbellAnimation";
-import SettingsButton from "./SettingsButton";
+import MenuButton from "./MenuButton";
 import PerSideOrTotalToggle from "./PerSideOrTotalToggle";
 
 export {
@@ -12,6 +12,6 @@ export {
   CalculateButton,
   //   WorkoutButton,
   BarbellAnimation,
-  SettingsButton,
+  MenuButton,
   PerSideOrTotalToggle,
 };

@@ -6,6 +6,7 @@ import {
   Animated,
   Dimensions,
   Keyboard,
+  Text,
 } from "react-native";
 import { connect } from "react-redux";
 import {
@@ -22,7 +23,7 @@ import {
 } from "@expo/vector-icons";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
-const SettingsButton = ({
+const MenuButton = ({
   navigation,
   selectedTheme,
   menuToggleState,
@@ -144,7 +145,7 @@ const SettingsButton = ({
             end={[0, 0]}
             style={styles.buttonFill}
           >
-            <Entypo name="menu" size={33} color={"white"} />
+            <Entypo name="menu" size={SCREEN_WIDTH / 11} color={"white"} />
           </LinearGradient>
         </TouchableOpacity>
       )}
@@ -163,7 +164,11 @@ const SettingsButton = ({
               end={[0, 0]}
               style={styles.buttonFill}
             >
-              <AntDesign name="close" size={30} color={"white"} />
+              <AntDesign
+                name="close"
+                size={SCREEN_WIDTH / 11}
+                color={"white"}
+              />
             </LinearGradient>
           </TouchableOpacity>
           <Animated.View
@@ -187,7 +192,11 @@ const SettingsButton = ({
                 end={[0, 0]}
                 style={styles.buttonFill}
               >
-                <Ionicons name="settings-sharp" size={30} color={"white"} />
+                <Ionicons
+                  name="settings-sharp"
+                  size={SCREEN_WIDTH / 13}
+                  color={"white"}
+                />
               </LinearGradient>
             </TouchableOpacity>
           </Animated.View>
@@ -223,13 +232,13 @@ const SettingsButton = ({
               >
                 <MaterialCommunityIcons
                   name="weight-lifter"
-                  size={30}
+                  size={SCREEN_WIDTH / 14}
                   color={"white"}
                 />
               </LinearGradient>
             </TouchableOpacity>
           </Animated.View>
-          {/* 
+
           <Animated.View
             style={[
               styles.startingPointForMenuOptions,
@@ -245,7 +254,7 @@ const SettingsButton = ({
             <TouchableOpacity
               onPress={() => {
                 handleCollapseMenu();
-                // navigation.navigate("SettingsScreen");
+                navigation.navigate("PRScreen");
               }}
               style={[styles.settingButtonBacking]}
             >
@@ -255,10 +264,15 @@ const SettingsButton = ({
                 end={[0, 0]}
                 style={styles.buttonFill}
               >
-                <Ionicons name="person" size={30} color={"white"} />
+                {/* <Ionicons
+                  name="person"
+                  size={SCREEN_WIDTH / 14}
+                  color={"white"}
+                /> */}
+                <Text style={styles.prText}>PR</Text>
               </LinearGradient>
             </TouchableOpacity>
-          </Animated.View> */}
+          </Animated.View>
 
           <Animated.View style={[styles.overlayTest, { opacity: opacity }]} />
         </>
@@ -277,9 +291,9 @@ const styles = StyleSheet.create({
   menuButtonBacking: {
     backgroundColor: "white",
     padding: 2,
-    width: 50,
-    height: 50,
-    borderRadius: 50,
+    width: SCREEN_WIDTH / 8,
+    height: SCREEN_WIDTH / 8,
+    borderRadius: SCREEN_WIDTH / 8,
     position: "absolute",
     zIndex: 10,
     top: 50,
@@ -296,9 +310,9 @@ const styles = StyleSheet.create({
   settingButtonBacking: {
     backgroundColor: "white",
     padding: 2,
-    width: 50,
-    height: 50,
-    borderRadius: 50,
+    width: SCREEN_WIDTH / 8,
+    height: SCREEN_WIDTH / 8,
+    borderRadius: SCREEN_WIDTH / 8,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -320,9 +334,14 @@ const styles = StyleSheet.create({
   buttonFill: {
     width: "100%",
     height: "100%",
-    borderRadius: 50,
+    borderRadius: SCREEN_WIDTH / 8,
     justifyContent: "center",
     alignItems: "center",
+  },
+  prText: {
+    color: "white",
+    fontSize: SCREEN_WIDTH / 20,
+    fontFamily: "Oswald_700Bold",
   },
 });
 
@@ -336,4 +355,4 @@ export default connect(mapStateToProps, {
   getTheme,
   getMenuToggleStatus,
   getMuscleGroups,
-})(SettingsButton);
+})(MenuButton);

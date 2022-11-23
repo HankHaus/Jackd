@@ -5,7 +5,7 @@ import {
   WeightInputs,
   CalculateButton,
   BarbellAnimation,
-  SettingsButton,
+  MenuButton,
   PerSideOrTotalToggle,
 } from "./BarbellScreenComponents";
 import { LinearGradient } from "expo-linear-gradient";
@@ -91,7 +91,7 @@ const BarbellScreen = ({ navigation, selectedTheme }) => {
             onChangeBarWeight={onChangeBarWeight}
             onChangeDesiredWeight={onChangeDesiredWeight}
           />
-          <SettingsButton navigation={navigation} />
+          <MenuButton navigation={navigation} />
           <CalculateButton
             onPress={calc}
             barWeight={barWeight}
@@ -109,8 +109,6 @@ const BarbellScreen = ({ navigation, selectedTheme }) => {
             twoAndAHalves={twoAndAHalves}
             runPlateAnimation={runPlateAnimation}
           />
-
-          {/* <WorkoutButton navigation={navigation} /> */}
         </LinearGradient>
       </TouchableWithoutFeedback>
     </>
@@ -121,32 +119,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: "10%",
-  },
-
-  weightInputsContainer: {
-    backgroundColor: "blue",
-    width: "100%",
-    marginTop: "-10%",
-  },
-  workoutButtonContainer: {
-    position: "absolute",
-    bottom: 50,
-    width: "100%",
-    alignItems: "center",
-  },
-  barbellContainer: {
-    position: "relative",
-    top: 20,
-    backgroundColor: "yellow",
-  },
-  textContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    backgroundColor: "green",
-  },
-  text: {
-    fontSize: 20,
   },
 });
 
