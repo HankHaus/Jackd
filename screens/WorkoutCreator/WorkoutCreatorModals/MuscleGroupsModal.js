@@ -15,14 +15,11 @@ import { GlossyButton } from "../../../components/common";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const MuscleGroupsModal = ({
   selectedTheme,
-  selectedMuscleGroups,
   handleSelectChest,
-
   handleSelectArms,
   handleSelectBack,
   handleSelectLegs,
   muscleGroupsData,
-  getMuscleGroups,
   onPressClose,
   opacity,
   onPressNext,
@@ -344,14 +341,6 @@ const MuscleGroupsModal = ({
               style={styles.nextButtonContainer}
               onPress={onPressNext}
             >
-              {/* <Text
-                style={[
-                  styles.nextButtonText,
-                  { color: selectedTheme.TEXT_PRIMARY },
-                ]}
-              >
-                Next
-              </Text> */}
               <GlossyButton
                 height={50}
                 fontSize={SCREEN_WIDTH / 13}
@@ -453,12 +442,6 @@ const styles = StyleSheet.create({
     height: 50,
     alignSelf: "center",
     justifyContent: "center",
-  },
-  nextButtonText: {
-    fontSize: 25,
-    fontWeight: "bold",
-    alignSelf: "center",
-    textDecorationLine: "underline",
   },
 });
 

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-  StatusBar,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
@@ -43,40 +38,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerContainer: {
-    marginTop: -60,
-    marginBottom: 60,
-    width: "100%",
-  },
-
   backButtonWrap: {
     marginTop: 42,
     marginLeft: SCREEN_WIDTH / 30,
     width: SCREEN_WIDTH / 10,
-  },
-  weightInputsContainer: {
-    backgroundColor: "blue",
-    width: "100%",
-    marginTop: "-10%",
-  },
-  workoutButtonContainer: {
-    position: "absolute",
-    bottom: 50,
-    width: "100%",
-    alignItems: "center",
-  },
-  barbellContainer: {
-    position: "relative",
-    top: 20,
-  },
-  textContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    backgroundColor: "green",
-  },
-  text: {
-    fontSize: 20,
   },
   backButton: {
     marginTop: "15%",

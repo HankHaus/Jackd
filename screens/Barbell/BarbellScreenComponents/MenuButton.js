@@ -135,7 +135,6 @@ const MenuButton = ({
         <TouchableOpacity
           onPress={() => {
             handleOpenMenu();
-            // navigation.navigate("SettingsScreen");
           }}
           style={styles.menuButtonBacking}
         >
@@ -154,7 +153,6 @@ const MenuButton = ({
           <TouchableOpacity
             onPress={() => {
               handleCollapseMenu();
-              // navigation.navigate("SettingsScreen");
             }}
             style={styles.menuButtonBacking}
           >
@@ -264,11 +262,6 @@ const MenuButton = ({
                 end={[0, 0]}
                 style={styles.buttonFill}
               >
-                {/* <Ionicons
-                  name="person"
-                  size={SCREEN_WIDTH / 14}
-                  color={"white"}
-                /> */}
                 <Text style={styles.prText}>PR</Text>
               </LinearGradient>
             </TouchableOpacity>

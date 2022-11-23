@@ -93,9 +93,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   circleContainer: {
-    width: 190,
-    height: 190,
-    borderRadius: 210,
+    width: SCREEN_WIDTH / 1.8,
+    height: SCREEN_WIDTH / 1.8,
+    borderRadius: SCREEN_WIDTH / 1.8,
     justifyContent: "center",
     alignItems: "center",
     marginTop: "35%",

@@ -6,11 +6,9 @@ import {
   Text,
   View,
 } from "react-native";
-import AbsoluteBottomSheet from "../../../components/common/AbsoluteBottomSheet";
 import { LinearGradient } from "expo-linear-gradient";
 import { connect } from "react-redux";
 import { getTheme } from "../../../src/actions";
-// import PRTESTMODAL from "./PRTESTMODAL";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -26,16 +24,6 @@ const PR = ({
   const [weight, setWeight] = useState(null);
   const [reps, setReps] = useState(null);
   const bottomSheetRef = useRef(null);
-  const handleCloseBottom = (item) => {
-    const checkTranslationY = bottomSheetRef.current.checkTranslationY();
-    const checkType = typeof item;
-    if (checkType !== "number") {
-      bottomSheetRef.current.scrollTo(0);
-    }
-    setTimeout(() => {
-      setDisplayModal(false);
-    }, 500);
-  };
 
   const getValues = async () => {
     const jsonKey = JSON.stringify(weightItem);

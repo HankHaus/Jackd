@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -21,7 +21,6 @@ const SelectIntensityModal = ({
   getMuscleGroups,
   onPressClose,
   opacity,
-  onPressStartWorkout,
   navigation,
 }) => {
   const [choicesMade, setChoicesMade] = useState([]);
@@ -730,7 +729,6 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH / 10,
     height: SCREEN_WIDTH / 10,
     borderRadius: SCREEN_WIDTH / 10,
-    // backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
   },
