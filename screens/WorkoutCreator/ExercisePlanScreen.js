@@ -23,6 +23,8 @@ import armExercises from "../../src/armExercises";
 import backExercises from "../../src/backExercises";
 import legExercises from "../../src/legExercises";
 import GlossyButton from "../../components/common/GlossyButton";
+import { PanGestureHandler } from "react-native-gesture-handler";
+import { useSharedValue } from "react-native-reanimated";
 
 const SPACING = 20;
 const AVATAR_SIZE = 70;
@@ -49,7 +51,23 @@ const ExercisePlanScreen = ({
   const [addedLegLifts, setAddedLegLifts] = useState([]);
 
   const [totalLifts, setTotalLifts] = useState([]);
-
+  const setAllCompletedToFalse = () => {
+    chestLifts.forEach((lift) => {
+      lift.completed = false;
+    });
+    armLifts.forEach((lift) => {
+      lift.completed = false;
+    });
+    backLifts.forEach((lift) => {
+      lift.completed = false;
+    });
+    legLifts.forEach((lift) => {
+      lift.completed = false;
+    });
+  };
+  useEffect(() => {
+    setAllCompletedToFalse();
+  }, []);
   /////ADD LIFT FUNCTIONS/////
   const addOneChestLift = () => {
     const chestLift = chestLifts[Math.floor(Math.random() * chestLifts.length)];
@@ -220,26 +238,31 @@ const ExercisePlanScreen = ({
             });
             return (
               <Animated.View
-                style={{
-                  flexDirection: "row",
-                  marginBottom: SPACING,
-                  backgroundColor: "red",
-                  shadowColor: "#000",
-                  shadowOffset: {
-                    width: 0,
-                    height: 10,
-                  },
-                  shadowOpacity: 0.4,
-                  shadowRadius: 12,
-                  elevation: 5,
+                style={[
+                  {
+                    flexDirection: "row",
+                    marginBottom: SPACING,
+                    shadowColor: "#000",
+                    shadowOffset: {
+                      width: 0,
+                      height: 10,
+                    },
+                    shadowOpacity: 0.4,
+                    shadowRadius: 12,
+                    elevation: 5,
 
-                  borderRadius: 16,
-                  transform: [{ scale }],
-                }}
+                    borderRadius: 16,
+                    transform: [{ scale }],
+                  },
+                ]}
               >
                 <LinearGradient
                   style={styles.card}
-                  colors={["rgba(114, 195, 227, 1)", "rgba(0, 81, 153, 1)"]}
+                  colors={
+                    item.completed
+                      ? ["rgba(0, 195, 227, 1)", "rgba(56, 212, 0, 1)"]
+                      : ["rgba(114, 195, 227, 1)", "rgba(0, 81, 153, 1)"]
+                  }
                 >
                   <View
                     style={{
@@ -258,6 +281,23 @@ const ExercisePlanScreen = ({
                       Sets: {item.sets}
                     </Text>
                   </View>
+                  <TouchableOpacity
+                    style={styles.checkContainer}
+                    onPress={() => {
+                      item.completed = !item.completed;
+                      setTotalLifts([...totalLifts]);
+                    }}
+                  >
+                    <Entypo
+                      name="check"
+                      size={24}
+                      color={
+                        item.completed
+                          ? "rgba(56, 212, 0, 1)"
+                          : "rgba(0, 0, 0, 0.5)"
+                      }
+                    />
+                  </TouchableOpacity>
                 </LinearGradient>
               </Animated.View>
             );
@@ -311,6 +351,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     bottom: 0,
+  },
+  checkContainer: {
+    width: SCREEN_WIDTH / 12,
+    height: SCREEN_WIDTH / 12,
+    borderRadius: SCREEN_WIDTH / 12,
+    backgroundColor: "white",
+    position: "absolute",
+    right: "5%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   card: {
     alignItems: "center",
