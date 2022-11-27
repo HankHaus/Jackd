@@ -629,7 +629,7 @@ const SelectIntensityModal = ({
                 height={50}
                 width={"100%"}
                 fontSize={SCREEN_WIDTH / 13}
-                text="Start Workout"
+                text="Start"
                 colors={selectedTheme.SELECTED_OPTION_DOT_BLEND_PRIMARY}
               />
             </TouchableOpacity>
